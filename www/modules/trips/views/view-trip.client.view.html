@@ -1,0 +1,223 @@
+<section data-ng-controller="TripsController" data-ng-init="findOne()">
+    <!--trip divided into sections, depended on trip.status_code and user_role-->
+    <div data-ng-if="(error)" class="alert alert-warning text-center">
+        {{error}}
+    </div>
+    <div data-ng-if="authentication && authentication.user && authentication.user.is_client">
+        <div aria-label="INITIALIZED" data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
+            <h3>Your trip is ready</h3>
+
+            <div>
+                <p>Клиент: {{trip.client.displayName}}</p>
+
+                <p>Адрес начало: {{trip.start_address}}</p>
+
+                <p>Адрес конца: {{trip.end_address}}</p>
+
+                <p>Цена: {{trip.price}}</p>
+
+                <p>Срочно: {{trip.immediate}}</p>
+
+                <p>Использовать бонус: {{trip.use_bonus}}</p>
+                <leaflet markers="markers" center="center" height="200"></leaflet>
+                <div>
+                    <button class="btn btn-danger" data-ng-click="delete_trip()">delete</button>
+                </div>
+            </div>
+            <ul class="list-group">
+                <li data-ng-repeat="requester in trip.requests" class="list-group-item">
+                    <label class="label label-primary">{{requester.time}} мин</label>
+                    <select disabled data-ng-options="car_brand._id as car_brand.name for car_brand in car_brands"
+                            data-ng-model="requester.driver_car.car_brand"></select>
+                    <select disabled data-ng-options="car_model._id as car_model.name for car_model in car_models"
+                            data-ng-model="requester.driver_car.car_model"></select>
+                    <select disabled data-ng-options="car_color._id as car_color.name for car_color in car_colors"
+                            data-ng-model="requester.driver_car.car_color"></select>
+                    <span data-ng-bind="requester.driver_car.year"></span>
+                    <span><i class="glyphicon glyphicon-star"></i>{{requester.driver_car.rating}}</span>
+                    <span class="label label-warning" data-ng-if="requester.driver_car.premium">PREMIUM</span>
+                    <button class="btn btn-primary badge" data-ng-click="accept_pickup(requester._id)">Accept</button>
+                    <span class="badge">
+                        <timer interval="1000" finish-callback="cb_get()" countdown="countdown_handler(requester.date_end)">
+                            {{countdown}}
+                        </timer>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div aria-label="ACTIVATED" data-ng-if="trip.status_code === TRIP_STATUS.ACTIVATED">
+            <div class="alert alert-success">
+                <h3>Your trip is ready</h3>
+
+                <div>
+                    <p>Водитель: {{trip.accepted_request.driver_profile.displayName}}</p>
+
+                    <p>Машина: {{trip.accepted_request.driver_car.gos_number}}</p>
+
+                    <p>Будет через: {{trip.accepted_request.time}} мин</p>
+                </div>
+                <div>
+                    <button class="btn btn-danger" data-ng-click="cancel_trip()">cancel</button>
+                </div>
+            </div>
+        </div>
+        <div aria-label="ARRIVED" data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED">
+            driver arrived
+            <!--todo: countdown here-->
+        </div>
+        <div aria-label="MET" data-ng-if="trip.status_code === TRIP_STATUS.MET">
+            <h4>Trip completed, Thanks for using us</h4>
+            trip transaction id {{trip.transaction._id || trip.transaction}}
+            <hr/>
+
+            <p>Цена: {{trip.price}}</p>
+            <p>Использовать бонус: {{trip.use_bonus}}</p>
+            <button class="pull-right btn btn-success" data-ng-click="end_trip()">End trip</button>
+            <!--todo: real map here-->
+            <img src="modules/core/img/2gis1_0.png" alt="map" width="400"/>
+        </div>
+        <div aria-label="COMPLETED" data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED">
+            Trip completed
+            <hr/>
+            <a class="btn btn-primary" href="/#!/user_trips/prepare-trip">create new trip?</a>
+        </div>
+        <div aria-label="CANCELED" data-ng-if="trip.status_code === TRIP_STATUS.CANCELED">
+            <div class="alert alert-danger">
+                <h3>Trip was canceled</h3>
+                <hr/>
+                You may have penalties for cancellation
+                <hr/>
+                <p>Дата: {{trip.created_date | date: 'mediumDate'}}</p>
+
+                <p>Клиент: {{trip.client.displayName}}</p>
+
+                <p>Адрес начало: {{trip.start_address}}</p>
+
+                <p>Адрес конца: {{trip.end_address}}</p>
+
+
+                <p>Цена: {{trip.price}}</p>
+
+                <p>Срочно: {{trip.immediate}}</p>
+
+                <p>Использовать бонус: {{trip.use_bonus}}</p>
+
+                <p>Водитель: {{trip.accepted_request.driver_profile.displayName}}</p>
+
+                <p>Машина: {{trip.accepted_request.driver_car.gos_number}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div data-ng-if="authentication && authentication.user && authentication.user.is_driver">
+        <div aria-label="INITIALIZED" data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
+            <h3>Trip {{trip._id}}</h3>
+
+            <div>
+                <p>Клиент: {{trip.client.displayName}}</p>
+
+                <p>Адрес начало: {{trip.start_address}}</p>
+
+                <p>Адрес конца: {{trip.end_address}}</p>
+
+                <p>Цена: {{trip.price}}</p>
+
+                <p>Срочно: {{trip.immediate}}</p>
+
+                <p>Использовать бонус: {{trip.use_bonus}}</p>
+                <div data-ng-init="get_statistics()">
+                    <div data-ng-if="statistic.requests.length > 0" class="alert alert-success">
+                        <p>Всего запросов {{statistic.requests.length}}</p>
+                        <p>Успешных запросов {{statistic.accepted_count}}</p>
+                        <p>Процент запросов {{(statistic.accepted_count * 100) / statistic.requests.length}}%</p>
+                    </div>
+                </div>
+                <leaflet markers="markers" center="center" height="200"></leaflet>
+            </div>
+            <div data-ng-if="!is_current_driver_request(trip.requests)">
+                <label for="minute">Will be in (minutes)</label>
+                <select id="minute" data-ng-options="number for number in [1,3,5,10,15,20,25,30,45,60]"
+                        data-ng-model="defaults.time"></select>
+                <button class="btn btn-primary" data-ng-click="request_pickup()">Request pick up</button>
+            </div>
+            <div data-ng-if="is_current_driver_request(trip.requests)">
+                <label for="timer">Request pending</label>
+                <timer id="timer" interval="1000" finish-callback="cb_get()" countdown="countdown_handler(is_current_driver_request(trip.requests).date_end)">
+                    {{countdown}}
+                </timer>
+                <button class="btn btn-danger" data-ng-click="cancel_request_pickup()">Cancel request</button>
+            </div>
+
+        </div>
+        <div aria-label="ACTIVATED" data-ng-if="trip.status_code === TRIP_STATUS.ACTIVATED">
+            <div class="alert alert-success">
+                <h3>Trip {{trip._id}}</h3>
+
+                <div>
+                    <p>Клиент: {{trip.client.displayName}}</p>
+
+                    <p>Адрес начало: {{trip.start_address}}</p>
+
+                    <p>Адрес конца: {{trip.end_address}}</p>
+
+                    <p>Цена: {{trip.price}}</p>
+
+                    <p>Срочно: {{trip.immediate}}</p>
+
+                    <p>Использовать бонус: {{trip.use_bonus}}</p>
+                    <!--todo: we need countdown here-->
+                    <p>Буду через: {{trip.accepted_request.time}} мин</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" data-ng-click="arrived_trip()">arrived</button>
+                </div>
+            </div>
+        </div>
+        <div aria-label="ARRIVED" data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED">
+            awaiting client
+            <!--todo: countdown here-->
+            <button class="btn btn-primary" data-ng-click="met_trip()">Client arrived</button>
+        </div>
+        <div aria-label="MET" data-ng-if="trip.status_code === TRIP_STATUS.MET">
+            <h4>Trip completed, Thanks for being with us</h4>
+            trip transaction id {{trip.transaction._id || trip.transaction}}
+            <hr/>
+            <p>Адрес начало: {{trip.start_address}}</p>
+
+            <p>Адрес конца: {{trip.end_address}}</p>
+            <!--todo: real map here-->
+            <img src="modules/core/img/2gis1_0.png" alt="map" width="400"/>
+        </div>
+        <div aria-label="COMPLETED" data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED">
+            Trip completed
+            <hr/>
+            <a class="btn btn-primary" href="/#!/trips">List another trips?</a>
+        </div>
+        <div aria-label="CANCELED" data-ng-if="trip.status_code === TRIP_STATUS.CANCELED">
+            <div class="alert alert-danger">
+                <h3>Trip was canceled</h3>
+                <hr/>
+                Client may have penalties for cancellation!
+                <hr/>
+                <p>Дата: {{trip.created_date | date: 'mediumDate'}}</p>
+
+                <p>Клиент: {{trip.client.displayName}}</p>
+
+                <p>Адрес начало: {{trip.start_address}}</p>
+
+                <p>Адрес конца: {{trip.end_address}}</p>
+
+                <p>Цена: {{trip.price}}</p>
+
+                <p>Срочно: {{trip.immediate}}</p>
+
+                <p>Использовать бонус: {{trip.use_bonus}}</p>
+
+                <p>Водитель: {{trip.accepted_request.driver_profile.displayName}}</p>
+
+                <p>Машина: {{trip.accepted_request.driver_car.gos_number}}</p>
+
+            </div>
+        </div>
+    </div>
+</section>

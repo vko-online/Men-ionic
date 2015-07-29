@@ -1,0 +1,22 @@
+2015-06-03 14:46:07.237 insport[1888:70496] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/F2B12C9F-78A4-4F38-9AC7-E1B98448C49D/data/Containers/Data/Application/A6C61246-2690-4357-97D9-D5E3AB5AB6C7/Library/Cookies/Cookies.binarycookies
+2015-06-03 14:46:07.511 insport[1888:70496] Apache Cordova native platform version 3.8.0 is starting.
+2015-06-03 14:46:07.512 insport[1888:70496] Multi-tasking -> Device: YES, App: YES
+2015-06-03 14:46:07.525 insport[1888:70496] Unlimited access to network resources
+2015-06-03 14:46:07.894 insport[1888:70496] [CDVTimer][keyboard] 0.213027ms
+2015-06-03 14:46:07.894 insport[1888:70496] [CDVTimer][TotalPluginStartup] 0.725031ms
+2015-06-03 14:46:08.421 insport[1888:70496] Resetting plugins due to page load.
+2015-06-03 14:46:08.774 insport[1888:70496] Finished load of: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/F2B12C9F-78A4-4F38-9AC7-E1B98448C49D/data/Containers/Bundle/Application/B13571E2-8DA2-47FF-B83E-1CE41C3FCAED/insport.app/www/index.html#!/app/feed
+2015-06-03 14:46:19.724 insport[1888:70599] Terminating since there is no system app.
+2015-06-19 15:45:06.822 insport[36354:4053790] Apache Cordova native platform version 3.8.0 is starting.
+2015-06-19 15:45:06.823 insport[36354:4053790] Multi-tasking -> Device: YES, App: YES
+2015-06-19 15:45:06.839 insport[36354:4053790] Unlimited access to network resources
+2015-06-19 15:45:07.195 insport[36354:4053790] [CDVTimer][keyboard] 0.073016ms
+2015-06-19 15:45:07.195 insport[36354:4053790] [CDVTimer][TotalPluginStartup] 0.233948ms
+2015-06-19 15:45:07.481 insport[36354:4053790] Resetting plugins due to page load.
+2015-06-19 15:45:07.911 insport[36354:4053790] Finished load of: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/F2B12C9F-78A4-4F38-9AC7-E1B98448C49D/data/Containers/Bundle/Application/7BDC4820-6C46-4CBA-BA59-F3211BB9E7AA/insport.app/www/index.html#!/
+2015-06-19 15:45:34.126 insport[36354:4053790] Resetting plugins due to page load.
+2015-06-19 15:45:34.133 insport[36354:4053790] Failed to load webpage with error: Frame load interrupted
+2015-06-19 15:45:36.932 insport[36354:4053790] Resetting plugins due to page load.
+2015-06-19 15:45:36.935 insport[36354:4053790] Failed to load webpage with error: Frame load interrupted
+2015-06-19 15:45:39.485 insport[36354:4053790] Resetting plugins due to page load.
+2015-06-19 15:45:39.497 insport[36354:4053790] Failed to load webpage with error: Frame load interrupted

@@ -1,0 +1,24 @@
+<ion-view>
+    <ion-content>
+        <section data-ng-controller="LobbiesActiveController" data-ng-init="find()">
+            <div class="page-header">
+                <h1>Lobbies</h1>
+            </div>
+            <div class="list-group">
+                <a data-ng-repeat="lobby in lobbies" data-ng-href="#!/lobbies/{{lobby._id}}" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        {{lobby.sport_type.name}}
+                        <small class="">Игроков {{(lobby.first_players.concat(lobby.second_players)).length}} из
+                            {{lobby.player_amount}}
+                        </small>
+                        <span class="badge" data-ng-if="lobby.game">Игра началась</span>
+                        <span class="pull-right">{{lobby.end_date | date: 'mediumDate'}}</span>
+                    </h4>
+                </a>
+            </div>
+            <div class="alert alert-warning text-center" data-ng-hide="!lobbies.$resolved || lobbies.length">
+                No Lobbies yet, why don't you <a href="/#!/lobbies/create">create one</a>?
+            </div>
+        </section>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,21 @@
+<section data-ng-controller="ShareController">
+    <h3>Есть несколько способов поделиться приложением</h3>
+
+    <div class="alert alert-success">
+        <h5>С помощью этого кода</h5>
+        <p>Это ваш личный код который можно использовать в реф системе</p>
+        <p><strong>{{authentication.user.uid}}</strong></p>
+    </div>
+    <div class="alert alert-success">
+        <h5>Отправить через смс</h5>
+        <label for="phone_number">Введите номер телефона</label>
+        <input type="tel" id="phone_number"/>
+        <button>Отправить</button>
+    </div>
+    <div class="alert alert-success">
+        <h5>Отправить на почту</h5>
+        <label for="email">Введите email</label>
+        <input type="email" id="email"/>
+        <button>Отправить</button>
+    </div>
+</section>

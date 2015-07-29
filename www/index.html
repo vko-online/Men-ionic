@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"/>
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="modules/core/css/core.css">
+    <link rel="stylesheet" href="modules/users/css/users.css">
+    <!-- endinject -->
+
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/socket.io-client/socket.io.js"></script>
+    <script src="lib/angular-socket-io/socket.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/config.js"></script>
+    <script src="js/application.js"></script>
+
+    <!-- inject:js -->
+    
+    <!-- endinject -->
+</head>
+<body dev-env="true">
+<div data-ng-include="'modules/core/views/header.client.view.html'"></div>
+
+</body>
+</html>

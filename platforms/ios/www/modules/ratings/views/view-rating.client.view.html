@@ -1,0 +1,20 @@
+<ion-view>
+    <ion-content>
+        <section data-ng-controller="RatingsController" data-ng-init="findOne()">
+            <div class="page-header">
+                <h1 data-ng-bind="rating.sport_type.name"></h1>
+            </div>
+            <div class="lead">
+                <h2>Статистика {{rating.user.displayName}}</h2>
+
+                <p>Количество игр:{{rating.game_count}}</p>
+
+                <p>Количество побед: {{rating.win}}</p>
+
+                <p>Количество поражении: {{rating.lost}}</p>
+
+                <p>Количество ничьи: {{rating.draw}}</p>
+            </div>
+        </section>
+    </ion-content>
+</ion-view>

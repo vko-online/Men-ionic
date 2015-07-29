@@ -1,0 +1,9 @@
+<section data-ng-controller="DriverController" class="row">
+    <h3 class="col-md-12 text-center">{{driver.displayName}}</h3>
+    <h5 class="text-center">{{driver.is_current_user ? 'Это ваш профиль' : ''}}</h5>
+    {{error}}
+    <p>Имя пользователя: {{driver.username}}</p>
+
+    <p>Почтовый ящик: {{driver.email}}</p>
+    <p>Машина {{driver.car}}</p>
+</section>

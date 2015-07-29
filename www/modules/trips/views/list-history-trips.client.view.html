@@ -1,0 +1,13 @@
+<section data-ng-controller="TripHistoryController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>History trips</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="trip in trips track by $index" data-ng-href="#!/trips_history/{{trip._id}}" class="list-group-item"
+           data-ng-class="{'active': is_requested(trip.requests)}">
+            От:{{trip.start_address}} | До:{{trip.end_address}} | Цена:{{trip.price}} | {{trip.use_bonus ? 'Бонус' :
+            ''}}
+            <span data-ng-if="trip.immediate" class="badge">срочно</span>
+        </a>
+    </div>
+</section>

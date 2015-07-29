@@ -1,0 +1,43 @@
+<ion-view>
+    <ion-content>
+        <section data-ng-controller="CoachesController">
+            <div class="page-header">
+                <h1>New Coach</h1>
+            </div>
+            <div class="col-md-12">
+                <form class="form-horizontal" data-ng-submit="create()" novalidate>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label" for="phone">Phone</label>
+
+                            <div class="controls">
+                                <input type="text" data-ng-model="phone" id="phone" class="form-control"
+                                       placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="bio">Bio</label>
+                            <textarea class="form-control no-overflow" name="bio" id="bio" cols="20" rows="10"
+                                      data-ng-model="bio"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="sport_type">Sport Type</label>
+
+                            <div class="controls">
+                                <select name="sport_type" id="sport_type" data-ng-model="sport_type"
+                                        class="form-control"
+                                        data-ng-options="sport_type._id as sport_type.name for sport_type in sport_types"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default">
+                        </div>
+                        <div data-ng-show="error" class="text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+<section data-ng-controller="TripsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Available trips</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="trip in trips track by $index" data-ng-href="#!/trips/{{trip._id}}" class="list-group-item"
+           data-ng-class="{'active': is_requested(trip.requests)}">
+            От:{{trip.start_address}} | До:{{trip.end_address}} | Цена:{{trip.price}} | {{trip.use_bonus ? 'Бонус' :
+            ''}}
+            <span data-ng-if="trip.immediate" class="badge">срочно</span>
+            <span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>
+            <span data-ng-if="get_my_request(trip.requests)">
+                    <timer interval="1000" finish-callback="cb_list()"
+                           countdown="countdown_handler(get_my_request(trip.requests).date_end)">
+                        <i class="glyphicon glyphicon-time"></i>{{countdown}}
+                    </timer>
+            </span>
+        </a>
+    </div>
+</section>
