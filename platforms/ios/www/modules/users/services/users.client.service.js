@@ -8,9 +8,9 @@ angular.module('users').factory('Users', ['$resource', 'CORE_CONST',
             update: {
                 method: 'PUT'
             },
-            follow_unfollow: {
-                method: 'POST',
-                url: CORE_CONST.REST_URL + 'users/:userId/follow_unfollow'
+            sign_out: {
+                url: CORE_CONST.REST_URL + 'auth/signout',
+                method: 'POST'
             }
         });
     }

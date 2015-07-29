@@ -16,3 +16,6 @@
 .no-overflow{
 	max-width: 100%;
 }
+.form-horizontal .form-group{
+	margin: 0;
+}

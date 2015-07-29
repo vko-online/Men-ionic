@@ -5,6 +5,8 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/leaflet/dist/leaflet.css">
 
     <!-- inject:css -->
     <link rel="stylesheet" href="modules/core/css/core.css">
@@ -14,11 +16,17 @@
     <link href="css/ionic.app.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="lib/ionic-service-core/ionic-core.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
     <script src="lib/socket.io-client/socket.io.js"></script>
     <script src="lib/angular-socket-io/socket.js"></script>
-
+    <script src="lib/humanize-duration/humanize-duration.js"></script>
+    <script src="lib/momentjs/min/moment.min.js"></script>
+    <script src="lib/leaflet/dist/leaflet.js"></script>
+    <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
+    <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -27,95 +35,115 @@
     <script src="js/application.js"></script>
 
     <!-- inject:js -->
+    
+    <script src="modules/car-brands/car-brands.client.module.js"></script>
+    
     <script src="modules/articles/articles.client.module.js"></script>
-    <script src="modules/coaches/coaches.client.module.js"></script>
+    
+    <script src="modules/car-colors/car-colors.client.module.js"></script>
+    
+    <script src="modules/car-models/car-models.client.module.js"></script>
+    
     <script src="modules/core/core.client.module.js"></script>
-    <script src="modules/feeds/feeds.client.module.js"></script>
-    <script src="modules/friend-requests/friend-requests.client.module.js"></script>
-    <script src="modules/game-requests/game-requests.client.module.js"></script>
-    <script src="modules/game-results/game-results.client.module.js"></script>
-    <script src="modules/games/games.client.module.js"></script>
-    <script src="modules/lobbies/lobbies.client.module.js"></script>
-    <script src="modules/notifications/notifications.client.module.js"></script>
-    <script src="modules/ratings/ratings.client.module.js"></script>
-    <script src="modules/sport-types/sport-types.client.module.js"></script>
-    <script src="modules/teams/teams.client.module.js"></script>
-    <script src="modules/tournaments/tournaments.client.module.js"></script>
+    
     <script src="modules/users/users.client.module.js"></script>
+    
+    <script src="modules/trips/trips.client.module.js"></script>
+    
+    <script src="modules/car-brands/config/car-brands.client.config.js"></script>
+    
+    <script src="modules/car-brands/config/car-brands.client.routes.js"></script>
+    
+    <script src="modules/car-brands/controllers/car-brands.client.controller.js"></script>
+    
+    <script src="modules/car-brands/services/car-brands.client.service.js"></script>
+    
     <script src="modules/articles/config/articles.client.config.js"></script>
+    
     <script src="modules/articles/config/articles.client.routes.js"></script>
+    
     <script src="modules/articles/controllers/articles.client.controller.js"></script>
+    
     <script src="modules/articles/services/articles.client.service.js"></script>
-    <script src="modules/coaches/config/coaches.client.config.js"></script>
-    <script src="modules/coaches/config/coaches.client.routes.js"></script>
-    <script src="modules/coaches/controllers/coaches.client.controller.js"></script>
-    <script src="modules/coaches/services/coaches.client.service.js"></script>
+    
+    <script src="modules/car-colors/config/car-colors.client.config.js"></script>
+    
+    <script src="modules/car-colors/config/car-colors.client.routes.js"></script>
+    
+    <script src="modules/car-colors/controllers/car-colors.client.controller.js"></script>
+    
+    <script src="modules/car-colors/services/car-colors.client.service.js"></script>
+    
+    <script src="modules/car-models/config/car-models.client.config.js"></script>
+    
+    <script src="modules/car-models/config/car-models.client.routes.js"></script>
+    
+    <script src="modules/car-models/controllers/car-models.client.controller.js"></script>
+    
+    <script src="modules/car-models/services/car-models.client.service.js"></script>
+    
+    <script src="modules/core/config/core.client.config.js"></script>
+    
     <script src="modules/core/config/core.client.routes.js"></script>
+    
     <script src="modules/core/constants/core.client.constants.js"></script>
+    
     <script src="modules/core/controllers/header.client.controller.js"></script>
+    
     <script src="modules/core/controllers/home.client.controller.js"></script>
+    
     <script src="modules/core/filters/html_to_plain.client.filter.js"></script>
-    <script src="modules/core/services/gyms.client.service.js"></script>
+    
+    <script src="modules/core/services/geo_location.client.service.js"></script>
+    
     <script src="modules/core/services/menus.client.service.js"></script>
+    
+    <script src="modules/core/services/misc.client.service.js"></script>
+    
     <script src="modules/core/services/socket.client.service.js"></script>
-    <script src="modules/feeds/config/feeds.client.config.js"></script>
-    <script src="modules/feeds/config/feeds.client.routes.js"></script>
-    <script src="modules/feeds/controllers/feeds.client.controller.js"></script>
-    <script src="modules/feeds/services/feeds.client.service.js"></script>
-    <script src="modules/friend-requests/config/friend-requests.client.config.js"></script>
-    <script src="modules/friend-requests/config/friend-requests.client.routes.js"></script>
-    <script src="modules/friend-requests/controllers/friend-requests.client.controller.js"></script>
-    <script src="modules/friend-requests/services/friend-requests.client.service.js"></script>
-    <script src="modules/game-requests/config/game-requests.client.config.js"></script>
-    <script src="modules/game-requests/config/game-requests.client.routes.js"></script>
-    <script src="modules/game-requests/controllers/game-requests.client.controller.js"></script>
-    <script src="modules/game-requests/services/game-requests.client.service.js"></script>
-    <script src="modules/game-results/config/game-results.client.config.js"></script>
-    <script src="modules/game-results/config/game-results.client.routes.js"></script>
-    <script src="modules/game-results/controllers/game-results.client.controller.js"></script>
-    <script src="modules/game-results/services/game-results.client.service.js"></script>
-    <script src="modules/games/config/games.client.config.js"></script>
-    <script src="modules/games/config/games.client.routes.js"></script>
-    <script src="modules/games/controllers/games.client.controller.js"></script>
-    <script src="modules/games/directives/comment.client.directive.js"></script>
-    <script src="modules/games/services/games.client.service.js"></script>
-    <script src="modules/lobbies/config/lobbies.client.config.js"></script>
-    <script src="modules/lobbies/config/lobbies.client.routes.js"></script>
-    <script src="modules/lobbies/controllers/lobbies.client.controller.js"></script>
-    <script src="modules/lobbies/controllers/lobbies_active.client.controller.js"></script>
-    <script src="modules/lobbies/services/lobbies.client.service.js"></script>
-    <script src="modules/notifications/config/notifications.client.config.js"></script>
-    <script src="modules/notifications/config/notifications.client.routes.js"></script>
-    <script src="modules/notifications/controllers/notifications.client.controller.js"></script>
-    <script src="modules/notifications/services/notifications.client.service.js"></script>
-    <script src="modules/ratings/config/ratings.client.routes.js"></script>
-    <script src="modules/ratings/controllers/ratings.client.controller.js"></script>
-    <script src="modules/ratings/services/ratings.client.service.js"></script>
-    <script src="modules/sport-types/config/sport-types.client.config.js"></script>
-    <script src="modules/sport-types/config/sport-types.client.routes.js"></script>
-    <script src="modules/sport-types/controllers/sport-types.client.controller.js"></script>
-    <script src="modules/sport-types/services/sport-types.client.service.js"></script>
-    <script src="modules/teams/config/teams.client.config.js"></script>
-    <script src="modules/teams/config/teams.client.routes.js"></script>
-    <script src="modules/teams/controllers/teams.client.controller.js"></script>
-    <script src="modules/teams/services/teams.client.service.js"></script>
-    <script src="modules/tournaments/config/tournaments.client.config.js"></script>
-    <script src="modules/tournaments/config/tournaments.client.routes.js"></script>
-    <script src="modules/tournaments/controllers/tournaments.client.controller.js"></script>
-    <script src="modules/tournaments/services/tournaments.client.service.js"></script>
+    
     <script src="modules/users/config/users.client.config.js"></script>
+    
     <script src="modules/users/config/users.client.routes.js"></script>
+    
     <script src="modules/users/controllers/authentication.client.controller.js"></script>
+    
+    <script src="modules/users/controllers/driver.client.controller.js"></script>
+    
     <script src="modules/users/controllers/password.client.controller.js"></script>
+    
     <script src="modules/users/controllers/profile.client.controller.js"></script>
+    
     <script src="modules/users/controllers/settings.client.controller.js"></script>
+    
+    <script src="modules/users/controllers/share.client.controller.js"></script>
+    
     <script src="modules/users/services/authentication.client.service.js"></script>
-    <script src="modules/users/services/authentication2.client.service.js"></script>
+    
+    <script src="modules/users/services/driver.client.service.js"></script>
+    
     <script src="modules/users/services/users.client.service.js"></script>
+    
+    <script src="modules/trips/config/trips.client.config.js"></script>
+    
+    <script src="modules/trips/config/trips.client.routes.js"></script>
+    
+    <script src="modules/trips/controllers/create-trip.client.controller.js"></script>
+    
+    <script src="modules/trips/controllers/history-trips.client.controller.js"></script>
+    
+    <script src="modules/trips/controllers/trips.client.controller.js"></script>
+    
+    <script src="modules/trips/services/driver_requests.client.service.js"></script>
+    
+    <script src="modules/trips/services/trip_statuses.client.service.js"></script>
+    
+    <script src="modules/trips/services/trips.client.service.js"></script>
+    
     <!-- endinject -->
 </head>
 <body dev-env="true" class="platform-ios platform-cordova platform-webview">
-<div data-ng-include="'modules/core/views/header.client.view.html'"></div>
+<div data-ng-include="&apos;modules/core/views/header.client.view.html&apos;"></div>
 
 </body>
 </html>

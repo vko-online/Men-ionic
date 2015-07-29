@@ -1,5 +1,9 @@
 {
   "name": "insport",
-  "app_id": "",
-  "gulpStartupTasks": ["sass", "index", "watch"]
+  "app_id": "430697e6",
+  "gulpStartupTasks": [
+    "sass",
+    "index",
+    "watch"
+  ]
 }

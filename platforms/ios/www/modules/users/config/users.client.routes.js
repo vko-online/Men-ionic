@@ -12,6 +12,15 @@ angular.module('users').config(['$stateProvider',
                 url: '/me',
                 templateUrl: 'modules/users/views/profile.client.view.html'
             }).
+            state('share', {
+                url: '/share',
+                templateUrl: 'modules/users/views/share.client.view.html'
+            }).
+            //create driver route
+            state('become_driver', {
+                url: '/become_driver',
+                templateUrl: 'modules/users/views/driver/driver-pre-create.client.view.html'
+            }).
             state('profile_list', {
                 url: '/profiles',
                 templateUrl: 'modules/users/views/profile-list.client.view.html'
@@ -28,9 +37,9 @@ angular.module('users').config(['$stateProvider',
                 url: '/settings/accounts',
                 templateUrl: 'modules/users/views/settings/social-accounts.client.view.html'
             }).
-            state('signup', {
-                url: '/signup',
-                templateUrl: 'modules/users/views/authentication/signup.client.view.html'
+            state('signup_client', {
+                url: '/signup_client',
+                templateUrl: 'modules/users/views/authentication/signup_client.client.view.html'
             }).
             state('signin', {
                 url: '/signin',

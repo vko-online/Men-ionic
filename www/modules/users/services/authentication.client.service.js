@@ -1,14 +1,16 @@
 'use strict';
 // Authentication service for user variables
-angular.module('users').factory('Authentication', ['$http', '$q',
-    function($http, $q){
+angular.module('users').factory('Authentication', ['$http', '$q', 'CORE_CONST',
+    function($http, $q, CORE_CONST){
         function _get_user(){
+            var that = this;
             var defer = $q.defer();
             if(window.user){
                 defer.resolve(window.user);
             } else {
-                $http.get('http://localhost:3000/users/me')
+                $http.get(CORE_CONST.REST_URL + 'users/me')
                     .success(function(response){
+                        that.user = response;
                         window.user = response;
                         defer.resolve(response);
                     })

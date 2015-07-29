@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication', 'CORE_CONST',
-    function($scope, $http, $location, Authentication, CORE_CONST) {
+angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication', 'CORE_CONST', '$state', '$rootScope',
+    function($scope, $http, $location, Authentication, CORE_CONST, $state, $rootScope) {
         $scope.authentication = Authentication;
+        $scope.credentials = {};
         // If user is signed in then redirect back home
         if ($scope.authentication.user) $location.path('/');
+
 
         $scope.signup_client = function() {
             $http.post(CORE_CONST.REST_URL + 'auth/signup_client', $scope.credentials).success(function(response) {
@@ -12,40 +14,31 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
                 $scope.authentication.user = response;
                 $http.defaults.headers.common.Authentication = response.loginToken;
                 localStorage.setItem('a', response.loginToken);
-                // And redirect to the index page
-                $location.path('/');
-            }).error(function(response) {
-                $scope.error = response.message;
-            });
-        };
-        //todo: redundant
-        $scope.signup_driver = function() {
-            $http.post(CORE_CONST.REST_URL + 'auth/signup_driver', $scope.credentials).success(function(response) {
-                // If successful we assign the response to the global user model
                 Authentication.set_user(response);
-                $http.defaults.headers.common.Authentication = response.loginToken;
-                localStorage.setItem('a', response.loginToken);
                 // And redirect to the index page
-                $location.path('/');
+                $state.go('home', {}, {reload: true});
             }).error(function(response) {
                 $scope.error = response.message;
             });
         };
 
         $scope.signin = function() {
+            console.log($scope.credentials);
             $http.post(CORE_CONST.REST_URL + 'auth/signin', $scope.credentials).success(function(response) {
                 // If successful we assign the response to the global user model
-                Authentication.set_user(response);
-                $scope.authentication = Authentication;
-                //pass user to auth.service n window obj
-                //$scope.$apply();
+                $scope.authentication.user = response;
                 $http.defaults.headers.common.Authentication = response.loginToken;
                 localStorage.setItem('a', response.loginToken);
                 // And redirect to the index page
-                $location.path('/');
+                Authentication.set_user(response);
+                $state.go('home', {}, {reload: true});
+                $scope.close_signin_modal();
             }).error(function(response) {
                 $scope.error = response.message;
             });
         };
+        $scope.close_signin_modal = function(){
+            $rootScope.$broadcast('event:auth-login_hide');
+        }
     }
 ]);

@@ -1,22 +1,22 @@
 'use strict';
 // Config HTTP Error Handling
-angular.module('feeds').run(['Menus',
+angular.module('users').run(['Menus',
     function(Menus){
         // Set top bar menu items
-        Menus.addMenuItem('topbar', 'Users', 'users', 'dropdown', '/profiles');
-        Menus.addSubMenuItem('topbar', 'users', 'List Users', 'profiles');
+        Menus.addMenuItem('topbar', 'Users', 'users', 'dropdown', '/profiles', true, ['admin']);
+        Menus.addSubMenuItem('topbar', 'users', 'List Users', 'profiles',  undefined, true, ['admin']);
     }
 ]);
 angular.module('users').config(['$httpProvider',
     function($httpProvider){
         // Set the httpProvider "not authorized" interceptor
-        $httpProvider.interceptors.push(['$q', '$location', 'Authentication',
-            function($q, $location, Authentication){
+        $httpProvider.interceptors.push(['$q', '$location', '$rootScope',
+            function($q, $location, $rootScope){
                 return {
                     request: function(config){
                         var auth = localStorage.getItem('a');
                         if(auth){
-                            config.headers.Authentication = localStorage.getItem('a');
+                            config.headers.Authentication = auth;
                         }
                         return config;
                     },
@@ -24,9 +24,10 @@ angular.module('users').config(['$httpProvider',
                         switch(rejection.status) {
                             case 401:
                                 // Deauthenticate the global user
-                                Authentication.user = null;
+                                //Authentication.user = null;
                                 // Redirect to signin page
-                                $location.path('signin');
+                                $rootScope.$broadcast('event:auth-login_required');
+                                //$location.path('signin');
                                 break;
                             case 403:
                                 // Add unauthorized behaviour

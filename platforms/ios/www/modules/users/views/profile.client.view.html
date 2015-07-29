@@ -4,48 +4,7 @@
             <h3 class="col-md-12 text-center">{{user.displayName}}</h3>
             <h5 class="text-center">{{user.is_current_user ? 'Это ваш профиль' : ''}}</h5>
             {{error}}
-            <div class="page-header">
-                <div data-ng-init="dropdown_handler = false" data-ng-if="active_lobbies.length">
-                    <button class="btn btn-default" data-ng-click="dropdown_handler = !dropdown_handler">invite to
-                        game
-                    </button>
-                    <div data-ng-if="dropdown_handler">
-                        <ul class="list-group">
-                            <li class="list-group-item" data-ng-repeat="lobby in active_lobbies"
-                                data-ng-if="!lobby.game" data-ng-click="invite_lobby(lobby)">
-                                {{lobby.sport_type.name}} - {{lobby.first_players.length + lobby.second_players.length}}
-                                из {{lobby.player_amount}}
-                                <span class="badge" data-ng-if="is_invited(lobby)">приглашен</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="pull-right" data-ng-if="!user.is_current_user">
-                <button class="btn btn-primary" data-ng-if="user.can_follow" data-ng-click="follow_unfollow()">follow
-                </button>
-                <button class="btn btn-danger" data-ng-if="!user.can_follow" data-ng-click="follow_unfollow()">
-                    unfollow
-                </button>
-            </div>
-            <div>
-                <a class="btn btn-primary" data-ng-href="/#!/ratings/user/{{user._id}}">Rating</a>
-            </div>
-            <p>Имя пользователя: {{user.username}}</p>
-
-            <p>Почтовый ящик: {{user.email}}</p>
-
-            <p>Подписчики: {{user.subscribers.length}}</p>
-
-            <p>Друзья: {{user.friends.length}}</p>
-
-            <p>Рейтинги: {{user.ratings.length}}</p>
-
-            <div class="lead">
-                <p data-ng-repeat="feed in user.feeds">
-                    {{feed.content}}
-                </p>
-            </div>
+            <p>Телефон: {{user.username}}</p>
         </section>
     </ion-content>
 </ion-view>

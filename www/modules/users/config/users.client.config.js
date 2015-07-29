@@ -10,8 +10,8 @@ angular.module('users').run(['Menus',
 angular.module('users').config(['$httpProvider',
     function($httpProvider){
         // Set the httpProvider "not authorized" interceptor
-        $httpProvider.interceptors.push(['$q', '$location',
-            function($q, $location){
+        $httpProvider.interceptors.push(['$q', '$location', '$rootScope',
+            function($q, $location, $rootScope){
                 return {
                     request: function(config){
                         var auth = localStorage.getItem('a');
@@ -26,7 +26,8 @@ angular.module('users').config(['$httpProvider',
                                 // Deauthenticate the global user
                                 //Authentication.user = null;
                                 // Redirect to signin page
-                                $location.path('signin');
+                                $rootScope.$broadcast('event:auth-login_required');
+                                //$location.path('signin');
                                 break;
                             case 403:
                                 // Add unauthorized behaviour

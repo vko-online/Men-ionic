@@ -1,66 +1,68 @@
-<div class="container" data-ng-controller="HeaderController">
-    <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a href="/#!/" class="navbar-brand">taxi</a>
-    </div>
-    <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-        <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-            <li data-ng-repeat="item in menu.items | orderBy: 'position'"
-                data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType"
-                ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}"
-                dropdown="item.menuItemType === 'dropdown'">
-                <a ng-switch-when="dropdown" class="dropdown-toggle">
-                    <span data-ng-bind="item.title"></span>
-                    <b class="caret"></b>
-                </a>
-                <ul ng-switch-when="dropdown" class="dropdown-menu">
-                    <li data-ng-repeat="subitem in item.items | orderBy: 'position'"
-                        data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}"
-                        ng-class="{active: $uiRoute}">
-                        <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
-                    </li>
-                </ul>
-                <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-            <li ui-route="/signup_client" ng-class="{active: $uiRoute}">
-                <a href="/#!/signup_client">Sign Up</a>
-            </li>
-            <li class="divider-vertical"></li>
-            <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                <a href="/#!/signin">Sign In</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span data-ng-if="authentication.user.is_driver">
-                        <span data-ng-bind="authentication.user.money_amount || 0"></span>
-                        <span>на счету | </span>
-					</span>
-                    <span data-ng-bind="authentication.user.bonus_amount || 0"></span>
-                    <span>бонусов | </span>
-                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <!--<li>-->
-                        <!--<a href="/#!/settings/accounts">Manage Social Accounts</a>-->
-                    <!--</li>-->
-                    <!--<li data-ng-show="authentication.user.provider === 'local'">-->
-                        <!--<a href="/#!/settings/password">Change Password</a>-->
-                    <!--</li>-->
-                    <!--<li class="divider"></li>-->
-                    <li>
-                        <a data-ng-click="signout()">Signout</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</div>
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-view>
+            <ion-nav-view></ion-nav-view>
+        </ion-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" data-ng-controller="HeaderController">
+        <ion-header-bar class="bar-positive">
+            <h1 class="title">Insport</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list>
+                <ion-item menu-close data-ng-hide="authentication.user">
+                    <ul>
+                        <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                            <a href="#!/signup">Sign Up</a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                            <a href="#!/signin">Sign In</a>
+                        </li>
+                    </ul>
+                </ion-item>
+                <ion-item menu-close data-ng-show="authentication.user">
+                    <ul>
+                        <li>
+                            <span data-ng-bind="authentication.user.displayName"></span>
+                        </li>
+                        <li>
+                             {{authentication.user.bonus_amount || 0}} бонусов
+                        </li>
+                        <li data-ng-if="authentication.user.is_driver">
+                            {{authentication.user.money_amount || 0}} денег
+                        </li>
+                    </ul>
+                </ion-item>
+                <ion-item menu-close data-ng-repeat="item in menu.items | orderBy: 'position'"
+                          data-ng-if="item.shouldRender(authentication.user);" ng-class="{active: ($uiRoute)}"
+                          ui-route="{{item.uiRoute}}">
+                    <ul>
+                        <li data-ng-if="item.shouldRender(authentication.user) && item.items.length" data-ng-repeat="subitem in item.items | orderBy: 'position'"
+                            ui-route="{{subitem.uiRoute}}"
+                            ng-class="{active: $uiRoute}">
+                            <a href="#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+                        </li>
+                        <li data-ng-if="item.shouldRender(authentication.user) && !item.items.length" ui-route="{{item.uiRoute}}"
+                            ng-class="{active: $uiRoute}">
+                            <a href="#!/{{item.link}}" data-ng-bind="item.title"></a>
+                        </li>
+                    </ul>
+                </ion-item>
+                <ion-item menu-close>
+                    <a data-ng-click="signout()">Signout</a>
+                </ion-item>
+            </ion-list>
+            </nav>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

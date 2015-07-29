@@ -9,7 +9,9 @@ var ApplicationConfiguration = (function() {
     var applicationModuleVendorDependencies = [
         'ionic',
         'ngResource',
-        'btford.socket-io'
+        'btford.socket-io',
+        'timer',
+        'leaflet-directive'
     ];
 
     // Add a new vertical module
