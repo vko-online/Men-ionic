@@ -73,3 +73,45 @@
 2015-07-29 15:12:01.610 insport[32456:1487669] [CDVTimer][TotalPluginStartup] 0.276983ms
 2015-07-29 15:12:01.678 insport[32456:1487669] Resetting plugins due to page load.
 2015-07-29 15:12:01.947 insport[32456:1487669] Finished load of: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Bundle/Application/F8C89EE4-286F-4949-9767-48E50CB7999B/insport.app/www/index.html#!/
+2015-07-29 15:31:54.391 insport[32456:1498737] Communications error: <OS_xpc_error: <error: 0x2d5c5f4> { count = 1, contents =
+	"XPCErrorDescription" => <string: 0x2d5c83c> { length = 22, contents = "Connection interrupted" }
+}>
+2015-07-29 18:05:59.498 insport[34197:1559928] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Data/Application/65B8BF6B-4C4F-4F9C-AE41-0CDF4FA5AFA9/Library/Cookies/Cookies.binarycookies
+2015-07-29 18:06:00.239 insport[34197:1559928] Apache Cordova native platform version 3.8.0 is starting.
+2015-07-29 18:06:00.240 insport[34197:1559928] Multi-tasking -> Device: YES, App: YES
+2015-07-29 18:06:00.259 insport[34197:1559928] Unlimited access to network resources
+2015-07-29 18:06:01.052 insport[34197:1559928] [CDVTimer][keyboard] 0.073016ms
+2015-07-29 18:06:01.052 insport[34197:1559928] [CDVTimer][TotalPluginStartup] 0.325024ms
+2015-07-29 18:06:01.891 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:06:02.697 insport[34197:1559928] Finished load of: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Bundle/Application/B23CF171-BD24-43BB-BCDD-5D78DE848663/insport.app/www/index.html#!/
+2015-07-29 18:06:25.424 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:06:25.428 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:06:27.648 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:06:27.650 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:06:34.497 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:06:34.499 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:06:40.977 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:06:40.979 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:06:43.321 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:06:43.322 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:07:12.882 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:07:12.885 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:07:13.050 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:07:13.051 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:07:13.250 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:07:13.256 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:07:13.489 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:07:13.491 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:07:13.673 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:07:13.674 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:07:13.849 insport[34197:1559928] Resetting plugins due to page load.
+2015-07-29 18:07:13.851 insport[34197:1559928] Failed to load webpage with error: Frame load interrupted
+2015-07-29 18:07:25.923 insport[35177:1562744] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Data/Application/80A6BF7F-C6BD-4FC4-B37A-E7F4C6C595EC/Library/Cookies/Cookies.binarycookies
+2015-07-29 18:07:25.989 insport[35177:1562744] Apache Cordova native platform version 3.8.0 is starting.
+2015-07-29 18:07:25.989 insport[35177:1562744] Multi-tasking -> Device: YES, App: YES
+2015-07-29 18:07:25.991 insport[35177:1562744] Unlimited access to network resources
+2015-07-29 18:07:26.068 insport[35177:1562744] [CDVTimer][keyboard] 0.054002ms
+2015-07-29 18:07:26.068 insport[35177:1562744] [CDVTimer][TotalPluginStartup] 0.200987ms
+2015-07-29 18:07:26.151 insport[35177:1562744] Resetting plugins due to page load.
+2015-07-29 18:07:26.462 insport[35177:1562744] Finished load of: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Bundle/Application/9E4B8CF4-5759-418E-9FF2-007262AD9848/insport.app/www/index.html#!/
+2015-07-29 19:41:26.229 insport[35177:1620535] Terminating since there is no system app.

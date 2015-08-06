@@ -133,6 +133,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.trip.$met_trip(angular.noop, errorHandler);
         };
         $scope.request_pickup = function(){
+            console.log('called');
             $scope.trip.$request_pickup({
                 time: $scope.defaults.time
             }, angular.noop, errorHandler);

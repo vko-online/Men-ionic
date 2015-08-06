@@ -9,7 +9,7 @@
             </div>
             <div data-ng-if="authentication.user.is_client && authentication.user.trip">
                 You already have
-                <a data-ng-href="/#!/profiles/{{authentication.user._id}}/trip">trip</a>
+                <a data-ng-href="#!/profiles/{{authentication.user._id}}/trip">trip</a>
             </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
                 <form name="prepare_trip" class="form-horizontal" data-ng-submit="prepare()" novalidate>

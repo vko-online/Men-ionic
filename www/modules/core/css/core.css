@@ -19,3 +19,62 @@
 .form-horizontal .form-group{
 	margin: 0;
 }
+/*custom item*/
+.item-m{
+	background-color: #fff;
+	color: #444;
+	position: relative;
+	z-index: 2;
+	display: block;
+	font-size: 16px;
+}
+.item-s{
+	background-color: #fff;
+	color: #444;
+	position: relative;
+	z-index: 2;
+	display: block;
+	font-size: 12px;
+}
+.item-group-content{
+	position: relative;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 0;
+	display: inline-block;
+	vertical-align: top;
+}
+.item-group-img{
+	border:1px solid gray;
+}
+.item-group-control{
+	float: right;
+	margin: 5px 0;
+}
+img.logo{
+	position: relative;left: 50%;margin-left: -75px;margin-top: 70px; margin-bottom: 70px;
+}
+.button.taxi-btn{
+	white-space: nowrap;
+	display: block;
+	color: #262626;
+	background-color: #F2CB05;
+	margin: 1px auto;
+	text-transform: uppercase;
+	width: 100%;
+	font-weight: 200;
+	font-size: inherit;
+}
+.button.taxi-btn.active, .button.taxi-btn.activated{
+	background-color: #f2a401;
+}
+.leaflet-bottom leaflet-right{
+	display:none;
+}
+toggle.activated .button.taxi-btn{
+	background-color: #f2a401;
+}
+toggle{
+	display: inline-block;
+	font-size: 11px;
+}

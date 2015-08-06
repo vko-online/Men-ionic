@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="lib/leaflet/dist/leaflet.css">
 
     <!-- inject:css -->
@@ -18,8 +18,9 @@
     <!-- ionic/angularjs js -->
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-<script src="lib/ionic-service-core/ionic-core.js"></script>
+    <script src="lib/ionic-service-core/ionic-core.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/ion-affix/ion-affix.js"></script>
     <script src="lib/socket.io-client/socket.io.js"></script>
     <script src="lib/angular-socket-io/socket.js"></script>
     <script src="lib/humanize-duration/humanize-duration.js"></script>
@@ -92,6 +93,8 @@
     
     <script src="modules/core/controllers/home.client.controller.js"></script>
     
+    <script src="modules/core/directives/toggle.client.directive.js"></script>
+    
     <script src="modules/core/filters/html_to_plain.client.filter.js"></script>
     
     <script src="modules/core/services/geo_location.client.service.js"></script>
@@ -112,7 +115,11 @@
     
     <script src="modules/trips/controllers/trips.client.controller.js"></script>
     
+    <script src="modules/trips/directives/trip-status.client.directive.js"></script>
+    
     <script src="modules/trips/services/driver_requests.client.service.js"></script>
+    
+    <script src="modules/trips/services/template_resolve.client.service.js"></script>
     
     <script src="modules/trips/services/trip_statuses.client.service.js"></script>
     

@@ -1,38 +1,36 @@
-<ion-view>
+<ion-view view-title="ЗАКАЗ">
     <ion-content>
         <section data-ng-controller="CreateTripController">
-            <div class="page-header">
-                <h1>Client prepare trip</h1>
-            </div>
             <div data-ng-if="(error)" class="alert alert-warning text-center">
                 {{error}}
             </div>
             <div data-ng-if="authentication.user.is_client && authentication.user.trip">
                 You already have
-                <a data-ng-href="/#!/profiles/{{authentication.user._id}}/trip">trip</a>
+                <a data-ng-href="#!/trips/{{(authentication.user.trip._id || authentication.user.trip)}}">trip</a>
             </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
                 <form name="prepare_trip" class="form-horizontal" data-ng-submit="prepare()" novalidate>
                     <fieldset>
-                        <div class="form-group">
-                            <label class="control-label" for="start_address">Location</label>
-                            <leaflet markers="markers" center="center" height="200"></leaflet>
+                        <leaflet markers="markers" center="center" height="150"></leaflet>
+                        <div>
+                            От: <input type="text" name="start_address" data-ng-model="preparation.start_address"
+                                       id="start_address" class="form-control" placeholder="start_address" style="display: inline-block;">
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="start_address">Start address</label>
-
-                            <div class="controls">
-                                <input type="text" name="start_address" data-ng-model="preparation.start_address"
-                                       id="start_address" class="form-control" placeholder="start_address">
-                            </div>
+                        <div>
+                            <toggle model="preparation.use_bonus1" text="на точке у дороги" width="50" icon="ion-help-buoy"></toggle>
+                            <toggle model="preparation.use_bonus2" text="с подсадкой" width="50" icon="ion-help-buoy"></toggle>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="end_address">End address</label>
-
-                            <div class="controls">
-                                <input type="text" name="end_address" data-ng-model="preparation.end_address"
-                                       id="end_address" class="form-control" placeholder="end_address">
-                            </div>
+                        <div>
+                            <toggle model="preparation.use_bonus3" text="я один" width="33" icon="ion-help-buoy"></toggle>
+                            <toggle model="preparation.use_bonus4" text="нас двое" width="33" icon="ion-help-buoy"></toggle>
+                            <toggle model="preparation.use_bonus5" text="нас трое" width="33" icon="ion-help-buoy"></toggle>
+                        </div>
+                        <div>
+                            До: <input type="text" name="end_address" data-ng-model="preparation.end_address"
+                                       id="end_address" class="form-control" placeholder="end_address" style="display: inline-block;">
+                        </div>
+                        <div>
+                            <toggle model="preparation.use_bonus6" text="с заездом" width="100" icon="ion-help-buoy"></toggle>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="price">Price</label>

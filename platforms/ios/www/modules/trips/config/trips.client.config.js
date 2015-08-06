@@ -9,6 +9,9 @@ angular.module('trips').run(['Menus', 'Authentication',
         Menus.addMenuItem('topbar', 'Trips', 'trips', 'dropdown', '/trips', true, ['client', 'driver', 'admin']);
         Menus.addSubMenuItem('topbar', 'trips', 'List trips', 'trips', undefined, true, ['driver']);
 
+        //delete me
+        Menus.addSubMenuItem('topbar', 'trips', 'Create', 'trips/create');
+
         Menus.addSubMenuItem('topbar', 'trips', 'History trips', 'trips_history', undefined, true, ['client', 'driver']);
         Authentication.get_user().then(function(successResponse){
             Authentication.set_user(successResponse);
