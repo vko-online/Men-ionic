@@ -52,6 +52,11 @@ angular.module('trips').factory('Trips', ['$resource', 'CORE_CONST',
 				method: 'GET',
 				url: CORE_CONST.REST_URL + 'trips/history',
 				isArray: true
+			},
+			by_location: {
+				method: 'GET',
+				url: CORE_CONST.REST_URL + 'trips/location',
+				isArray: true
 			}
 		});
 	}

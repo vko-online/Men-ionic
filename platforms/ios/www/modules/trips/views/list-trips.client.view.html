@@ -1,25 +1,42 @@
 <ion-view>
+    <ion-nav-buttons side="secondary">
+        <button class="button">
+            <i class="ion ion-ios-grid-view-outline"></i> Filter
+        </button>
+    </ion-nav-buttons>
     <ion-content>
-        <section data-ng-controller="TripsController" data-ng-init="find()">
-            <div class="page-header">
-                <h1>Available trips</h1>
-            </div>
-            <div class="list-group">
-                <a data-ng-repeat="trip in trips track by $index" data-ng-href="#!/trips/{{trip._id}}"
-                   class="list-group-item"
-                   data-ng-class="{'active': is_requested(trip.requests)}">
-                    От:{{trip.start_address}} | До:{{trip.end_address}} | Цена:{{trip.price}} | {{trip.use_bonus ?
-                    'Бонус' :
-                    ''}}
-                    <span data-ng-if="trip.immediate" class="badge">срочно</span>
-                    <span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>
-            <span data-ng-if="get_my_request(trip.requests)">
-                    <timer interval="1000" finish-callback="cb_list()"
-                           countdown="countdown_handler(get_my_request(trip.requests).date_end)">
-                        <i class="glyphicon glyphicon-time"></i>{{countdown}}
-                    </timer>
-            </span>
+        <section style="height: 100%;" data-ng-controller="TripsController" data-ng-init="find()">
+            <div class="button-bar button-bar-small">
+                <a class="button button-small" ng-class="{'button-positive': isActive('list-view')}"
+                   ng-click="setActive('list-view')">
+                    <i class="ion ion-ios-list-outline"></i>
+                    List view
                 </a>
+                <a class="button button-small" ng-class="{'button-positive': isActive('map-view')}"
+                   ng-click="setActive('map-view')">
+                    <i class="ion ion-map"></i>
+                    Map view
+                </a>
+            </div>
+            <div data-ng-show="isActive('list-view')">
+                <ion-list>
+                    <ion-item data-ng-class="{'active': is_requested(trip.requests)}"
+                              data-ng-repeat="trip in trips track by $index" data-ng-href="#!/trips/{{trip._id}}">
+                        {{trip.end_address}} | Цена:{{trip.price}}
+                        <span data-ng-if="trip.immediate" class="badge">срочно</span>
+                        <span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>
+                            <span data-ng-if="get_my_request(trip.requests)">
+                            <timer interval="1000" finish-callback="cb_list()"
+                                   countdown="countdown_handler(get_my_request(trip.requests).date_end)">
+                                <i class="glyphicon glyphicon-time"></i>{{countdown}}
+                            </timer>
+                            </span>
+                        <ion-option-button class="button-positive" data-ng-click="request_pickup(trip)">Request pickup</ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+            <div data-ng-show="isActive('map-view')">
+                <map-view data-tap-disabled="true"></map-view>
             </div>
         </section>
     </ion-content>

@@ -60,6 +60,15 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         $scope.defaults = {
             time: 1
         };
+        $scope.active = 'map-view';
+
+        $scope.setActive = function(type) {
+            $scope.active = type;
+        };
+
+        $scope.isActive = function(type) {
+            return type === $scope.active;
+        };
         $scope.is_current_driver_request = function(requests){
             if(requests){
                 var exists = requests.filter(function(i){
@@ -132,10 +141,16 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         $scope.met_trip = function(){
             $scope.trip.$met_trip(angular.noop, errorHandler);
         };
-        $scope.request_pickup = function(){
-            $scope.trip.$request_pickup({
-                time: $scope.defaults.time
-            }, angular.noop, errorHandler);
+        $scope.request_pickup = function(_optional_trip){
+            if(_optional_trip){
+                _optional_trip.$request_pickup({
+                    time: $scope.defaults.time
+                }, angular.noop, errorHandler);
+            } else {
+                $scope.trip.$request_pickup({
+                    time: $scope.defaults.time
+                }, angular.noop, errorHandler);
+            }
         };
         $scope.accept_pickup = function(id){
             $scope.trip.$accept_pickup({

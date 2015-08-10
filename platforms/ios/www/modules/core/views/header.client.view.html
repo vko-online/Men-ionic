@@ -15,54 +15,39 @@
 
     <ion-side-menu side="left" data-ng-controller="HeaderController">
         <ion-header-bar class="bar-positive">
-            <h1 class="title">Insport</h1>
+            <h1 class="title">Taxi</h1>
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item menu-close data-ng-hide="authentication.user">
-                    <ul>
-                        <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                            <a href="#!/signup">Sign Up</a>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                            <a href="#!/signin">Sign In</a>
-                        </li>
-                    </ul>
-                </ion-item>
-                <ion-item menu-close data-ng-show="authentication.user">
-                    <ul>
-                        <li>
-                            <span data-ng-bind="authentication.user.displayName"></span>
-                        </li>
-                        <li>
-                             {{authentication.user.bonus_amount || 0}} бонусов
-                        </li>
-                        <li data-ng-if="authentication.user.is_driver">
-                            {{authentication.user.money_amount || 0}} денег
-                        </li>
-                    </ul>
-                </ion-item>
-                <ion-item menu-close data-ng-repeat="item in menu.items | orderBy: 'position'"
-                          data-ng-if="item.shouldRender(authentication.user);" ng-class="{active: ($uiRoute)}"
-                          ui-route="{{item.uiRoute}}">
-                    <ul>
-                        <li data-ng-if="item.shouldRender(authentication.user) && item.items.length" data-ng-repeat="subitem in item.items | orderBy: 'position'"
-                            ui-route="{{subitem.uiRoute}}"
-                            ng-class="{active: $uiRoute}">
-                            <a href="#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
-                        </li>
-                        <li data-ng-if="item.shouldRender(authentication.user) && !item.items.length" ui-route="{{item.uiRoute}}"
-                            ng-class="{active: $uiRoute}">
-                            <a href="#!/{{item.link}}" data-ng-bind="item.title"></a>
-                        </li>
-                    </ul>
+                <ion-item data-ng-show="authentication.user" data-ng-init="dropdowned = false">
+                    <div class="item-group">
+                        <img class="item-group-img" src="http://cache.spreadshirt.net/Public/Common/images/profile-pic-placeholder_130x130.png" alt="profile" height="42" width="42"/>
+                        <div class="item-group-content">
+                            <span class="item-m">{{authentication.user.displayName}}</span>
+                            <span class="item-s">{{authentication.user.username}}</span>
+                        </div>
+                        <div class="item-group-control">
+                            <button class="button button-light button-small" data-ng-click="dropdowned = !dropdowned">
+                                <i data-ng-class="{'ion-chevron-up': dropdowned, 'ion-chevron-down': !dropdowned }"></i>
+                            </button>
+                        </div>
+                        <div data-ng-show="dropdowned">
+                            some data
+                            <a menu-close class="button button-small button-light button-full" href="#!/settings/profile">Редактировать</a>
+                            <a menu-close class="button button-small button-light button-full" data-ng-click="signout()">Signout</a>
+                        </div>
+                    </div>
                 </ion-item>
                 <ion-item menu-close>
-                    <a data-ng-click="signout()">Signout</a>
+                    <a href="#!/share">Share</a>
+                </ion-item>
+                <ion-item menu-close>
+                    <a href="#!/trips">Trips</a>
+                </ion-item>
+                <ion-item menu-close>
+                    <a class="energized" href="#!/become_driver" class="title">Стать водителем</a>
                 </ion-item>
             </ion-list>
-            </nav>
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>

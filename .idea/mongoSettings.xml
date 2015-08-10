@@ -11,6 +11,17 @@
             </list>
           </option>
         </ServerConfiguration>
+        <ServerConfiguration>
+          <option name="label" value="taxi-prod" />
+          <option name="password" value="1234wimf" />
+          <option name="serverUrls">
+            <list>
+              <option value="ds047632.mongolab.com:47632" />
+            </list>
+          </option>
+          <option name="userDatabase" value="taxi-dev" />
+          <option name="username" value="bwin" />
+        </ServerConfiguration>
       </list>
     </option>
     <option name="shellPath" value="$PROJECT_DIR$/../../../sdk/mongodb/bin/mongo" />

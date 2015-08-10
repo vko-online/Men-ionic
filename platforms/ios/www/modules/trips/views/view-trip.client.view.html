@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content>
+    <ion-content scroll-event-interval="5">
         <section data-ng-controller="TripsController" data-ng-init="findOne()">
             <!--trip divided into sections, depended on trip.status_code and user_role-->
             <div data-ng-if="(error)" class="alert alert-warning text-center">
@@ -119,48 +119,22 @@
             </div>
             <div data-ng-if="authentication && authentication.user && authentication.user.is_driver">
                 <div aria-label="INITIALIZED" data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
-                    <h3>Trip {{trip._id}}</h3>
+                    <trip-status role="driver"
+                                 status="initialized"
+                                 pointcenter="center"
+                                 pointmarkers="markers"
+                                 trip="trip"
+                                 statistic="statistic"
+                                 defaults="defaults"
 
-                    <div>
-                        <p>Клиент: {{trip.client.displayName}}</p>
-
-                        <p>Адрес начало: {{trip.start_address}}</p>
-
-                        <p>Адрес конца: {{trip.end_address}}</p>
-
-                        <p>Цена: {{trip.price}}</p>
-
-                        <p>Срочно: {{trip.immediate}}</p>
-
-                        <p>Использовать бонус: {{trip.use_bonus}}</p>
-
-                        <div data-ng-init="get_statistics()">
-                            <div data-ng-if="statistic.requests.length > 0" class="alert alert-success">
-                                <p>Всего запросов {{statistic.requests.length}}</p>
-
-                                <p>Успешных запросов {{statistic.accepted_count}}</p>
-
-                                <p>Процент запросов {{(statistic.accepted_count * 100) /
-                                    statistic.requests.length}}%</p>
-                            </div>
-                        </div>
-                        <leaflet markers="markers" center="center" height="200"></leaflet>
-                    </div>
-                    <div data-ng-if="!is_current_driver_request(trip.requests)">
-                        <label for="minute">Will be in (minutes)</label>
-                        <select id="minute" data-ng-options="number for number in [1,3,5,10,15,20,25,30,45,60]"
-                                data-ng-model="defaults.time"></select>
-                        <button class="btn btn-primary" data-ng-click="request_pickup()">Request pick up</button>
-                    </div>
-                    <div data-ng-if="is_current_driver_request(trip.requests)">
-                        <label for="timer">Request pending</label>
-                        <timer id="timer" interval="1000" finish-callback="cb_get()"
-                               countdown="countdown_handler(is_current_driver_request(trip.requests).date_end)">
-                            {{countdown}}
-                        </timer>
-                        <button class="btn btn-danger" data-ng-click="cancel_request_pickup()">Cancel request</button>
-                    </div>
-
+                                 data-ng-init="get_statistics()"
+                                 is-current-driver-request="is_current_driver_request"
+                                 request-pickup="request_pickup()"
+                                 cb-get="cb_get()"
+                                 cancel-request-pickup="cancel_request_pickup()"
+                                 countdown-handler="countdown_handler"
+                                >
+                    </trip-status>
                 </div>
                 <div aria-label="ACTIVATED" data-ng-if="trip.status_code === TRIP_STATUS.ACTIVATED">
                     <div class="alert alert-success">
