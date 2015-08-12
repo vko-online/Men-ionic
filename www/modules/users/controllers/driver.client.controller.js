@@ -6,20 +6,19 @@ angular.module('users').controller('DriverController', ['$scope', '$location', '
         $scope.car_models = CarModels.query();
         $scope.car_colors = CarColors.query();
         $scope.authentication = Authentication;
-        if($scope.authentication.user.driver_profile){
-            $scope.driver = Drivers.get({
-                driverId: $scope.authentication.user.driver_profile
-            });
-        } else {
-            $scope.driver = Authentication.user;
-        }
         $scope.findOne = function(){
-            if($scope.authentication.user.driver_profile){
+            if($scope.authentication && $scope.authentication.user && $scope.authentication.user.driver_profile){
                 $scope.driver = Drivers.get({
                     driverId: $scope.authentication.user.driver_profile
                 });
             }
         };
+        if($scope.authentication && $scope.authentication.user && $scope.authentication.user.driver_profile){
+            $scope.findOne();
+        } else {
+            $scope.driver = Authentication.user;
+        }
+
         // If user is not signed in then redirect back home
         if(!$scope.driver) $location.path('/');
         $scope.create_driver = function(){

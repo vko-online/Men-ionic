@@ -11,7 +11,7 @@
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
                 <form name="prepare_trip" class="form-horizontal" data-ng-submit="prepare()" novalidate>
                     <fieldset>
-                        <leaflet markers="markers" center="center" height="150"></leaflet>
+                        <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="center" height="150"></leaflet>
                         <div>
                             От: <input type="text" name="start_address" data-ng-model="preparation.start_address"
                                        id="start_address" class="form-control" placeholder="start_address" style="display: inline-block;">

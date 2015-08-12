@@ -1,0 +1,16 @@
+<ion-view data-ng-controller="TripsController" data-ng-init="findRequest()">
+    <ion-nav-buttons side="secondary">
+        <button class="button">
+            <i class="ion ion-android-done"></i> Accept
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true">
+        <span>{{request.time}} мин</span>
+        <timer interval="1000" finish-callback="cb_get()"
+               countdown="countdown_handler(request.date_end)">
+            {{countdown}}
+        </timer>
+        <hr/>
+        driver car, color, model, photo etc
+    </ion-content>
+</ion-view>

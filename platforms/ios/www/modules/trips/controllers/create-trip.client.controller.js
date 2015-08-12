@@ -30,6 +30,10 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             $scope.markers.marker.lng = args.model.lng;
             $scope.markers.marker.lat = args.model.lat;
         });
+        $scope.defaults = {
+            tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+            attributionControl: false
+        };
         $scope.center = {
             lat: CORE_CONST.MAP_LAT,
             lng: CORE_CONST.MAP_LNG,

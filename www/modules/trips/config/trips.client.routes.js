@@ -23,6 +23,14 @@ angular.module('trips').config(['$stateProvider',
             state('viewTrip', {
                 url: '/trips/:tripId',
                 templateUrl: 'modules/trips/views/view-trip.client.view.html'
+            }).
+            state('viewTripDriver', {
+                url: '/trips_driver/:tripId',
+                templateUrl: 'modules/trips/views/view-trip.driver.view.html'
+            }).
+            state('viewTripDriverRequestProfile', {
+                url: '/trips/:tripId/:driverRequestId',
+                templateUrl: 'modules/trips/views/view-request-profile.client.view.html'
             });
     }
 ]);

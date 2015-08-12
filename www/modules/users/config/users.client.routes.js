@@ -21,6 +21,10 @@ angular.module('users').config(['$stateProvider',
                 url: '/become_driver',
                 templateUrl: 'modules/users/views/driver/driver-pre-create.client.view.html'
             }).
+            state('driver_edit', {
+                url: '/driver_edit',
+                templateUrl: 'modules/users/views/driver/driver-edit.client.view.html'
+            }).
             state('profile_list', {
                 url: '/profiles',
                 templateUrl: 'modules/users/views/profile-list.client.view.html'

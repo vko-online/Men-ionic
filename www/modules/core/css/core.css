@@ -1,5 +1,5 @@
 body{
-	font-family:"Radiance",Verdana,sans-serif;
+	font-family: "Radiance", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
 }
 
 .content {
@@ -31,6 +31,9 @@ body{
 }
 .right{
 	right:0;
+}
+.fill-scroll > .scroll{
+	height: 95%;
 }
 map-view{
 	height: 100%;
@@ -88,15 +91,15 @@ point-preview.active{
 
 @font-face{
 	font-family:'Radiance';
-	src:url("http://cdn.dota2.com/apps/dota2/fonts/radiance.eot");
-	src:url("http://cdn.dota2.com/apps/dota2/fonts/radiance.eot?#iefix") format("embedded-opentype"),url("http://cdn.dota2.com/apps/dota2/fonts/radiance.woff") format("woff"),url("http://cdn.dota2.com/apps/dota2/fonts/radiance.ttf") format("truetype"),url("http://cdn.dota2.com/apps/dota2/fonts/radiance.svg#ywftsvg") format("svg");
+	src:url("../fonts/Radiance/radiance.eot");
+	src:url("../fonts/Radiance/radiance_iefix.eot") format("embedded-opentype"),url("../fonts/Radiance/radiance.woff") format("woff"),url("../fonts/Radiance/radiance.ttf") format("truetype"),url("../fonts/Radiance/radiance.svg#ywftsvg") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
 @font-face{
 	font-family:'Radiance-SemiBold';
-	src:url("http://cdn.dota2.com/apps/dota2/fonts/radiance-semibold.eot");
-	src:url("http://cdn.dota2.com/apps/dota2/fonts/radiance-semibold.eot?#iefix") format("embedded-opentype"),url("http://cdn.dota2.com/apps/dota2/fonts/radiance-semibold.woff") format("woff"),url("http://cdn.dota2.com/apps/dota2/fonts/radiance-semibold.ttf") format("truetype"),url("http://cdn.dota2.com/apps/dota2/fonts/radiance-semibold.svg#ywftsvg") format("svg");
+	src:url("../fonts/Radiance-Semibold/radiance-semibold.eot");
+	src:url("../fonts/Radiance-Semibold/radiance-semibold_iefix.eot") format("embedded-opentype"),url("../fonts/Radiance-Semibold/radiance-semibold.woff") format("woff"),url("../fonts/Radiance-Semibold/radiance-semibold.ttf") format("truetype"),url("../fonts/Radiance-Semibold/radiance-semibold.svg#ywftsvg") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
@@ -144,10 +147,9 @@ img.logo{
 	color: #262626;
 	background-color: #F2CB05;
 	margin: 1px auto;
-	text-transform: uppercase;
 	width: 100%;
 	font-weight: 200;
-	font-size: inherit;
+	font-size: 16px;
 }
 .button-bar-small>.button .icon:before, .button-bar-small>.button:before {
 	line-height:29px !important;

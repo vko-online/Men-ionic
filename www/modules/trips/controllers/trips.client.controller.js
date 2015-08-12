@@ -39,6 +39,39 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                         zoom: CORE_CONST.MAP_ZOOM
                     };
                 }
+                window.trip = successResponse;
+            }, errorHandler);
+        };
+        $scope.findRequest = function(){
+            //$scope.trip = Trips.get({
+            //    tripId: $stateParams.tripId
+            //}, function(successResponse){
+            //    if(successResponse.meet_location && successResponse.meet_location.lat && successResponse.meet_location.lng){
+            //        $scope.markers = {
+            //            marker: {
+            //                lat: successResponse.meet_location.lat,
+            //                lng: successResponse.meet_location.lng,
+            //                message: 'Meet location',
+            //                focus: true,
+            //                draggable: false
+            //            }
+            //        };
+            //        $scope.center = {
+            //            lat: successResponse.meet_location.lat,
+            //            lng: successResponse.meet_location.lng,
+            //            zoom: CORE_CONST.MAP_ZOOM
+            //        };
+            //    }
+            //    $scope.request = DriverRequests.get({
+            //        driverRequestId: $stateParams.driverRequestId
+            //    }, function(successResponse){
+            //        console.log(successResponse);
+            //    }, errorHandler);
+            //}, errorHandler);
+            $scope.request = DriverRequests.get({
+                driverRequestId: $stateParams.driverRequestId
+            }, function(successResponse){
+                console.log(successResponse);
             }, errorHandler);
         };
         $scope.find = function(){
@@ -58,9 +91,11 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             zoom: CORE_CONST.MAP_ZOOM
         };
         $scope.defaults = {
-            time: 1
+            time: 1,
+            tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+            attributionControl: false
         };
-        $scope.active = 'map-view';
+        $scope.active = 'list-view';
 
         $scope.setActive = function(type) {
             $scope.active = type;
@@ -123,6 +158,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             //todo: prompt
             $scope.trip.$cancel_trip(function(successResponse){
                 alert('trip canceled, you may have penalties');
+                $scope.authentication.user.trip =  null;
             }, errorHandler);
         };
         $scope.delete_trip = function(){
@@ -153,6 +189,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }
         };
         $scope.accept_pickup = function(id){
+            console.log(id);
             $scope.trip.$accept_pickup({
                 driverRequestId: id
             }, angular.noop, errorHandler);
@@ -172,10 +209,14 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.findOne();
         };
         Socket.on('accept_pickup', function(obj){
-            $scope.trip.status_code = obj.status_code;
-            $scope.trip.requests = obj.requests;
-            $scope.trip.driver_profile = obj.driver_profile;
-            $scope.trip.driver_car = obj.driver_car;
+            console.log('accept_picup', $scope.trip, obj);
+            if($scope.trip){
+                $scope.trip.status_code = obj.status_code;
+                $scope.trip.requests = obj.requests;
+                $scope.trip.accepted_request = obj.accepted_request;
+                $scope.trip.driver_profile = obj.driver_profile;
+                $scope.trip.driver_car = obj.driver_car;
+            }
         });
         Socket.on('request_pickup', function(obj){
             $scope.trip.requests = obj.requests;
@@ -184,19 +225,28 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.trip.status_code = obj.status_code;
         });
         Socket.on('met_trip', function(obj){
-            $scope.trip.status_code = obj.status_code;
+            if($scope.trip){
+                $scope.trip.status_code = obj.status_code;
+                $scope.trip.transaction = obj.transaction;
+                $scope.authentication.user.trip = null;
+            }
         });
         Socket.on('end_trip', function(obj){
-            $scope.trip.status_code = obj.status_code;
+            if($scope.trip){
+                $scope.trip.status_code = obj.status_code;
+            }
         });
         Socket.on('cancel_request_pickup', function(obj){
             $scope.trip.requests = obj.requests;
+        });
+        Socket.on('trip_canceled', function(obj){
+            alert('client canceled trip');
+            $scope.trip.status_code = obj.status_code;
         });
         Socket.on('pickup_request_canceled_by_id', function(id){
             console.log('pickup_request_canceled_by_id', id);
             if($scope.trip && $scope.trip.requests.length){
                 $scope.trip.requests = $scope.trip.requests.filter(function(i){
-                    console.log(i, id);
                     return (i._id !== id);
                 });
             }

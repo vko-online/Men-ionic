@@ -7,8 +7,6 @@
             </div>
             <div data-ng-if="authentication && authentication.user && authentication.user.is_client">
                 <div aria-label="INITIALIZED" data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
-                    <h3>Your trip is ready</h3>
-
                     <div>
                         <p>Клиент: {{trip.client.displayName}}</p>
 
@@ -21,7 +19,7 @@
                         <p>Срочно: {{trip.immediate}}</p>
 
                         <p>Использовать бонус: {{trip.use_bonus}}</p>
-                        <leaflet markers="markers" center="center" height="200"></leaflet>
+                        <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="center" height="200"></leaflet>
                         <div>
                             <button class="btn btn-danger" data-ng-click="delete_trip()">delete</button>
                         </div>

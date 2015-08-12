@@ -1,0 +1,61 @@
+<style>
+    .point-preview-header {
+        text-align: center;
+    }
+
+    .point-preview-header label {
+        margin-top: 9px;
+        display: inline-block;
+    }
+
+    .point-preview-header span {
+        margin: 5px;
+        position: absolute;
+    }
+</style>
+<div data-ng-hide="active">
+    <div class="point-preview-header">
+        <span class="left" data-ng-if="currentTrip">
+            <i class="ion ion-ios-circle-filled" style="color:blue;"></i> Bonus
+        </span>
+        <button data-ng-click="prev()" class="button button-small button-clear button-outline">
+            <i class="ion ion-ios-arrow-left"></i>
+        </button>
+        <label class="point-preview-header">Result 36 of 126</label>
+        <button data-ng-click="next()" class="button button-small button-clear button-outline">
+            <i class="ion ion-ios-arrow-right"></i>
+        </button>
+        <span class="right">
+            <i class="ion ion-ios-clock-outline"></i> 4 min ago
+        </span>
+    </div>
+    <div class="point-preview-content">
+        <p><i class="ion ion-cash"></i> {{currentTrip.price}}</p>
+        <p><i class="ion ion-ios-location-outline"></i> {{currentTrip.end_address}}</p>
+    </div>
+</div>
+<div data-ng-show="active">
+    <ion-pane>
+        <div>
+            <button>x</button>
+            <button><</button>
+            <button>></button>
+            <button class="pull-right">Request pickup</button>
+        </div>
+        <div>
+            <h4>{{currentTrip.end_address}}</h4>
+            <h5>&#9702;For Bonus</h5>
+
+            <p>&#8376; {{currentTrip.price}}</p>
+
+            <p>Estimate: &#8376; {{currentTrip.price}}</p>
+        </div>
+        <div>
+            <ul>
+                <li>Attic</li>
+                <li>Dogs</li>
+                <li>Baggage</li>
+            </ul>
+        </div>
+    </ion-pane>
+</div>

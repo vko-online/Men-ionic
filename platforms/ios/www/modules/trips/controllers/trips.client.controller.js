@@ -58,7 +58,9 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             zoom: CORE_CONST.MAP_ZOOM
         };
         $scope.defaults = {
-            time: 1
+            time: 1,
+            tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+            attributionControl: false
         };
         $scope.active = 'map-view';
 
