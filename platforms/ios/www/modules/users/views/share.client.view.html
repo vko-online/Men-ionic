@@ -1,27 +1,30 @@
-<ion-view>
-    <ion-content>
-        <section data-ng-controller="ShareController">
-            <h3>Есть несколько способов поделиться приложением</h3>
-
-            <div class="alert alert-success">
-                <h5>С помощью этого кода</h5>
-
-                <p>Это ваш личный код который можно использовать в реф системе</p>
-
-                <p><strong>{{authentication.user.uid}}</strong></p>
+<ion-view data-ng-controller="ShareController" title="Поделиться">
+    <ion-nav-buttons side="secondary">
+        <button class="button" data-ng-click="send()">
+            <i class="ion ion-android-send"></i> Send
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true">
+        <span>
+            Это ваш уникальный идентификатор, для того что бы вы получали бонусы, нужно поделиться приложением отправив его по СМС или по почте
+        </span>
+        <h1 class="text-center">{{authentication.user.uid}}</h1>
+        Есть несколько способов поделиться приложением
+        <div class="list">
+            <div class="item">
+                <i class="icon ion-android-phone-portrait"></i>
+                Введите номер телефона
+                            <span class="item-note">
+                              <input type="tel" id="phone_number"/>
+                            </span>
             </div>
-            <div class="alert alert-success">
-                <h5>Отправить через смс</h5>
-                <label for="phone_number">Введите номер телефона</label>
-                <input type="tel" id="phone_number"/>
-                <button>Отправить</button>
+            <div class="item">
+                <i class="icon ion-ios-email"></i>
+                Введите почтовый адрес
+                            <span class="item-note">
+                              <input type="email" id="email"/>
+                            </span>
             </div>
-            <div class="alert alert-success">
-                <h5>Отправить на почту</h5>
-                <label for="email">Введите email</label>
-                <input type="email" id="email"/>
-                <button>Отправить</button>
-            </div>
-        </section>
+        </div>
     </ion-content>
 </ion-view>

@@ -1,0 +1,25 @@
+<ion-modal-view>
+    <section data-ng-controller="CreateTripController">
+        <ion-header-bar>
+            <h1 class="title">Дополнительно</h1>
+
+            <div class="buttons">
+                <button class="button button-clear" ng-click="close_misc_modal()">Ok</button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+            <div>
+                <toggle model="misc.misc_on_road" text="на точке у дороги" width="50" icon="ion-help-buoy"></toggle>
+                <toggle model="misc.misc_multi_pickup" text="с подсадкой" width="50" icon="ion-help-buoy"></toggle>
+            </div>
+            <div>
+                <toggle model="misc.misc_single" text="я один" width="33" icon="ion-help-buoy"></toggle>
+                <toggle model="misc.misc_double" text="нас двое" width="33" icon="ion-help-buoy"></toggle>
+                <toggle model="misc.misc_triple" text="нас трое" width="33" icon="ion-help-buoy"></toggle>
+            </div>
+            <div>
+                <toggle model="misc.misc_entrance" text="с заездом" width="100" icon="ion-help-buoy"></toggle>
+            </div>
+        </ion-content>
+    </section>
+</ion-modal-view>

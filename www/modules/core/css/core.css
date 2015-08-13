@@ -108,16 +108,12 @@ point-preview.active{
 }
 /*custom item*/
 .item-m{
-	background-color: #fff;
-	color: #444;
 	position: relative;
 	z-index: 2;
 	display: block;
 	font-size: 16px;
 }
 .item-s{
-	background-color: #fff;
-	color: #444;
 	position: relative;
 	z-index: 2;
 	display: block;
@@ -145,23 +141,20 @@ img.logo{
 	white-space: nowrap;
 	display: block;
 	color: #262626;
-	background-color: #F2CB05;
 	margin: 1px auto;
 	width: 100%;
 	font-weight: 200;
 	font-size: 16px;
+	font-family: 'Radiance', 'Verdana', sans-serif;
 }
 .button-bar-small>.button .icon:before, .button-bar-small>.button:before {
 	line-height:29px !important;
-}
-.button.taxi-btn.active, .button.taxi-btn.activated{
-	background-color: #f2a401;
 }
 .leaflet-bottom leaflet-right{
 	display:none;
 }
 toggle.activated .button.taxi-btn{
-	background-color: #f2a401;
+	background-color: inherit;
 }
 toggle{
 	display: inline-block;

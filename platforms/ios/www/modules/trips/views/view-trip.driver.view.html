@@ -1,0 +1,41 @@
+<ion-view data-ng-controller="TripsController" data-ng-init="findOne()">
+    <ion-nav-buttons side="secondary">
+        <div data-ng-if="trip && TRIP_STATUS && authentication && authentication.user && (authentication.user._id === trip.accepted_request.driver_profile._id)">
+            <button data-ng-if="trip.status_code === TRIP_STATUS.ACTIVATED" class="button" data-ng-click="arrived_trip()">
+                <i class="ion ion-android-done"></i> Arrived
+            </button>
+            <button data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED" class="button" data-ng-click="met_trip()">
+                <i class="ion ion-android-done"></i> Client arrived
+            </button>
+            <a data-ng-if="trip.status_code === TRIP_STATUS.MET" class="button" href="/#!/trips">
+                <i class="ion ion-android-done"></i> List other trips
+            </a>
+            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" href="/#!/trips">
+                <i class="ion ion-android-add"></i> List other trips
+            </a>
+            <a data-ng-if="trip.status_code === TRIP_STATUS.CANCELED" class="button" href="/#!/trips">
+                <i class="ion ion-android-add"></i> List other trips
+            </a>
+        </div>
+    </ion-nav-buttons>
+    <div data-ng-if="trip && TRIP_STATUS">
+        <div aria-label="INITIALIZED" data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
+            <div data-ng-include="'modules/trips/views/status/driver-initialized.client.view.html'"></div>
+        </div>
+        <div aria-label="ACTIVATED" data-ng-if="trip.status_code === TRIP_STATUS.ACTIVATED">
+            <div data-ng-include="'modules/trips/views/status/driver-activated.client.view.html'"></div>
+        </div>
+        <div aria-label="ARRIVED" data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED">
+            <div data-ng-include="'modules/trips/views/status/driver-arrived.client.view.html'"></div>
+        </div>
+        <div aria-label="MET" data-ng-if="trip.status_code === TRIP_STATUS.MET">
+            <div data-ng-include="'modules/trips/views/status/driver-met.client.view.html'"></div>
+        </div>
+        <div aria-label="COMPLETED" data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED">
+            <div data-ng-include="'modules/trips/views/status/driver-completed.client.view.html'"></div>
+        </div>
+        <div aria-label="CANCELED" data-ng-if="trip.status_code === TRIP_STATUS.CANCELED">
+            <div data-ng-include="'modules/trips/views/status/driver-canceled.client.view.html'"></div>
+        </div>
+    </div>
+</ion-view>

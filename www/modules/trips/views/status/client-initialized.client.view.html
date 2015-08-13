@@ -135,8 +135,11 @@
     <ion-list>
         <ion-item data-ng-repeat="requester in trip.requests"
                   data-ng-href="#!/trips/{{trip._id + '/' + requester._id}}">
-            <span>{{requester.time}} мин</span>
-            <span><i class="glyphicon glyphicon-star"></i>{{requester.driver_car.rating}}</span>
+            <img data-ng-if="requester.driver_car.photo_src" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + requester.driver_car.photo_src}}" width="32" height="32" alt=""/>
+            <span>
+                {{get.brand(requester.driver_car.car_brand).name}} | {{get.model(requester.driver_car.car_model).name}} | {{get.color(requester.driver_car.car_color).name}}
+            </span>
+            <strong>{{requester.time}} мин</strong>
                     <span class="item-note">
                         <timer interval="1000" finish-callback="cb_get()"
                                countdown="countdown_handler(requester.date_end)">

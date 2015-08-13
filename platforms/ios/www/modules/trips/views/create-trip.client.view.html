@@ -1,81 +1,65 @@
-<ion-view view-title="ЗАКАЗ">
+<ion-view  data-ng-controller="CreateTripController" view-title="Новый заказ">
+    <ion-nav-buttons side="secondary">
+        <button class="button" data-ng-click="prepare()">
+            <i class="ion ion-android-add"></i> Create
+        </button>
+    </ion-nav-buttons>
     <ion-content>
-        <section data-ng-controller="CreateTripController">
-            <div data-ng-if="(error)" class="alert alert-warning text-center">
+            <div data-ng-if="(error)" class="assertive text-center">
                 {{error}}
             </div>
-            <div data-ng-if="authentication.user.is_client && authentication.user.trip">
-                You already have
-                <a data-ng-href="#!/trips/{{(authentication.user.trip._id || authentication.user.trip)}}">trip</a>
+            <div class="text-center">
+                <ion-spinner icon="ios" data-ng-hide="defaults.location_success"></ion-spinner>
             </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
-                <form name="prepare_trip" class="form-horizontal" data-ng-submit="prepare()" novalidate>
-                    <fieldset>
-                        <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="center" height="150"></leaflet>
-                        <div>
-                            От: <input type="text" name="start_address" data-ng-model="preparation.start_address"
-                                       id="start_address" class="form-control" placeholder="start_address" style="display: inline-block;">
-                        </div>
-                        <div>
-                            <toggle model="preparation.use_bonus1" text="на точке у дороги" width="50" icon="ion-help-buoy"></toggle>
-                            <toggle model="preparation.use_bonus2" text="с подсадкой" width="50" icon="ion-help-buoy"></toggle>
-                        </div>
-                        <div>
-                            <toggle model="preparation.use_bonus3" text="я один" width="33" icon="ion-help-buoy"></toggle>
-                            <toggle model="preparation.use_bonus4" text="нас двое" width="33" icon="ion-help-buoy"></toggle>
-                            <toggle model="preparation.use_bonus5" text="нас трое" width="33" icon="ion-help-buoy"></toggle>
-                        </div>
-                        <div>
-                            До: <input type="text" name="end_address" data-ng-model="preparation.end_address"
-                                       id="end_address" class="form-control" placeholder="end_address" style="display: inline-block;">
-                        </div>
-                        <div>
-                            <toggle model="preparation.use_bonus6" text="с заездом" width="100" icon="ion-help-buoy"></toggle>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="price">Price</label>
-
-                            <div class="controls">
-                                <input type="number" name="price" data-ng-model="preparation.price" id="price"
-                                       class="form-control" placeholder="price">
-                            </div>
-                        </div>
-                        <div class="form-group"
-                             data-ng-if="authentication && authentication.user && authentication.user.bonus_amount > 0">
-                            <label class="control-label" for="use_bonus">use_bonus</label>
-
-                            <div class="controls">
-                                <input type="checkbox" checked name="use_bonus" data-ng-model="preparation.use_bonus"
-                                       id="use_bonus" class="form-control" placeholder="use_bonus">
-                            </div>
-                        </div>
-                        <div class="form-group"
-                             data-ng-if="authentication && authentication.user && authentication.user.bonus_amount <= 0">
-                            Недостаточно бонусов {{authentication.user.bonus_amount}} для использования в поездке с
-                            бонусом
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="immediate">immediate</label>
-
-                            <div class="controls">
-                                <input type="checkbox" name="immediate" data-ng-model="preparation.immediate"
-                                       id="immediate" class="form-control" placeholder="immediate">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="note">note</label>
-
-                            <div class="controls">
-                                <textarea name="note" data-ng-model="preparation.note" id="note" class="form-control"
-                                          placeholder="note"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-default" value="Prepare trip">
-                        </div>
-                    </fieldset>
-                </form>
+                <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="center" height="150"></leaflet>
+                <div class="list">
+                    <div class="item">
+                        <i class="icon ion-ios-location"></i>
+                        Место назначения
+                            <span class="item-note">
+                              <input type="text" name="end_address" data-ng-model="preparation.end_address"
+                                     id="end_address" class="form-control" placeholder="end_address">
+                            </span>
+                    </div>
+                    <div class="item">
+                        <i class="icon ion-cash"></i>
+                        Цена
+                            <span class="item-note">
+                              <input type="number" name="price" data-ng-model="preparation.price" id="price"
+                                     class="form-control" placeholder="price">
+                            </span>
+                    </div>
+                    <div class="item">
+                        <i class="icon ion-pricetag"></i>
+                        Bonus
+                            <span class="item-note">
+                              <input type="checkbox" name="use_bonus" data-ng-model="preparation.use_bonus"
+                                     id="use_bonus" class="form-control" placeholder="use_bonus">
+                            </span>
+                    </div>
+                    <div class="item">
+                        <i class="icon ion-cash"></i>
+                        Срочно
+                            <span class="item-note">
+                              <input type="checkbox" name="immediate" data-ng-model="preparation.immediate"
+                                     id="immediate" class="form-control" placeholder="immediate">
+                            </span>
+                    </div>
+                    <div class="item">
+                        <i class="icon ion-android-hand"></i>
+                        Note
+                            <textarea name="note" data-ng-model="preparation.note" id="note" class="form-control"
+                                      placeholder="note"></textarea>
+                    </div>
+                    <div class="item">
+                        <i class="icon ion-information"></i>
+                        Additional
+                            <span class="item-note">
+                              <button class="button button-assertive" data-ng-click="init_modal()">add data</button>
+                            </span>
+                    </div>
+                </div>
             </div>
-        </section>
     </ion-content>
 </ion-view>

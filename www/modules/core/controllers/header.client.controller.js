@@ -1,6 +1,6 @@
 'use strict';
-angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus', 'Socket', 'Users', '$location', '$http', '$ionicModal', '$state',
-    function($scope, Authentication, Menus, Socket, Users, $location, $http, $ionicModal, $state){
+angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus', 'Socket', 'Users', '$location', '$http', '$ionicModal', '$state', 'CORE_CONST',
+    function($scope, Authentication, Menus, Socket, Users, $location, $http, $ionicModal, $state, CORE_CONST){
         var socket_registered = false;
         Authentication.get_user().then(function(data){
             Socket.emit('join', data._id);
@@ -53,5 +53,6 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
                 $scope.signin_modal.remove();
             });
         });
+        $scope.CORE_CONST = CORE_CONST;
     }
 ]);

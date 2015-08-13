@@ -1,5 +1,5 @@
 {
-  "name": "insport",
+  "name": "taxi",
   "app_id": "430697e6",
   "gulpStartupTasks": [
     "sass",

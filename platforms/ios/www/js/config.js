@@ -5,14 +5,15 @@
 // Init the application configuration module for AngularJS application
 var ApplicationConfiguration = (function() {
     // Init module configuration options
-    var applicationModuleName = 'insport';
+    var applicationModuleName = 'taxi';
     var applicationModuleVendorDependencies = [
         'ionic',
         'ngResource',
         'btford.socket-io',
         'timer',
         'leaflet-directive',
-        'ion-affix'
+        'ion-affix',
+        'angularFileUpload'
     ];
 
     // Add a new vertical module

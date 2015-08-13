@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<ion-content padding="true">
+    <h4>Trip completed, Thanks for using us</h4>
+    trip transaction id {{trip.transaction._id || trip.transaction}}
+    <hr/>
 
-</body>
-</html>
+    <p>Цена: {{trip.price}}</p>
+
+    <p>Использовать бонус: {{trip.use_bonus}}</p>
+    <!--todo: real map here-->
+    <img src="modules/core/img/2gis1_0.png" alt="map" width="400"/>
+</ion-content>

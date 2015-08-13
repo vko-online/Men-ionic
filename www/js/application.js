@@ -11,7 +11,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
         $locationProvider.hashPrefix('!');
     }
 ]);
-angular.module(ApplicationConfiguration.applicationModuleName).run(function($ionicPlatform) {
+angular.module(ApplicationConfiguration.applicationModuleName).run(function($ionicPlatform, $ionicConfig) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -22,6 +22,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).run(function($ion
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
+        $ionicConfig.backButton.text('Назад');
     });
 });
 

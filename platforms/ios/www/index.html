@@ -28,6 +28,8 @@
     <script src="lib/leaflet/dist/leaflet.js"></script>
     <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
     <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+    <script src="lib/es5-shim/es5-shim.js"></script>
+    <script src="lib/angular-file-upload/angular-file-upload.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -36,8 +38,6 @@
     <script src="js/application.js"></script>
 
     <!-- inject:js -->
-    
-    <script src="modules/articles/articles.client.module.js"></script>
     
     <script src="modules/car-brands/car-brands.client.module.js"></script>
     
@@ -51,13 +51,7 @@
     
     <script src="modules/users/users.client.module.js"></script>
     
-    <script src="modules/articles/controllers/articles.client.controller.js"></script>
-    
-    <script src="modules/articles/config/articles.client.config.js"></script>
-    
-    <script src="modules/articles/config/articles.client.routes.js"></script>
-    
-    <script src="modules/articles/services/articles.client.service.js"></script>
+    <script src="modules/articles/articles.client.module.js"></script>
     
     <script src="modules/car-brands/config/car-brands.client.config.js"></script>
     
@@ -79,8 +73,6 @@
     
     <script src="modules/car-models/config/car-models.client.routes.js"></script>
     
-    <script src="modules/car-models/controllers/car-models.client.controller.js"></script>
-    
     <script src="modules/car-models/services/car-models.client.service.js"></script>
     
     <script src="modules/core/config/core.client.config.js"></script>
@@ -92,6 +84,10 @@
     <script src="modules/core/controllers/header.client.controller.js"></script>
     
     <script src="modules/core/controllers/home.client.controller.js"></script>
+    
+    <script src="modules/core/directives/load-widget.client.directive.js"></script>
+    
+    <script src="modules/core/directives/timer-widget.client.directive.js"></script>
     
     <script src="modules/core/directives/toggle.client.directive.js"></script>
     
@@ -154,6 +150,16 @@
     <script src="modules/users/services/driver.client.service.js"></script>
     
     <script src="modules/users/services/users.client.service.js"></script>
+    
+    <script src="modules/articles/config/articles.client.config.js"></script>
+    
+    <script src="modules/articles/config/articles.client.routes.js"></script>
+    
+    <script src="modules/articles/controllers/articles.client.controller.js"></script>
+    
+    <script src="modules/articles/services/articles.client.service.js"></script>
+    
+    <script src="modules/car-models/controllers/car-models.client.controller.js"></script>
     
     <!-- endinject -->
 </head>

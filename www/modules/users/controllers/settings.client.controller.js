@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', 'CORE_CONST',
-	function($scope, $http, $location, Users, Authentication, CORE_CONST) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', 'CORE_CONST', 'FileUploader',
+	function($scope, $http, $location, Users, Authentication, CORE_CONST, FileUploader) {
 		$scope.user = Authentication.user;
 
 		// If user is not signed in then redirect back home
@@ -62,6 +62,24 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
+		};
+		var uploader = $scope.uploader = new FileUploader({
+			url: CORE_CONST.REST_URL + 'upload'
+		});
+
+		// FILTERS
+
+		uploader.filters.push({
+			name: 'imageFilter',
+			fn: function(item, options) {
+				var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+				return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+			}
+		});
+		$scope.CORE_CONST = CORE_CONST;
+		uploader.onCompleteItem = function(fileItem, response, status, headers) {
+			if($scope.user)
+				$scope.user.photo_src = response;
 		};
 	}
 ]);

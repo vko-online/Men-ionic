@@ -11,6 +11,17 @@
             {{countdown}}
         </timer>
         <hr/>
-        driver car, color, model, photo etc
+        <img data-ng-if="request.driver_car.photo_src" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + request.driver_car.photo_src}}" width="50%" alt=""/>
+        <div class="list">
+            <div class="item">
+                {{get.brand(request.driver_car.car_brand).name}}
+            </div>
+            <div class="item">
+                {{get.model(request.driver_car.car_model).name}}
+            </div>
+            <div class="item">
+                {{get.color(request.driver_car.car_color).name}}
+            </div>
+        </div>
     </ion-content>
 </ion-view>

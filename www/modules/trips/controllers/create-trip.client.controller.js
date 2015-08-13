@@ -7,6 +7,12 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
         $scope.TRIP_STATUS = TripStatuses.query();
         $scope.authentication = Authentication;
         $scope.preparation = {};
+        $scope.defaults = {
+            tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+            attributionControl: false,
+            scrollWheelZoom: false,
+            location_success: false
+        };
         GeoLocation.current()
             .then(function(successResponse){
                 $scope.center = {
@@ -23,18 +29,19 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
                         draggable: true
                     }
                 };
+                $scope.defaults.location_success = true;
             }, function(errorResponse){
-                $scope.error = errorResponse;
+                console.log(errorResponse);
+                $scope.error = 'Не удалось получить ваше местоположение';
+                //todo: we need pattern for load indicators
+                //maybe angular-loading module is enough
+                $scope.defaults.location_success = true;
             });
         $scope.$on('leafletDirectiveMarker.dragend', function (e, args) {
             $scope.markers.marker.lng = args.model.lng;
             $scope.markers.marker.lat = args.model.lat;
         });
-        $scope.defaults = {
-            tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-            attributionControl: false,
-            scrollWheelZoom: false
-        };
+
         $scope.center = {
             lat: CORE_CONST.MAP_LAT,
             lng: CORE_CONST.MAP_LNG,
@@ -46,7 +53,8 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
                     meet_location: {
                         lat: $scope.markers.marker.lat,
                         lng: $scope.markers.marker.lng
-                    }
+                    },
+                    loc: [$scope.markers.marker.lng, $scope.markers.marker.lat]
                 });
             Trips.prepare_trip({
                 tripId: $stateParams.tripId
@@ -57,7 +65,6 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             });
         };
         $scope.init_modal = function(){
-            $scope.preparation.misc_single = true;
             $ionicModal.fromTemplateUrl('modules/trips/views/create-trip-misc.client.view.html', {
                 scope: $scope,
                 animation: 'slide-in-up',

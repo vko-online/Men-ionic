@@ -8,6 +8,11 @@ angular.module('trips').factory('DriverRequests', ['$resource', 'CORE_CONST',
             query: {
                 method: 'GET',
                 isArray: false
+            },
+            get: {
+                method: 'GET',
+                isArray: false,
+                url: CORE_CONST.REST_URL + 'driver_requests/:driverRequestId'
             }
         });
     }

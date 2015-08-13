@@ -17,23 +17,37 @@
                 Map view
             </a>
         </div>
-        <ion-list data-ng-show="isActive('list-view')">
-            <ion-item data-ng-class="{'active': is_requested(trip.requests)}"
-                      data-ng-repeat="trip in trips track by $index"
-                      data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}">
-                {{trip.end_address}} | Цена:{{trip.price}}
-                <span data-ng-if="trip.immediate" class="badge">срочно</span>
-                <span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>
+        <div class="text-center">
+            <ion-spinner icon="ios" data-ng-hide="trips.$resolved"></ion-spinner>
+        </div>
+        <div data-ng-show="isActive('list-view')" class="text-center">
+            <div class="padding">
+                <h3>Нет доступных заказов</h3>
+                <img src="img/icons/ic_zero_system_purchases_2x.png" data-ng-show="!trips.length"/>
+            </div>
+            <ion-refresher
+                    pulling-text="Pull to refresh..."
+                    on-refresh="find()">
+            </ion-refresher>
+            <ion-list>
+                <ion-item data-ng-class="{'active': is_requested(trip.requests)}"
+                          data-ng-repeat="trip in trips track by $index"
+                          data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}">
+                    {{trip.end_address}} | Цена:{{trip.price}}
+                    <span data-ng-if="trip.immediate" class="badge">срочно</span>
+                    <span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>
                             <span data-ng-if="get_my_request(trip.requests)">
                             <timer interval="1000" finish-callback="cb_list()"
                                    countdown="countdown_handler(get_my_request(trip.requests).date_end)">
                                 <i class="glyphicon glyphicon-time"></i>{{countdown}}
                             </timer>
                             </span>
-                <ion-option-button class="button-positive" data-ng-click="request_pickup(trip)">Request pickup
-                </ion-option-button>
-            </ion-item>
-        </ion-list>
+                    <ion-option-button class="button-positive" data-ng-click="request_pickup(trip)">Request pickup
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+        </div>
+
         <map-view data-ng-show="isActive('map-view')" data-tap-disabled="true"></map-view>
     </ion-content>
 </ion-view>

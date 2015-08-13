@@ -5,7 +5,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
         $scope.authentication = Authentication;
         $scope.credentials = {};
         // If user is signed in then redirect back home
-        if ($scope.authentication.user) $location.path('/');
+        //if ($scope.authentication.user) $location.path('/');
 
 
         $scope.signup_client = function() {

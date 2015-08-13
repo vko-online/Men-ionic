@@ -1,6 +1,12 @@
-<ion-view>
+<ion-view data-ng-controller="TripHistoryController" data-ng-init="findOne()">
+    <ion-nav-buttons side="secondary">
+        <div data-ng-if="authentication && authentication.user && (authentication.user._id === trip.client._id)">
+            <button class="button" data-ng-click="init_flag_modal()">
+                <i class="ion ion-android-delete"></i> Пожаловаться
+            </button>
+        </div>
+    </ion-nav-buttons>
     <ion-content>
-        <section data-ng-controller="TripHistoryController" data-ng-init="findOne()">
             <div data-ng-if="(error)" class="alert alert-warning text-center">
                 {{error}}
             </div>
@@ -20,32 +26,31 @@
                     <leaflet markers="markers" center="center" height="200"></leaflet>
                 </div>
             </div>
-            <div data-ng-if="authentication && authentication.user && authentication.user.is_driver">
-                <div>
-                    <p>Клиент: {{trip.client.displayName}}</p>
+            <!--<div data-ng-if="authentication && authentication.user && authentication.user.is_driver">-->
+                <!--<div>-->
+                    <!--<p>Клиент: {{trip.client.displayName}}</p>-->
 
-                    <p>Адрес начало: {{trip.start_address}}</p>
+                    <!--<p>Адрес начало: {{trip.start_address}}</p>-->
 
-                    <p>Адрес конца: {{trip.end_address}}</p>
+                    <!--<p>Адрес конца: {{trip.end_address}}</p>-->
 
-                    <p>Цена: {{trip.price}}</p>
+                    <!--<p>Цена: {{trip.price}}</p>-->
 
-                    <p>Срочно: {{trip.immediate}}</p>
+                    <!--<p>Срочно: {{trip.immediate}}</p>-->
 
-                    <p>Использовать бонус: {{trip.use_bonus}}</p>
+                    <!--<p>Использовать бонус: {{trip.use_bonus}}</p>-->
 
-                    <div data-ng-init="get_statistics()">
-                        <div data-ng-if="statistic.requests.length > 0" class="alert alert-success">
-                            <p>Всего запросов {{statistic.requests.length}}</p>
+                    <!--<div data-ng-init="get_statistics()">-->
+                        <!--<div data-ng-if="statistic.requests.length > 0" class="alert alert-success">-->
+                            <!--<p>Всего запросов {{statistic.requests.length}}</p>-->
 
-                            <p>Успешных запросов {{statistic.accepted_count}}</p>
+                            <!--<p>Успешных запросов {{statistic.accepted_count}}</p>-->
 
-                            <p>Процент запросов {{(statistic.accepted_count * 100) / statistic.requests.length}}%</p>
-                        </div>
-                    </div>
-                    <leaflet markers="markers" center="center" height="200"></leaflet>
-                </div>
-            </div>
-        </section>
+                            <!--<p>Процент запросов {{(statistic.accepted_count * 100) / statistic.requests.length}}%</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<leaflet markers="markers" center="center" height="200"></leaflet>-->
+                <!--</div>-->
+            <!--</div>-->
     </ion-content>
 </ion-view>

@@ -6,6 +6,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.error = errorResponse.data.message;
         }
 
+        $scope.CORE_CONST = CORE_CONST;
         if(!$scope.server_date_time){
             Misc.server_time(function(time){
                 $scope.server_date_time = new Date(time.date_time);
@@ -19,6 +20,23 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         $scope.car_brands = CarBrands.query();
         $scope.car_models = CarModels.query();
         $scope.car_colors = CarColors.query();
+        $scope.get = {
+            brand: function(id){
+                return $scope.car_brands.filter(function(i){
+                    return i._id === id;
+                })[0];
+            },
+            color: function(id){
+                return $scope.car_colors.filter(function(i){
+                    return i._id === id;
+                })[0];
+            },
+            model: function(id){
+                return $scope.car_models.filter(function(i){
+                    return i._id === id;
+                })[0];
+            }
+        };
         $scope.findOne = function(){
             $scope.trip = Trips.get({
                 tripId: $stateParams.tripId
@@ -76,6 +94,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         };
         $scope.find = function(){
             $scope.trips = Trips.query(function(successResponse){
+                $scope.$broadcast('scroll.refreshComplete');
                 GeoLocation.current().then(function(response){
                     var lat2 = response.coords.latitude,
                         lon2 = response.coords.longitude;
@@ -96,22 +115,17 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             attributionControl: false
         };
         $scope.active = 'list-view';
-
-        $scope.setActive = function(type) {
+        $scope.setActive = function(type){
             $scope.active = type;
         };
-
-        $scope.isActive = function(type) {
+        $scope.isActive = function(type){
             return type === $scope.active;
         };
-        $scope.is_current_driver_request = function(requests){
-            if(requests){
-                var exists = requests.filter(function(i){
+        $scope.is_current_driver_request = function(){
+            if($scope.trip && $scope.trip.requests)
+                return $scope.trip.requests.filter(function(i){
                     return i.driver_profile === $scope.authentication.user._id;
-                });
-                return ((exists.length > 0) ? exists[0] : null);
-            }
-            return null;
+                })[0];
         };
         $scope.is_requested = function(requests){
             if(!requests || !requests.length){
@@ -136,8 +150,13 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         $scope.countdown_handler = function(request_end_date){
             if(request_end_date){
                 var date = new Date(request_end_date);
-                if($scope.server_date_time)
-                    return (window.moment(date).unix() - window.moment($scope.server_date_time).unix());
+                if($scope.server_date_time){
+                    var time = (window.moment(date).unix() - window.moment($scope.server_date_time).unix());
+                    //todo:this is stupid hack, related to countdown timer, get rid off asap
+                    if(time < 0)
+                        $scope.cb_get();
+                    return time;
+                }
                 return 0;
             }
             return 0;
@@ -158,7 +177,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             //todo: prompt
             $scope.trip.$cancel_trip(function(successResponse){
                 alert('trip canceled, you may have penalties');
-                $scope.authentication.user.trip =  null;
+                $scope.authentication.user.trip = null;
             }, errorHandler);
         };
         $scope.delete_trip = function(){
@@ -206,10 +225,10 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.find();
         };
         $scope.cb_get = function(){
+            //todo: this should only return current trip requests, don't reload trip
             $scope.findOne();
         };
         Socket.on('accept_pickup', function(obj){
-            console.log('accept_picup', $scope.trip, obj);
             if($scope.trip){
                 $scope.trip.status_code = obj.status_code;
                 $scope.trip.requests = obj.requests;
@@ -219,7 +238,9 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }
         });
         Socket.on('request_pickup', function(obj){
-            $scope.trip.requests = obj.requests;
+            if($scope.trip){
+                $scope.trip.requests = obj.requests;
+            }
         });
         Socket.on('arrived_trip', function(obj){
             $scope.trip.status_code = obj.status_code;
@@ -237,7 +258,8 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }
         });
         Socket.on('cancel_request_pickup', function(obj){
-            $scope.trip.requests = obj.requests;
+            if($scope.trip)
+                $scope.trip.requests = obj.requests;
         });
         Socket.on('trip_canceled', function(obj){
             alert('client canceled trip');

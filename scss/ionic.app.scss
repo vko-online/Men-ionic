@@ -15,7 +15,7 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 //colors
-$positive: #F2CB05 !default;
+$positive: #0f9d58 !default; //#F2CB05 !default;
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -24,3 +24,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.bg-positive{
+  background-color: $positive;
+}
+toggle.activated{
+  background-color: darken($positive, 10%);
+}
+hr{
+  border-color: lighten($positive, 5%);
+  border-bottom: 0;
+}

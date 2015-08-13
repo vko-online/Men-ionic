@@ -134,7 +134,7 @@
         <div class="item item-divider">
             Предложить поездку
         </div>
-        <div data-ng-show="!is_current_driver_request(trip.requests)">
+        <div data-ng-show="!is_current_driver_request()">
             <div class="item item-input item-select">
                 <div class="input-label">
                     Буду через
@@ -146,14 +146,17 @@
                 Request pickup
             </button>
         </div>
-        <div data-ng-show="is_current_driver_request(trip.requests)">
+        <div data-ng-show="is_current_driver_request()">
             <div class="item">
                 <i class="icon ion-ios-time"></i>
                 Request pending
-                                      <span timer class="item-note" interval="1000" finish-callback="cb_get()"
-                                            countdown="countdown_handler(is_current_driver_request(trip.requests).date_end)">
-                                          {{countdown}}
-                                      </span>
+                <!--todo:bug here, time is not shown-->
+                <span class="item-note">
+                        <timer interval="1000" finish-callback="cb_get()"
+                               countdown="countdown_handler(is_current_driver_request().date_end)">
+                            {{countdown}}
+                        </timer>
+                    </span>
             </div>
             <button class="button button-full button-assertive" data-ng-click="cancel_request_pickup()">
                 Cancel request

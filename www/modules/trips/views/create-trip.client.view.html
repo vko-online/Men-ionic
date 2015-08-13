@@ -8,6 +8,9 @@
             <div data-ng-if="(error)" class="assertive text-center">
                 {{error}}
             </div>
+            <div class="text-center">
+                <ion-spinner icon="ios" data-ng-hide="defaults.location_success"></ion-spinner>
+            </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
                 <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="center" height="150"></leaflet>
                 <div class="list">
@@ -15,39 +18,44 @@
                         <i class="icon ion-ios-location"></i>
                         Место назначения
                             <span class="item-note">
-                              <input type="text" name="end_address" data-ng-model="preparation.end_address"
-                                     id="end_address" class="form-control" placeholder="end_address">
+                              <input type="text" data-ng-model="preparation.end_address"placeholder="end_address">
                             </span>
                     </div>
                     <div class="item">
                         <i class="icon ion-cash"></i>
                         Цена
                             <span class="item-note">
-                              <input type="number" name="price" data-ng-model="preparation.price" id="price"
-                                     class="form-control" placeholder="price">
+                              <input type="number" data-ng-model="preparation.price">
                             </span>
                     </div>
                     <div class="item">
                         <i class="icon ion-pricetag"></i>
                         Bonus
                             <span class="item-note">
-                              <input type="checkbox" name="use_bonus" data-ng-model="preparation.use_bonus"
-                                     id="use_bonus" class="form-control" placeholder="use_bonus">
+                                <label class="toggle">
+                                    <input type="checkbox" data-ng-model="preparation.use_bonus">
+                                    <div class="track">
+                                        <div class="handle"></div>
+                                    </div>
+                                </label>
                             </span>
                     </div>
                     <div class="item">
                         <i class="icon ion-cash"></i>
                         Срочно
                             <span class="item-note">
-                              <input type="checkbox" name="immediate" data-ng-model="preparation.immediate"
-                                     id="immediate" class="form-control" placeholder="immediate">
+                                <label class="toggle">
+                                    <input type="checkbox" data-ng-model="preparation.immediate">
+                                    <div class="track">
+                                        <div class="handle"></div>
+                                    </div>
+                                </label>
                             </span>
                     </div>
                     <div class="item">
                         <i class="icon ion-android-hand"></i>
                         Note
-                            <textarea name="note" data-ng-model="preparation.note" id="note" class="form-control"
-                                      placeholder="note"></textarea>
+                            <textarea data-ng-model="preparation.note" placeholder="note"></textarea>
                     </div>
                     <div class="item">
                         <i class="icon ion-information"></i>

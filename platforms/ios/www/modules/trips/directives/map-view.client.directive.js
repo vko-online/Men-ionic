@@ -56,21 +56,20 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
                                         lat_sw: bounds._southWest.lat,
                                         lng_sw: bounds._southWest.lng
                                     }, function(successResponse){
-                                        if($scope.existing_markers.length){
-                                            var diff = $scope.trips.filter(function(n){
-                                                return $scope.existing_markers.filter(function(m){
-                                                        return n._id != m._id;
-                                                    }).length == 0;
+                                        if ($scope.existing_markers.length) {
+                                            var diff = $scope.trips.filter(function(n) {
+                                                return $scope.existing_markers.filter(function(m) {
+                                                        return n._id !== m._id;
+                                                    }).length === 0;
                                             });
-                                            angular.forEach(diff, function(i){
-                                                //L.marker([i.loc[1], i.loc[0]]).addTo(map);
+                                            console.log($scope.trips, diff);
+                                            angular.forEach(diff, function(i) {
                                                 bind_marker(i.loc[1], i.loc[0], i, map);
                                             });
                                         } else {
                                             $scope.existing_markers = successResponse;
-                                            angular.forEach($scope.trips, function(i){
+                                            angular.forEach($scope.trips, function(i) {
                                                 bind_marker(i.loc[1], i.loc[0], i, map);
-                                                //L.marker([i.loc[1], i.loc[0]]).addTo(map);
                                             });
                                         }
                                     }, function(errorResponse){
