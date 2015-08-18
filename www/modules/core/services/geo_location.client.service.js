@@ -14,6 +14,32 @@ angular.module('core').factory('GeoLocation', ['$q', function($q){
         }
         return defer.promise;
     }
+    function watch(success, error){
+        //todo: not tested yet
+        var options = {
+            enableHighAccuracy: false,
+            timeout: 5000,
+            maximumAge: 60000
+        };
+        if(navigator && navigator.geolocation){
+            return navigator.geolocation.watchPosition(function(successResponse){
+                if(success)
+                    success(successResponse);
+            }, function(errorResponse){
+                if(error)
+                    error(errorResponse.message);
+            }, options);
+        } else {
+            if(error)
+                error('Device doesn\'t support geo-location');
+            return false;
+        }
+    }
+    function clear_watch(number){
+        if(navigator && navigator.geolocation){
+            navigator.geolocation.clearWatch(number);
+        }
+    }
 
     function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2){
         var R = 6371; // Radius of the earth in km
@@ -34,6 +60,8 @@ angular.module('core').factory('GeoLocation', ['$q', function($q){
 
     return {
         current: current,
-        distance: getDistanceFromLatLonInKm
+        distance: getDistanceFromLatLonInKm,
+        watch: watch,
+        clear_watch: clear_watch
     };
 }]);

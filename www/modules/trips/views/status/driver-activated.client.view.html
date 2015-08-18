@@ -8,6 +8,11 @@
     <p>Срочно: {{trip.immediate}}</p>
 
     <p>Использовать бонус: {{trip.use_bonus}}</p>
-    <!--todo: we need countdown here-->
-    <p>Буду через: {{trip.accepted_request.time}} мин</p>
+    <h1>У вас: {{trip.accepted_request.time}} мин</h1>
+    <div class="wrapper {{get.timer_class(trip.accepted_request.time)}}" data-ng-init="register_timeout(trip.accepted_request.time)">
+        <div class="timer-background"></div>
+        <div class="timer spinner"></div>
+        <div class="timer filler"></div>
+        <div class="mask"></div>
+    </div>
 </ion-content>

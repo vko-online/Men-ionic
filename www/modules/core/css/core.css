@@ -46,8 +46,28 @@ point-preview{
 	z-index: 9999;
 	position: relative;
 	background-color: white;
-	height: 85px;
+	height: 100px;
 	transition: all 1s ease;
+	border-radius: 5px;
+	border:1px solid lightblue;
+	box-shadow: 2px 2px 10px #006666;
+}
+point-preview .point-preview-header {
+	text-align: center;
+}
+
+point-preview .point-preview-header label {
+	margin-top: 9px;
+	display: inline-block;
+}
+
+point-preview .point-preview-header span {
+	margin: 5px;
+	position: absolute;
+}
+point-preview .point-preview-content{
+	background-color: #FFF0F5;
+	margin-top: 1px;
 }
 point-preview.active{
 	margin-top:-300px;
@@ -159,4 +179,18 @@ toggle.activated .button.taxi-btn{
 toggle{
 	display: inline-block;
 	font-size: 11px;
+}
+
+ion-item.immediate:after{
+	content: 'срочно';
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 99;
+	font-size: .8em;
+	background-color: transparent;
+	color: black;
+	border-radius: 4px;
+	padding: 0 2px;
+	font-weight: bold;
 }
