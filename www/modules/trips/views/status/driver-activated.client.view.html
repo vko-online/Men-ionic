@@ -1,4 +1,4 @@
-<ion-content padding="true">
+<ion-content padding="true" data-ng-init="sync_driver_location()">
     <p>Клиент: {{trip.client.displayName}}</p>
 
     <p>Адрес конца: {{trip.end_address}}</p>
@@ -9,10 +9,5 @@
 
     <p>Использовать бонус: {{trip.use_bonus}}</p>
     <h1>У вас: {{trip.accepted_request.time}} мин</h1>
-    <div class="wrapper {{get.timer_class(trip.accepted_request.time)}}" data-ng-init="register_timeout(trip.accepted_request.time)">
-        <div class="timer-background"></div>
-        <div class="timer spinner"></div>
-        <div class="timer filler"></div>
-        <div class="mask"></div>
-    </div>
+    <timer-widget exec-callback="driver_alert" countdown="{{trip.accepted_request.time * 60 * 1000}}" countdown-alert="{{(trip.accepted_request.time) * 60 * 900}}" countdown-alert-class="alert"></timer-widget>
 </ion-content>

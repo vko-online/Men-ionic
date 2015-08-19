@@ -12,7 +12,7 @@
                 <ion-spinner icon="ios" data-ng-hide="defaults.location_success"></ion-spinner>
             </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
-                <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="center" height="150"></leaflet>
+                <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="markers.center" height="150"></leaflet>
                 <div class="list">
                     <div class="item">
                         <i class="icon ion-ios-location"></i>

@@ -13,22 +13,31 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             scrollWheelZoom: false,
             location_success: false
         };
+        $scope.markers = {
+            marker: {
+                lat: 0,
+                lng: 0,
+                message: 'I\'m here',
+                focus: true,
+                draggable: true
+            },
+            center: {
+                lat: CORE_CONST.MAP_LAT,
+                lng: CORE_CONST.MAP_LNG,
+                zoom: 15
+            }
+        };
         GeoLocation.current()
             .then(function(successResponse){
-                $scope.center = {
+                $scope.markers.marker = {
                     lat: successResponse.coords.latitude,
                     lng: successResponse.coords.longitude,
-                    zoom: 15
+                    message: 'I\'m here',
+                    focus: true,
+                    draggable: true
                 };
-                $scope.markers = {
-                    marker: {
-                        lat: successResponse.coords.latitude,
-                        lng: successResponse.coords.longitude,
-                        message: 'I\'m here',
-                        focus: true,
-                        draggable: true
-                    }
-                };
+                $scope.markers.center.lat = successResponse.coords.latitude;
+                $scope.markers.center.lng = successResponse.coords.longitude;
                 $scope.defaults.location_success = true;
             }, function(errorResponse){
                 console.log(errorResponse);
@@ -42,11 +51,6 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             $scope.markers.marker.lat = args.model.lat;
         });
 
-        $scope.center = {
-            lat: CORE_CONST.MAP_LAT,
-            lng: CORE_CONST.MAP_LNG,
-            zoom: CORE_CONST.MAP_ZOOM
-        };
         $scope.prepare = function(){
             if($scope.markers && $scope.markers.marker && $scope.markers.marker.lat && $scope.markers.marker.lng)
                 angular.extend($scope.preparation, {

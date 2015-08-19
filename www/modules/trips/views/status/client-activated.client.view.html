@@ -4,11 +4,6 @@
     <p>Машина: {{trip.accepted_request.driver_car.gos_number}}</p>
 
     <h1>Будет через: {{trip.accepted_request.time}} мин</h1>
-    <div class="wrapper {{get.timer_class(trip.accepted_request.time)}}">
-        <div class="timer-background"></div>
-        <div class="timer spinner"></div>
-        <div class="timer filler"></div>
-        <div class="mask"></div>
-    </div>
-    <leaflet data-ng-if="driver_markers" defaults="defaults" markers="driver_markers" center="driver_center" height="200"></leaflet>
+    <timer-widget exec-callback="driver_alert" countdown="{{trip.accepted_request.time * 60 * 1000}}" countdown-alert="{{(trip.accepted_request.time) * 60 * 900}}" countdown-alert-class="alert"></timer-widget>
+    <!--<leaflet defaults="defaults" markers="external_markers" center="markers.center" height="200"></leaflet>-->
 </ion-content>

@@ -14,17 +14,40 @@ angular.module('core').factory('GeoLocation', ['$q', function($q){
         }
         return defer.promise;
     }
+    var d = 0.001;
     function watch(success, error){
         //todo: not tested yet
+
+        //dev testing head
+        var debug = true;
+
         var options = {
             enableHighAccuracy: false,
             timeout: 5000,
             maximumAge: 60000
         };
+
         if(navigator && navigator.geolocation){
             return navigator.geolocation.watchPosition(function(successResponse){
-                if(success)
+                if(success){
                     success(successResponse);
+                    //dev testing body
+                    if(debug){
+
+
+                        var timeout = setInterval(function(){
+                            var copy = {
+                                coords: {
+                                    latitude: successResponse.coords.latitude + (d),
+                                    longitude: successResponse.coords.longitude + (d)
+                                }
+                            };
+                            d = d + 0.001;
+                            console.log('executing fake location change', copy);
+                            success(copy);
+                        }, 2000); //every 5secs
+                    }
+                }
             }, function(errorResponse){
                 if(error)
                     error(errorResponse.message);

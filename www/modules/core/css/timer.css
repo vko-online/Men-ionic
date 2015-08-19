@@ -1,153 +1,41 @@
-.wrapper {
-    position: relative;
-    margin: 40px auto;
-}
-
-.wrapper, .wrapper * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.wrapper {
-    width: 200px;
-    height: 200px;
-}
-
-.wrapper .timer {
-    width: 50%;
-    height: 100%;
-    transform-origin: 100% 50%;
+.timer-semi-container, .timer-semi-circle {
     position: absolute;
-    border: 50px solid #D4110B;
+    overflow: hidden;
+    width: 40px;
+    height: 80px;
 }
 
-.wrapper:hover .spinner,
-.wrapper:hover .filler,
-.wrapper:hover .mask {
-    animation-play-state: running;
+.timer-container {
+    width: 80px;
+    height: 80px;
 }
 
-.wrapper .timer-background {
-    width: 100%;
-    height: 100%;
+.timer-semi-container.right {
+    left: 40px;
+}
+.timer-semi-container.left .timer-semi-circle {
+    left: 40px;
+}
+
+.timer-semi-circle {
+    -webkit-transform-origin: 0;
+}
+.timer-semi-circle::after {
+    content: "";
     position: absolute;
-    background: none;
-    border: 50px solid #75A0FF;
-    border-radius: 100%;
-    z-index: 100;
+    left: -40px;
+    width: 80px;
+    height: 80px;
+    border: 5px solid #07213d;
+    border-radius: 50%;
+    -webkit-transition: border-color .2s linear;
 }
-/*5,10,15,20,25,30,45,60*/
-.wrapper .spinner {
-    border-radius: 100% 0 0 100% / 50% 0 0 50%;
-    z-index: 200;
-    border-right: none;
+.timer-semi-circle.highlighted::after {
+    border-color: #ff003d;
 }
-.wrapper.five .spinner{
-    animation: rota 300s linear infinite;
+.timer-semi-circle.highlighted.alert::after {
+    border-color: #FFB800;
 }
-.wrapper.ten .spinner{
-    animation: rota 600s linear infinite;
-}
-.wrapper.fifteen .spinner{
-    animation: rota 900s linear infinite;
-}
-.wrapper.twenty .spinner{
-    animation: rota 1200s linear infinite;
-}
-.wrapper.twenty_five .spinner{
-    animation: rota 1500s linear infinite;
-}
-.wrapper.thirty .spinner{
-    animation: rota 1800s linear infinite;
-}
-.wrapper.forty_five .spinner{
-    animation: rota 2700s linear infinite;
-}
-.wrapper.sixty .spinner{
-    animation: rota 3600s linear infinite;
-}
-.wrapper .filler {
-     border-radius: 0 100% 100% 0 / 0 50% 50% 0;
-     left: 50%;
-     opacity: 0;
-     z-index: 100;
-     border-left: none;
- }
-.wrapper.five .filler {
-    animation: opa 300s steps(1, end) infinite reverse;
-}
-.wrapper.ten .filler {
-    animation: opa 600s steps(1, end) infinite reverse;
-}
-.wrapper.fifteen .filler {
-    animation: opa 900s steps(1, end) infinite reverse;
-}
-.wrapper.twenty .filler {
-    animation: opa 1200s steps(1, end) infinite reverse;
-}
-.wrapper.twenty_five .filler {
-    animation: opa 1500s steps(1, end) infinite reverse;
-}
-.wrapper.thirty .filler {
-    animation: opa 1800s steps(1, end) infinite reverse;
-}
-.wrapper.forty_five .filler {
-    animation: opa 2700s steps(1, end) infinite reverse;
-}
-.wrapper.sixty .filler {
-    animation: opa 3600s steps(1, end) infinite reverse;
-}
-
-.wrapper .mask {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    background: inherit;
-    border: 50px solid #75A0FF;
-    border-radius: 100% 0 0 100% / 50% 0 0 50%;
-    border-right: none;
-    opacity: 1;
-    z-index: 300;
-}
-.wrapper.five .mask {
-    animation: opa 300s steps(1, end) infinite;
-}
-.wrapper.ten .mask {
-    animation: opa 600s steps(1, end) infinite;
-}
-.wrapper.fifteen .mask {
-    animation: opa 900s steps(1, end) infinite;
-}
-.wrapper.twenty .mask {
-    animation: opa 1200s steps(1, end) infinite;
-}
-.wrapper.twenty_five .mask {
-    animation: opa 1500s steps(1, end) infinite;
-}
-.wrapper.thirty .mask {
-    animation: opa 1800s steps(1, end) infinite;
-}
-.wrapper.forty_five .mask {
-    animation: opa 2700s steps(1, end) infinite;
-}
-.wrapper.sixty .mask {
-    animation: opa 3600s steps(1, end) infinite;
-}
-@keyframes rota {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes opa {
-    0% {
-        opacity: 1;
-    }
-    50%, 100% {
-        opacity: 0;
-    }
+.timer-semi-circle.mirrored {
+    -webkit-transform: rotate(180deg);
 }
