@@ -6,7 +6,7 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
             priority: 0,
             templateUrl: 'modules/trips/directives/templates/map-view.client.directive.html',
             controller: function($scope, GeoLocation, CORE_CONST, Trips, leafletData){
-                $scope.show = function() {
+                $scope.show = function(){
                     $ionicLoading.show({
                         template: 'Loading...'
                     });
@@ -25,9 +25,9 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
                     tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
                     attributionControl: false
                 };
-
                 $scope.existing_markers = [];
                 var internal_markers = [];
+
                 function click_handler(event){
                     $scope.current_trip = event.target.options.trip;
                     $scope.existing_markers.forEach(function(e_trip, index){
@@ -42,24 +42,17 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
                         }
                     });
                 }
+
                 $scope.hide_callback = function(){
                     //$scope.show_preview = false;
-                };
-                $scope.indexer_callback = function (index){
-                    $scope.current_trip = $scope.existing_markers[index];
-                    $scope.current_trip_index = index;
-                    internal_markers.forEach(function(i_marker){
-                        if(i_marker.options.trip._id === $scope.current_trip._id)
-                            angular.element(i_marker._icon).addClass('active visited');
-                        else {
-                            angular.element(i_marker._icon).removeClass('active');
-                        }
-                    });
                 };
 
                 function bind_marker(a, b, obj, map){
                     var redIcon = L.divIcon({html: '<span>' + obj.price + '</span>', className: 'red-div-icon'});
-                    var marker = L.marker([a, b], {icon: redIcon, trip: obj}).on('click', click_handler);
+                    var marker = L.marker([a, b], {icon: redIcon, trip: obj}).on('click', function(e){
+                        map.panTo([a, b]);
+                        return click_handler(e);
+                    });
                     marker.addTo(map);
                     internal_markers.push(marker);
                 }
@@ -84,6 +77,18 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
                         leafletData.getMap().then(function(map){
                             var timeout = undefined;
                             map.on('dragend zoomend', function(event){
+                                $scope.indexer_callback = function(index){
+                                    $scope.current_trip = $scope.existing_markers[index];
+                                    $scope.current_trip_index = index;
+                                    internal_markers.forEach(function(i_marker){
+                                        if(i_marker.options.trip._id === $scope.current_trip._id) {
+                                            angular.element(i_marker._icon).addClass('active visited');
+                                            map.panTo(i_marker.getLatLng());
+                                        } else {
+                                            angular.element(i_marker._icon).removeClass('active');
+                                        }
+                                    });
+                                };
                                 if(event.distance > 30){
                                     var bounds = event.target.getBounds();
                                     $scope.trips = Trips.by_location({
@@ -93,19 +98,19 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
                                         lng_sw: bounds._southWest.lng
                                     }, function(successResponse){
                                         //todo: refactor this
-                                        if ($scope.existing_markers.length) {
-                                            var diff = $scope.trips.filter(function(trip) {
-                                                return $scope.existing_markers.filter(function(existing_trip) {
+                                        if($scope.existing_markers.length){
+                                            var diff = $scope.trips.filter(function(trip){
+                                                return $scope.existing_markers.filter(function(existing_trip){
                                                         return trip._id === existing_trip._id;
                                                     }).length === 0;
                                             });
-                                            angular.forEach(diff, function(i) {
+                                            angular.forEach(diff, function(i){
                                                 bind_marker(i.loc[1], i.loc[0], i, map);
                                                 $scope.existing_markers.push(i);
                                             });
                                         } else {
                                             $scope.existing_markers = successResponse;
-                                            angular.forEach($scope.trips, function(i) {
+                                            angular.forEach($scope.trips, function(i){
                                                 bind_marker(i.loc[1], i.loc[0], i, map);
                                             });
                                         }

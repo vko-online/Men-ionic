@@ -1,23 +1,30 @@
 <ion-content padding="true">
-    <leaflet defaults="defaults" markers="markers" center="center" height="200"></leaflet>
-    <div class="list">
-        <div class="item">
-            <i class="icon ion-person"></i>
-            Клиент
-                            <span class="item-note">
-                              {{trip.client.displayName}}
-                            </span>
+    <div class="list card">
+        <div class="item item-avatar">
+            <img ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}">
+            <h2>{{trip.client.displayName}}</h2>
+            <p>{{minutes_ago(trip.created_date)}}</p>
         </div>
-        <div class="item">
-            <i class="icon ion-ios-location"></i>
-            Адрес
+        <div class="item item-body">
+            <leaflet data-tap-disabled="true" defaults="defaults" markers="trip_markers" center="defaults.center" height="200"></leaflet>
+            <div class="list">
+                <div class="item">
+                    <i class="icon ion-ios-location"></i>
+                    Откуда
+                            <span class="item-note">
+                              {{trip.start_address}}
+                            </span>
+                </div>
+                <div class="item">
+                    <i class="icon ion-ios-location"></i>
+                    Куда
                             <span class="item-note">
                               {{trip.end_address}}
                             </span>
-        </div>
-        <div class="item" data-ng-if="trip.immediate">
-            <i class="icon ion-toggle"></i>
-            Срочно
+                </div>
+                <div class="item" data-ng-if="trip.immediate">
+                    <i class="icon ion-toggle"></i>
+                    Срочно
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.immediate" disabled>
@@ -26,10 +33,10 @@
                                   </div>
                               </label>
                             </span>
-        </div>
-        <div class="item">
-            <i class="icon ion-pricetag"></i>
-            Использовать бонус
+                </div>
+                <div class="item">
+                    <i class="icon ion-pricetag"></i>
+                    Использовать бонус
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.use_bonus" disabled>
@@ -39,19 +46,19 @@
                                   </div>
                               </label>
                             </span>
-        </div>
-        <div class="item" data-ng-init="dropdowned = false">
-            <i class="icon ion-ios-information"></i>
-            Допольнительно
+                </div>
+                <div class="item" data-ng-init="dropdowned = false">
+                    <i class="icon ion-ios-information"></i>
+                    Допольнительно
                             <span class="item-note">
                               <button class="button button-clear" data-ng-click="dropdowned = !dropdowned"><i
                                       data-ng-class="{'ion-chevron-up': dropdowned, 'ion-chevron-down': !dropdowned }"></i>
                               </button>
                             </span>
-            <div data-ng-show="dropdowned" style="margin-top: 30px;">
-                <div class="item" data-ng-if="trip.misc_entrace">
-                    <i class="icon ion-ios-information"></i>
-                    С заездом
+                    <div data-ng-show="dropdowned" style="margin-top: 30px;">
+                        <div class="item" data-ng-if="trip.misc_entrace">
+                            <i class="icon ion-ios-information"></i>
+                            С заездом
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.misc_entrace" disabled>
@@ -61,10 +68,10 @@
                                   </div>
                               </label>
                             </span>
-                </div>
-                <div class="item" data-ng-if="trip.misc_multi_pickup">
-                    <i class="icon ion-ios-information"></i>
-                    С подсадкой
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_multi_pickup">
+                            <i class="icon ion-ios-information"></i>
+                            С подсадкой
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.misc_multi_pickup" disabled>
@@ -74,10 +81,10 @@
                                   </div>
                               </label>
                             </span>
-                </div>
-                <div class="item" data-ng-if="trip.misc_on_road">
-                    <i class="icon ion-ios-information"></i>
-                    Стою на дороге
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_on_road">
+                            <i class="icon ion-ios-information"></i>
+                            Стою на дороге
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.misc_on_road" disabled>
@@ -87,10 +94,10 @@
                                   </div>
                               </label>
                             </span>
-                </div>
-                <div class="item" data-ng-if="trip.misc_single">
-                    <i class="icon ion-ios-information"></i>
-                    Один пассажир
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_single">
+                            <i class="icon ion-ios-information"></i>
+                            Один пассажир
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.misc_single" disabled>
@@ -100,10 +107,10 @@
                                   </div>
                               </label>
                             </span>
-                </div>
-                <div class="item" data-ng-if="trip.misc_double">
-                    <i class="icon ion-ios-information"></i>
-                    Два пассажира
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_double">
+                            <i class="icon ion-ios-information"></i>
+                            Два пассажира
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.misc_double" disabled>
@@ -113,10 +120,10 @@
                                   </div>
                               </label>
                             </span>
-                </div>
-                <div class="item" data-ng-if="trip.misc_triple">
-                    <i class="icon ion-ios-information"></i>
-                    Три пассажира
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_triple">
+                            <i class="icon ion-ios-information"></i>
+                            Три пассажира
                             <span class="item-note">
                               <label class="toggle">
                                   <input type="checkbox" data-ng-model="trip.misc_triple" disabled>
@@ -126,10 +133,24 @@
                                   </div>
                               </label>
                             </span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <p>
+                <a href="#" class="subdued">124 Поездок</a>
+            </p>
+        </div>
+        <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+                <i class="icon ion-thumbsup"></i>
+                Request pickup
+            </a>
         </div>
     </div>
+
+
+
     <!--<div class="list">-->
         <!--<div class="item item-divider">-->
             <!--Предложить поездку-->

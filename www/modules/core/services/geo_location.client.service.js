@@ -19,7 +19,7 @@ angular.module('core').factory('GeoLocation', ['$q', function($q){
         //todo: not tested yet
 
         //dev testing head
-        var debug = true;
+        var debug = false;
 
         var options = {
             enableHighAccuracy: false,

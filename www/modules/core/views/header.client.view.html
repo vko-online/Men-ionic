@@ -40,8 +40,12 @@
                                 <i data-ng-class="{'ion-chevron-up': dropdowned, 'ion-chevron-down': !dropdowned }"></i>
                             </button>
                         </div>
-                        <div data-ng-show="dropdowned">
-                            <span><i class="ion ion-pricetag"></i> {{authentication.user.bonus_amount}} бонусов</span>
+                        <div data-ng-show="dropdowned" class="item-group-body">
+                            <p ng-show="authentication.user.is_driver"><i class="ion ion-pricetags"></i> Баланс: {{authentication.user.money_amount}} тг</p>
+                            <p><i class="ion ion-pricetag"></i> Бонус: {{authentication.user.bonus_amount}} </p>
+                            <star-rating readonly="true" rating="authentication.user.rating"></star-rating>
+                            <p> <a style="height: 20px;line-height: 16px; min-height: 20px;" ng-show="authentication.user.rating < 5" href="#!/settings/rating" class=" pull-right button button-small button-positive">Купить</a></p>
+                            <p>other data</p>
                             <hr/>
                             <a menu-close class="button button-small button-positive" data-ng-click="dropdowned = false;" href="#!/settings/profile">Мой профиль</a>
                             <a menu-close class="button button-small button-positive pull-right" data-ng-click="dropdowned = false;signout()">Выйти</a>

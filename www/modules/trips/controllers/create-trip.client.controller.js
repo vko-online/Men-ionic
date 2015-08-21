@@ -11,16 +11,7 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
             attributionControl: false,
             scrollWheelZoom: false,
-            location_success: false
-        };
-        $scope.markers = {
-            marker: {
-                lat: 0,
-                lng: 0,
-                message: 'I\'m here',
-                focus: true,
-                draggable: true
-            },
+            location_success: false,
             center: {
                 lat: CORE_CONST.MAP_LAT,
                 lng: CORE_CONST.MAP_LNG,
@@ -29,15 +20,17 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
         };
         GeoLocation.current()
             .then(function(successResponse){
-                $scope.markers.marker = {
-                    lat: successResponse.coords.latitude,
-                    lng: successResponse.coords.longitude,
-                    message: 'I\'m here',
-                    focus: true,
-                    draggable: true
+                $scope.markers = {
+                    marker: {
+                        lat: successResponse.coords.latitude,
+                        lng: successResponse.coords.longitude,
+                        message: 'I\'m here',
+                        focus: true,
+                        draggable: true
+                    }
                 };
-                $scope.markers.center.lat = successResponse.coords.latitude;
-                $scope.markers.center.lng = successResponse.coords.longitude;
+                $scope.defaults.center.lat = successResponse.coords.latitude;
+                $scope.defaults.center.lng = successResponse.coords.longitude;
                 $scope.defaults.location_success = true;
             }, function(errorResponse){
                 console.log(errorResponse);

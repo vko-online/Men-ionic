@@ -139,6 +139,9 @@ point-preview.active{
 	display: block;
 	font-size: 12px;
 }
+.item .item-group-body p{
+	color:white;
+}
 .item-group-content{
 	position: relative;
 	padding-top: 1px;
@@ -193,4 +196,62 @@ ion-item.immediate:after{
 	border-radius: 4px;
 	padding: 0 2px;
 	font-weight: bold;
+}
+
+
+/*trip item*/
+.trip-item{
+	display: flex;
+}
+.trip-item-left{
+	flex: 1;
+	padding-left:10px;
+}
+.trip-item-right{
+	flex: .5;
+	text-align: right;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.trip-item-data{
+	display: block;
+}
+.trip-item-data.start_address{
+	font-size: 1.1em;
+}
+.trip-item-data.end_address{
+	font-size: 1em;
+}
+.trip-item-data.price{
+	color:red;
+	font-size: .9em;
+}
+.trip-item-data.created_date{
+	font-size: .7em;
+	color:gray;
+}
+.trip-item-data.display_name{
+	font-size: .9em;
+	color:gray;
+}
+.trip-item-data.tag{
+	border-radius: 3px;
+	display: inline-block;
+	padding: 0 6px;
+	border: 1px solid #4E8EF7;
+}
+.trip-item-icon{
+	transform: rotate(-110deg);
+	position: absolute;
+	left: 7px;
+	top: 22px;
+	font-size: 1.5em;
+}
+.trip-item-data.tags{
+	font-size: .9em;
+	color:#4E8EF7;
+}
+.price-label{
+	font-size: .8em;
 }

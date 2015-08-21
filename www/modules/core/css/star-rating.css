@@ -1,0 +1,10 @@
+.ionic_ratings{
+    display:inline-block;
+}
+.ionic_ratings .icon {
+    font-size: 1em;
+}
+
+.ionic_ratings .read_only {
+    pointer-events:none;
+}

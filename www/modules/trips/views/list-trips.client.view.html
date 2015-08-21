@@ -32,22 +32,56 @@
                     pulling-text="Pull to refresh..."
                     on-refresh="find()">
             </ion-refresher>
-            <ion-list>
-                <ion-item class="text-left" data-ng-class="{'active': is_current_driver_request(trip), 'immediate': trip.immediate}"
-                          data-ng-repeat="trip in trips track by $index"
-                          data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}">
-                    {{trip.end_address}} | Цена:{{trip.price}}
-                    <span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>
-                    <ion-option-button data-ng-show="!is_current_driver_request(trip)" class="button-positive" data-ng-click="request_pickup(trip)">
-                        Request pickup (10 min)
-                    </ion-option-button>
-                    <ion-option-button data-ng-show="is_current_driver_request(trip)" class="button-assertive" data-ng-click="cancel_request_pickup(trip)">
-                        {{countdown_handler(is_current_driver_request(trip).date_end, 'list')}}<span> <i class="ion ion-android-cancel"></i> </span>Cancel
-                    </ion-option-button>
-                </ion-item>
-            </ion-list>
-        </div>
+            <div class="list">
+                <a class="item text-left item-avatar-right"
+                   data-ng-class="{'active': is_current_driver_request(trip), 'immediate': trip.immediate}"
+                   data-ng-repeat="trip in trips track by $index"
+                   data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}" \
+                   style="padding-top: 10px;padding-bottom:10px;">
+                    <img ng-if="trip.client.photo_src"
+                         ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}" alt=""/>
+                    <i ng-if="!trip.client.photo_src" class="ion ion-person"></i>
 
+                    <div class="trip-item">
+                        <div class="trip-item-left">
+                            <i class="trip-item-icon ion ion-ios-undo-outline"></i>
+                            <span class="trip-item-data start_address">
+                                {{trip.start_address ? trip.start_address : 'Самал2'}}
+                            </span>
+                            <span class="trip-item-data end_address">
+                                {{trip.end_address}}
+                            </span>
+                            <span class="trip-item-data price">
+                                {{trip.price}} <span class="price-label">₸</span>
+                            </span>
+                        </div>
+                        <div class="trip-item-right">
+                            <span class="trip-item-data tags">
+                                <span data-ng-if="trip.misc_multi_pickup" class="trip-item-data tag"><i class="ion ion-fork-repo"></i></span>
+                                <span data-ng-if="trip.misc_single" class="trip-item-data tag"><i class="ion ion-ios-person-outline"></i>1</span>
+                                <span data-ng-if="trip.misc_double" class="trip-item-data tag"><i class="ion ion-ios-personadd-outline"></i>2</span>
+                                <span data-ng-if="trip.misc_triple" class="trip-item-data tag"><i class="ion ion-ios-people-outline"></i>3</span>
+                                <span data-ng-if="trip.misc_entrance" class="trip-item-data tag"><i class="ioni ion-merge"></i></span>
+                                <span data-ng-if="trip.immediate" class="trip-item-data tag">срочно</span>
+                            </span>
+                             <span class="trip-item-data display_name">
+                                {{trip.client.displayName}}
+                            </span>
+                            <span class="trip-item-data created_date">
+                                {{minutes_ago(trip.created_date)}}
+                            </span>
+                        </div>
+                    </div>
+                    <!--<span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>-->
+                    <!--<ion-option-button data-ng-show="!is_current_driver_request(trip)" class="button-positive" data-ng-click="request_pickup(trip)">-->
+                    <!--Request pickup (10 min)-->
+                    <!--</ion-option-button>-->
+                    <!--<ion-option-button data-ng-show="is_current_driver_request(trip)" class="button-assertive" data-ng-click="cancel_request_pickup(trip)">-->
+                    <!--{{countdown_handler(is_current_driver_request(trip).date_end, 'list')}}<span> <i class="ion ion-android-cancel"></i> </span>Cancel-->
+                    <!--</ion-option-button>-->
+                </a>
+            </div>
+        </div>
         <map-view data-ng-show="isActive('map-view')" data-tap-disabled="true"></map-view>
     </ion-content>
 </ion-view>

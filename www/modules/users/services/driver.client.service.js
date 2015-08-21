@@ -17,6 +17,14 @@ angular.module('users').factory('Drivers', ['$resource', 'CORE_CONST',
             create_driver_car: {
                 url: CORE_CONST.REST_URL + 'drivers/:driverId/create_driver_car',
                 method: 'POST'
+            },
+            increase_rating: {
+                url: CORE_CONST.REST_URL + 'drivers/:driverId/increase_rating',
+                method: 'POST'
+            },
+            transfer_bonus_to_money: {
+                url: CORE_CONST.REST_URL + 'drivers/:driverId/transfer_bonus_to_money',
+                method: 'POST'
             }
         });
     }

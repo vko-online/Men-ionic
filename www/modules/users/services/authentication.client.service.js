@@ -1,17 +1,19 @@
 'use strict';
 // Authentication service for user variables
-angular.module('users').factory('Authentication', ['$http', '$q', 'CORE_CONST',
+angular.module('users').service('Authentication', ['$http', '$q', 'CORE_CONST',
     function($http, $q, CORE_CONST){
-        function _get_user(){
+        this.user = false;
+        this.get_user = function(){
             var that = this;
             var defer = $q.defer();
-            if(window.user){
-                defer.resolve(window.user);
+            if(that.user){
+                defer.resolve(that.user);
             } else {
                 $http.get(CORE_CONST.REST_URL + 'users/me')
                     .success(function(response){
-                        that.user = response;
+                        //for dev
                         window.user = response;
+                        that.user = response;
                         defer.resolve(response);
                     })
                     .error(function(errorResponse){
@@ -19,14 +21,12 @@ angular.module('users').factory('Authentication', ['$http', '$q', 'CORE_CONST',
                     });
             }
             return defer.promise;
-        }
-        return {
-            get_user: _get_user,
-            user: window.user,
-            set_user: function(user){
-                this.user = user;
-                window.user = user;
-            }
+        };
+        this.set_user = function(user){
+            this.user = user;
+        };
+        this.set_prop = function(propname, value){
+            this.user[propname] = value;
         };
     }
 ]);
