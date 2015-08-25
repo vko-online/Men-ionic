@@ -8,7 +8,7 @@ angular.module('core').directive('toggle', function(){
            width: '@',
            icon: '@'
        },
-       template: '<button class="button taxi-btn" data-ng-click="click($event)"><i data-ng-if="icon" class="{{icon}}"></i> {{text}}</button>',
+       template: '<button class="button taxi-btn button-positive" data-ng-click="click($event)"><i data-ng-if="icon" class="{{icon}}"></i> {{text}}</button>',
        link: function(scope, elem){
            scope.model = scope.model || false;
            if(scope.model){

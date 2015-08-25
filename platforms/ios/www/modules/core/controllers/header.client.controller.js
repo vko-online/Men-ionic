@@ -1,14 +1,29 @@
 'use strict';
 angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus', 'Socket', 'Users', '$location', '$http', '$ionicModal', '$state', 'CORE_CONST',
     function($scope, Authentication, Menus, Socket, Users, $location, $http, $ionicModal, $state, CORE_CONST){
-        var socket_registered = false;
-        Authentication.get_user().then(function(data){
-            Socket.emit('join', data._id);
-            $scope.authentication = Authentication;
-            if($scope.authentication.user && !socket_registered){
-                socket_registered = true;
-                Socket.emit('join', $scope.authentication.user._id);
-            }
+        $scope.authentication = Authentication;
+        $ionicModal.fromTemplateUrl('modules/users/views/authentication/signin.client.view.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            Authentication.get_user().then(function(data){
+                Socket.emit('join', data._id);
+            });
+            $scope.signin_modal = modal;
+            $scope.$on('event:auth-login_required', function(e, rejection) {
+                $scope.signin_modal.show();
+            });
+            $scope.$on('event:auth-login_hide', function() {
+                $scope.signin_modal.hide();
+                $scope.authentication = Authentication;
+            });
+            $scope.$on('event:auth-complete', function() {
+                $state.go('home', {}, {reload: true, inherit: false});
+            });
+            //Cleanup the modal when we're done with it!
+            $scope.$on('$destroy', function() {
+                $scope.signin_modal.remove();
+            });
         });
         $scope.signout = function(){
             Users.sign_out(function(successResponse){
@@ -33,26 +48,14 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
             $scope.isCollapsed = false;
         });
         //modal
-        $ionicModal.fromTemplateUrl('modules/users/views/authentication/signin.client.view.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.signin_modal = modal;
-            $scope.$on('event:auth-login_required', function(e, rejection) {
-                $scope.signin_modal.show();
-            });
-            $scope.$on('event:auth-login_hide', function() {
-                $scope.signin_modal.hide();
+
+        $scope.CORE_CONST = CORE_CONST;
+        Socket.on('user:changed', function(payload){
+            payload.keys.forEach(function(key){
+                Authentication.set_prop(key, payload.source[key]);
                 $scope.authentication = Authentication;
             });
-            $scope.$on('event:auth-complete', function() {
-                $state.go('home', {}, {reload: true, inherit: false});
-            });
-            //Cleanup the modal when we're done with it!
-            $scope.$on('$destroy', function() {
-                $scope.signin_modal.remove();
-            });
         });
-        $scope.CORE_CONST = CORE_CONST;
+
     }
 ]);

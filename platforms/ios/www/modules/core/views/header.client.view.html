@@ -2,7 +2,7 @@
     <ion-side-menu-content>
         <ion-nav-bar class="bar-positive">
             <ion-nav-buttons side="primary">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="display: block;">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
             </ion-nav-buttons>
             <ion-nav-back-button>
@@ -10,6 +10,15 @@
         </ion-nav-bar>
         <ion-view>
             <ion-nav-view></ion-nav-view>
+            <ion-footer-bar align-title="left" class="bar-positive">
+                <!--<div class="buttons">-->
+                    <!--<button class="button">Left Button</button>-->
+                <!--</div>-->
+                <h1 class="title" onclick="alert('Not implemented');">Ads</h1>
+                <!--<div class="buttons" ng-click="doSomething()">-->
+                    <!--<button class="button">Right Button</button>-->
+                <!--</div>-->
+            </ion-footer-bar>
         </ion-view>
     </ion-side-menu-content>
 
@@ -17,9 +26,9 @@
         <ion-header-bar class="bar-positive">
             <h1 class="title">Taxi</h1>
         </ion-header-bar>
-        <ion-content>
+        <ion-content class="bg-positive">
             <ion-list>
-                <ion-item data-ng-show="authentication.user" data-ng-init="dropdowned = false">
+                <ion-item data-ng-show="authentication.user" data-ng-init="dropdowned = false" class="item-positive">
                     <div class="item-group">
                         <img data-ng-if="authentication.user.photo_src" class="item-group-img" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + authentication.user.photo_src}}" alt="profile" height="42" width="42"/>
                         <div class="item-group-content">
@@ -27,28 +36,33 @@
                             <span class="item-s">{{authentication.user.username}}</span>
                         </div>
                         <div class="item-group-control">
-                            <button class="button button-light button-small" data-ng-click="dropdowned = !dropdowned">
+                            <button class="button button-positive button-small" data-ng-click="dropdowned = !dropdowned">
                                 <i data-ng-class="{'ion-chevron-up': dropdowned, 'ion-chevron-down': !dropdowned }"></i>
                             </button>
                         </div>
-                        <div data-ng-show="dropdowned">
-                            {{authentication.user.bonus_amount}} бонусов
-                            <a menu-close class="button button-small button-clear button-full" href="#!/settings/profile">Мой профиль</a>
-                            <a menu-close class="button button-small button-clear button-full" data-ng-click="signout()">Выйти</a>
+                        <div data-ng-show="dropdowned" class="item-group-body">
+                            <p ng-show="authentication.user.is_driver"><i class="ion ion-pricetags"></i> Баланс: {{authentication.user.money_amount}} тг</p>
+                            <p><i class="ion ion-pricetag"></i> Бонус: {{authentication.user.bonus_amount}} </p>
+                            <star-rating readonly="true" rating="authentication.user.rating"></star-rating>
+                            <p> <a style="height: 20px;line-height: 16px; min-height: 20px;" ng-show="authentication.user.rating < 5" href="#!/settings/rating" class=" pull-right button button-small button-positive">Купить</a></p>
+                            <p>other data</p>
+                            <hr/>
+                            <a menu-close class="button button-small button-positive" data-ng-click="dropdowned = false;" href="#!/settings/profile">Мой профиль</a>
+                            <a menu-close class="button button-small button-positive pull-right" data-ng-click="dropdowned = false;signout()">Выйти</a>
                         </div>
                     </div>
                 </ion-item>
-                <ion-item menu-close>
-                    <a class="button button-clear" href="#!/">Главная</a>
+                <ion-item menu-close class="item-positive" href="#!/">
+                    Главная
                 </ion-item>
-                <ion-item menu-close>
-                    <a class="button button-clear" href="#!/trips_history">История поездок</a>
+                <ion-item menu-close class="item-positive" href="#!/trips_history">
+                    История поездок
                 </ion-item>
-                <ion-item menu-close>
-                    <a class="button button-clear" href="#!/share">Поделиться</a>
+                <ion-item menu-close class="item-positive" href="#!/share">
+                    Поделиться
                 </ion-item>
-                <ion-item menu-close>
-                    <a class="button button-clear" data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}" class="title">Профиль водителя</a>
+                <ion-item menu-close class="item-positive" data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}">
+                    Профиль водителя
                 </ion-item>
             </ion-list>
         </ion-content>

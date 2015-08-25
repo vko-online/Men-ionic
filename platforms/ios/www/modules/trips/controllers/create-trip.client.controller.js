@@ -11,15 +11,15 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
             attributionControl: false,
             scrollWheelZoom: false,
-            location_success: false
+            location_success: false,
+            center: {
+                lat: CORE_CONST.MAP_LAT,
+                lng: CORE_CONST.MAP_LNG,
+                zoom: 15
+            }
         };
         GeoLocation.current()
             .then(function(successResponse){
-                $scope.center = {
-                    lat: successResponse.coords.latitude,
-                    lng: successResponse.coords.longitude,
-                    zoom: 15
-                };
                 $scope.markers = {
                     marker: {
                         lat: successResponse.coords.latitude,
@@ -29,6 +29,8 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
                         draggable: true
                     }
                 };
+                $scope.defaults.center.lat = successResponse.coords.latitude;
+                $scope.defaults.center.lng = successResponse.coords.longitude;
                 $scope.defaults.location_success = true;
             }, function(errorResponse){
                 console.log(errorResponse);
@@ -42,11 +44,6 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             $scope.markers.marker.lat = args.model.lat;
         });
 
-        $scope.center = {
-            lat: CORE_CONST.MAP_LAT,
-            lng: CORE_CONST.MAP_LNG,
-            zoom: CORE_CONST.MAP_ZOOM
-        };
         $scope.prepare = function(){
             if($scope.markers && $scope.markers.marker && $scope.markers.marker.lat && $scope.markers.marker.lng)
                 angular.extend($scope.preparation, {

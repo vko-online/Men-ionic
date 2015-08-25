@@ -1,3 +1,2 @@
 <leaflet markers="markers" center="center" height="100%" defaults="defaults"></leaflet>
-<point-preview data-ng-init="active = false" data-ng-click="active = !active" data-ng-class="{'active': active}" active="active" current-point="current_point" ng-show="current_trip" current-trip="current_trip"></point-preview>
-<point-view current-point="current_point" ng-show="current_trip"></point-view>
+<point-preview hide-callback="hide_callback" ng-show="current_trip" active="active" indexer-callback="indexer_callback" all-markers="existing_markers" current-trip-index="current_trip_index" current-trip="current_trip"></point-preview>

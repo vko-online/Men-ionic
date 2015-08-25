@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a227f26a-cacf-4563-b90a-95cf7fbdafcb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/modules/users/views/driver/driver-view.client.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/modules/users/controllers/rating.client.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/modules/users/views/rating.client.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/modules/core/directives/star-rating.client.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/modules/core/css/star-rating.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/users/services/authentication.client.service.js" afterPath="$PROJECT_DIR$/www/modules/users/services/authentication.client.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-initialized.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/client-initialized.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/css/core.css" afterPath="$PROJECT_DIR$/www/modules/core/css/core.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/controllers/create-trip.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/trips/controllers/create-trip.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/create-trip.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/create-trip.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/users/views/driver/driver-edit.client.view.html" afterPath="$PROJECT_DIR$/www/modules/users/views/driver/driver-edit.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-initialized.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/driver-initialized.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/users/services/driver.client.service.js" afterPath="$PROJECT_DIR$/www/modules/users/services/driver.client.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/services/geo_location.client.service.js" afterPath="$PROJECT_DIR$/www/modules/core/services/geo_location.client.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/views/header.client.view.html" afterPath="$PROJECT_DIR$/www/modules/core/views/header.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/list-trips.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/list-trips.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/directives/map-view.client.directive.js" afterPath="$PROJECT_DIR$/www/modules/trips/directives/map-view.client.directive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/users/config/users.client.routes.js" afterPath="$PROJECT_DIR$/www/modules/users/config/users.client.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="a227f26a-cacf-4563-b90a-95cf7fbdafcb" name="Default" comment="" />
     <ignored path="mobile.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

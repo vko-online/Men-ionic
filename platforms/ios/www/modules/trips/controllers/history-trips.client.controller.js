@@ -34,6 +34,9 @@ angular.module('users').controller('TripHistoryController', ['$scope', '$locatio
                     $rootScope.$broadcast('event:create-flag', $scope.flag_text);
                     $scope.flag_modal.hide();
                 };
+                $scope.cancel_flag_modal = function(){
+                    $scope.flag_modal.hide();
+                };
             })
         };
         $scope.$on('event:create-flag', function(a){

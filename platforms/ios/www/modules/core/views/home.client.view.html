@@ -2,11 +2,11 @@
     <ion-content style="background: #262626" padding="true">
         <section data-ng-controller="HomeController">
             <img src="img/381_a.jpg" alt="logo" width="150" class="logo"/>
-            <a data-ng-if="!authentication.user.trip" href="#!/trips/create" class="button taxi-btn">Вызвать такси</a>
-            <a data-ng-if="authentication.user.trip" data-ng-href="#!/trips/{{authentication.user.trip}}" class="button taxi-btn">Вызвать такси</a>
-            <a data-ng-if="authentication.user.is_driver" data-ng-href="#!/{{(authentication.user.trip) ? ('trips_driver/' + authentication.user.trip) : 'trips'}}" class="button taxi-btn">Водитель</a>
-            <a class="button taxi-btn">Вызвать трезвого водителя</a>
-            <a href="#!/share" class="button taxi-btn">Поделиться</a>
+            <a data-ng-if="!authentication.user.trip" href="#!/trips/create" class="button taxi-btn button-positive">Вызвать такси</a>
+            <a data-ng-if="authentication.user.trip" data-ng-href="#!/trips/{{authentication.user.trip}}" class="button taxi-btn button-positive">Вызвать такси</a>
+            <a data-ng-if="authentication.user.is_driver" data-ng-href="#!/{{(authentication.user.trip) ? ('trips_driver/' + authentication.user.trip) : 'trips'}}" class="button taxi-btn button-positive">Водитель</a>
+            <a class="button taxi-btn button-positive">Вызвать трезвого водителя</a>
+            <a href="#!/share" class="button taxi-btn button-positive">Поделиться</a>
         </section>
     </ion-content>
 </ion-view>

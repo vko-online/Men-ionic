@@ -57,6 +57,10 @@ angular.module('trips').factory('Trips', ['$resource', 'CORE_CONST',
 				method: 'GET',
 				url: CORE_CONST.REST_URL + 'trips/location',
 				isArray: true
+			},
+			driver_location: {
+				method: 'POST',
+				url: CORE_CONST.REST_URL + 'trips/:tripId/driver_location'
 			}
 		});
 	}

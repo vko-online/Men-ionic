@@ -46,8 +46,28 @@ point-preview{
 	z-index: 9999;
 	position: relative;
 	background-color: white;
-	height: 85px;
+	height: 100px;
 	transition: all 1s ease;
+	border-radius: 5px;
+	border:1px solid lightblue;
+	box-shadow: 2px 2px 10px #006666;
+}
+point-preview .point-preview-header {
+	text-align: center;
+}
+
+point-preview .point-preview-header label {
+	margin-top: 9px;
+	display: inline-block;
+}
+
+point-preview .point-preview-header span {
+	margin: 5px;
+	position: absolute;
+}
+point-preview .point-preview-content{
+	background-color: #FFF0F5;
+	margin-top: 1px;
 }
 point-preview.active{
 	margin-top:-300px;
@@ -108,20 +128,19 @@ point-preview.active{
 }
 /*custom item*/
 .item-m{
-	background-color: #fff;
-	color: #444;
 	position: relative;
 	z-index: 2;
 	display: block;
 	font-size: 16px;
 }
 .item-s{
-	background-color: #fff;
-	color: #444;
 	position: relative;
 	z-index: 2;
 	display: block;
 	font-size: 12px;
+}
+.item .item-group-body p{
+	color:white;
 }
 .item-group-content{
 	position: relative;
@@ -145,25 +164,94 @@ img.logo{
 	white-space: nowrap;
 	display: block;
 	color: #262626;
-	background-color: #F2CB05;
 	margin: 1px auto;
 	width: 100%;
 	font-weight: 200;
 	font-size: 16px;
+	font-family: 'Radiance', 'Verdana', sans-serif;
 }
 .button-bar-small>.button .icon:before, .button-bar-small>.button:before {
 	line-height:29px !important;
-}
-.button.taxi-btn.active, .button.taxi-btn.activated{
-	background-color: #f2a401;
 }
 .leaflet-bottom leaflet-right{
 	display:none;
 }
 toggle.activated .button.taxi-btn{
-	background-color: #f2a401;
+	background-color: inherit;
 }
 toggle{
 	display: inline-block;
 	font-size: 11px;
+}
+
+ion-item.immediate:after{
+	content: 'срочно';
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 99;
+	font-size: .8em;
+	background-color: transparent;
+	color: black;
+	border-radius: 4px;
+	padding: 0 2px;
+	font-weight: bold;
+}
+
+
+/*trip item*/
+.trip-item{
+	display: flex;
+}
+.trip-item-left{
+	flex: 1;
+	padding-left:10px;
+}
+.trip-item-right{
+	flex: .5;
+	text-align: right;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.trip-item-data{
+	display: block;
+}
+.trip-item-data.start_address{
+	font-size: 1.1em;
+}
+.trip-item-data.end_address{
+	font-size: 1em;
+}
+.trip-item-data.price{
+	color:red;
+	font-size: .9em;
+}
+.trip-item-data.created_date{
+	font-size: .7em;
+	color:gray;
+}
+.trip-item-data.display_name{
+	font-size: .9em;
+	color:gray;
+}
+.trip-item-data.tag{
+	border-radius: 3px;
+	display: inline-block;
+	padding: 0 6px;
+	border: 1px solid #4E8EF7;
+}
+.trip-item-icon{
+	transform: rotate(-110deg);
+	position: absolute;
+	left: 7px;
+	top: 22px;
+	font-size: 1.5em;
+}
+.trip-item-data.tags{
+	font-size: .9em;
+	color:#4E8EF7;
+}
+.price-label{
+	font-size: .8em;
 }

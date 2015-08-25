@@ -163,3 +163,11 @@
 2015-08-10 17:55:40.829 insport[77643:2131639] [CDVTimer][TotalPluginStartup] 0.199974ms
 2015-08-10 17:55:40.919 insport[77643:2131639] Resetting plugins due to page load.
 2015-08-10 17:55:41.242 insport[77643:2131639] Finished load of: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Bundle/Application/DF061CAA-5D5E-4A5F-8A6E-0B8E00EDCE7D/insport.app/www/index.html#!/
+2015-08-24 12:57:49.093 insport[52028:487519] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Data/Application/C41A6547-2E36-4154-BD5A-60BFA9446F00/Library/Cookies/Cookies.binarycookies
+2015-08-24 12:57:49.544 insport[52028:487519] Apache Cordova native platform version 3.8.0 is starting.
+2015-08-24 12:57:49.545 insport[52028:487519] Multi-tasking -> Device: YES, App: YES
+2015-08-24 12:57:49.558 insport[52028:487519] Unlimited access to network resources
+2015-08-24 12:57:49.928 insport[52028:487519] [CDVTimer][keyboard] 0.074983ms
+2015-08-24 12:57:49.928 insport[52028:487519] [CDVTimer][TotalPluginStartup] 0.259995ms
+2015-08-24 12:57:50.255 insport[52028:487519] Resetting plugins due to page load.
+2015-08-24 12:57:51.056 insport[52028:487519] Finished load of: file:///Users/bwin/Library/Developer/CoreSimulator/Devices/817344F1-38D3-4EBC-AB42-A560078079E4/data/Containers/Bundle/Application/1187D6AC-EF94-4CCC-864A-9B6D9E2843AD/insport.app/www/index.html#!/
