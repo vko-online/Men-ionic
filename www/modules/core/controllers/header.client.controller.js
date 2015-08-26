@@ -6,9 +6,6 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
-            Authentication.get_user().then(function(data){
-                Socket.emit('join', data._id);
-            });
             $scope.signin_modal = modal;
             $scope.$on('event:auth-login_required', function(e, rejection) {
                 $scope.signin_modal.show();
@@ -24,6 +21,9 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
             $scope.$on('$destroy', function() {
                 $scope.signin_modal.remove();
             });
+        });
+        $scope.$on('event:auth-login_required', function(e, rejection) {
+            console.log('event:auth-login_required');
         });
         $scope.signout = function(){
             Users.sign_out(function(successResponse){

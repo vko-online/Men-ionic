@@ -4,9 +4,6 @@
 
 angular.module('core').run(['Menus', 'Authentication',
     function(Menus, Authentication) {
-        Authentication.get_user().then(function(user){
-            console.log(user);
-        });
         // Set top bar menu items
         Menus.addMenuItem('topbar', 'BecomeDriver', 'become_driver', 'link', '', true, ['client']);
         Menus.addMenuItem('topbar', 'Profile', 'settings/profile', 'link', '', true, ['client']);

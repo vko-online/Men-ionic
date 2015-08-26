@@ -8,16 +8,9 @@ angular.module('users').controller('DriverController', ['$scope', '$location', '
         $scope.authentication = Authentication;
         //todo: refactor this hell
         $scope.findOne = function(){
-            if($scope.authentication && $scope.authentication.user && $scope.authentication.user.driver_profile){
+            if($scope.authentication.user.driver_profile){
                 $scope.driver = Drivers.get({
                     driverId: $scope.authentication.user.driver_profile
-                });
-            } else {
-                Authentication.get_user().then(function(){
-                    $scope.authentication = Authentication;
-                    $scope.driver = Drivers.get({
-                        driverId: $scope.authentication.user.driver_profile
-                    });
                 });
             }
         };

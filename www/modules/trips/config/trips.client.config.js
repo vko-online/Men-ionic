@@ -13,13 +13,10 @@ angular.module('trips').run(['Menus', 'Authentication',
         Menus.addSubMenuItem('topbar', 'trips', 'Create', 'trips/create');
 
         Menus.addSubMenuItem('topbar', 'trips', 'History trips', 'trips_history', undefined, true, ['client', 'driver']);
-        Authentication.get_user().then(function(successResponse){
-            Authentication.set_user(successResponse);
-            if(Authentication.user && Authentication.user.trip){
-                Menus.addSubMenuItem('topbar', 'trips', 'Active trip', 'trips/' + (Authentication.user.trip._id || Authentication.user.trip), undefined, true, ['client']);
-            } else {
-                Menus.addSubMenuItem('topbar', 'trips', 'Create', 'trips/create', undefined, true, ['client']);
-            }
-        });
+        if(Authentication.user && Authentication.user.trip){
+            Menus.addSubMenuItem('topbar', 'trips', 'Active trip', 'trips/' + (Authentication.user.trip._id || Authentication.user.trip), undefined, true, ['client']);
+        } else {
+            Menus.addSubMenuItem('topbar', 'trips', 'Create', 'trips/create', undefined, true, ['client']);
+        }
     }
 ]);

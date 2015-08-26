@@ -1,5 +1,7 @@
 // by bwin on 7/8/15.
+
 'use strict';
+
 angular.module('core').factory('Misc', ['$http', 'CORE_CONST',
     function($http, CORE_CONST){
         return {

@@ -1,8 +1,8 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="false" data-ng-controller="HeaderController">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-positive">
             <ion-nav-buttons side="primary">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"  data-ng-show="authentication.user">
                 </button>
             </ion-nav-buttons>
             <ion-nav-back-button>
@@ -11,24 +11,18 @@
         <ion-view>
             <ion-nav-view></ion-nav-view>
             <ion-footer-bar align-title="left" class="bar-positive">
-                <!--<div class="buttons">-->
-                    <!--<button class="button">Left Button</button>-->
-                <!--</div>-->
                 <h1 class="title" onclick="alert('Not implemented');">Ads</h1>
-                <!--<div class="buttons" ng-click="doSomething()">-->
-                    <!--<button class="button">Right Button</button>-->
-                <!--</div>-->
             </ion-footer-bar>
         </ion-view>
     </ion-side-menu-content>
 
-    <ion-side-menu side="left" data-ng-controller="HeaderController">
+    <ion-side-menu side="left" is-enabled="authentication.user">
         <ion-header-bar class="bar-positive">
             <h1 class="title">Taxi</h1>
         </ion-header-bar>
-        <ion-content class="bg-positive">
+        <ion-content class="bg-positive" data-ng-show="authentication.user">
             <ion-list>
-                <ion-item data-ng-show="authentication.user" data-ng-init="dropdowned = false" class="item-positive">
+                <ion-item data-ng-if="authentication.user" data-ng-init="dropdowned = false" class="item-positive">
                     <div class="item-group">
                         <img data-ng-if="authentication.user.photo_src" class="item-group-img" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + authentication.user.photo_src}}" alt="profile" height="42" width="42"/>
                         <div class="item-group-content">
@@ -61,7 +55,7 @@
                 <ion-item menu-close class="item-positive" href="#!/share">
                     Поделиться
                 </ion-item>
-                <ion-item menu-close class="item-positive" data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}">
+                <ion-item data-ng-if="authentication.user && authentication.user.driver_profile" menu-close class="item-positive" data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}">
                     Профиль водителя
                 </ion-item>
             </ion-list>

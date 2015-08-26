@@ -2,10 +2,14 @@
 
 // by bwin on 6/25/15.
 'use strict';
-angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope',
-    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope){
+angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory',
+    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory){
+
         $scope.TRIP_STATUS = TripStatuses.query();
         $scope.authentication = Authentication;
+        if($scope.authentication && $scope.authentication.user && $scope.authentication.user.trip){
+            $location.path('trips/' + ($scope.authentication.user.trip._id || $scope.authentication.user.trip));
+        }
         $scope.preparation = {};
         $scope.defaults = {
             tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
@@ -56,6 +60,7 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             Trips.prepare_trip({
                 tripId: $stateParams.tripId
             }, $scope.preparation, function(successResponse){
+                $ionicHistory.clearHistory();
                 $location.path('trips/' + successResponse._id);
             }, function(errorResponse){
                 $scope.error = errorResponse.data.message;

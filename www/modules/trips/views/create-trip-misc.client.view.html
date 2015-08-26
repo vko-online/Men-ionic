@@ -8,18 +8,95 @@
             </div>
         </ion-header-bar>
         <ion-content>
-            <div>
-                <toggle model="misc.misc_on_road" text="на точке у дороги" width="50" icon="ion-help-buoy"></toggle>
-                <toggle model="misc.misc_multi_pickup" text="с подсадкой" width="50" icon="ion-help-buoy"></toggle>
-            </div>
-            <div>
-                <toggle model="misc.misc_single" text="я один" width="33" icon="ion-help-buoy"></toggle>
-                <toggle model="misc.misc_double" text="нас двое" width="33" icon="ion-help-buoy"></toggle>
-                <toggle model="misc.misc_triple" text="нас трое" width="33" icon="ion-help-buoy"></toggle>
-            </div>
-            <div>
-                <toggle model="misc.misc_entrance" text="с заездом" width="100" icon="ion-help-buoy"></toggle>
-            </div>
+            <ul class="list">
+                <li class="item item-toggle">
+                    Бонус
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.use_bonus">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-toggle">
+                    Срочно
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.immediate">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-toggle">
+                    Стою на дороге
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.misc_on_road">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-toggle">
+                    С подсадкой
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.misc_multi_pickup">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-toggle">
+                    С заездом
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.misc_entrance">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-toggle">
+                    С детским креслом
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.misc_child_belt">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-toggle">
+                    Микроавтобус
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.misc_micro_bus">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-toggle">
+                    Заказ не себе
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox" data-ng-model="misc.misc_external">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+            <label class="item item-input item-stacked-label">
+                <textarea placeholder="Комментарии" rows="4" cols="10" data-ng-model="misc.note"></textarea>
+            </label>
+            <!--<div>-->
+                <!--<toggle model="misc.misc_on_road" text="на точке у дороги" width="50" icon="ion-help-buoy"></toggle>-->
+                <!--<toggle model="misc.misc_multi_pickup" text="с подсадкой" width="50" icon="ion-help-buoy"></toggle>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<toggle model="misc.misc_single" text="я один" width="33" icon="ion-help-buoy"></toggle>-->
+                <!--<toggle model="misc.misc_double" text="нас двое" width="33" icon="ion-help-buoy"></toggle>-->
+                <!--<toggle model="misc.misc_triple" text="нас трое" width="33" icon="ion-help-buoy"></toggle>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<toggle model="misc.misc_entrance" text="с заездом" width="100" icon="ion-help-buoy"></toggle>-->
+            <!--</div>-->
         </ion-content>
     </section>
 </ion-modal-view>

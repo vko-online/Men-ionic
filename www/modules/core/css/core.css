@@ -255,3 +255,25 @@ ion-item.immediate:after{
 .price-label{
 	font-size: .8em;
 }
+.full-height > .scroll{
+	height: 100%;
+}
+.slider{
+	height: 100%;
+}
+.intro-card{
+	color: white;
+	height: 100%;
+}
+.bg-orange{
+	background-color: #eca403;
+}
+.bg-blue{
+	background-color: #4285f4;
+}
+.bg-green{
+	background-color: #0f9d58;
+}
+.bg-grey{
+	background-color: #898984;
+}
