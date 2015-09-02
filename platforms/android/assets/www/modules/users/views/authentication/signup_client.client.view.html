@@ -1,0 +1,41 @@
+<ion-view>
+    <ion-content>
+        <section class="row" data-ng-controller="AuthenticationController">
+            <div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+                <form name="userForm" data-ng-submit="signup_client()" class="signin form-horizontal" novalidate
+                      autocomplete="off">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="referrer">Referrer</label>
+                            <input type="text" required id="referrer" name="referrer" class="form-control"
+                                   data-ng-model="credentials.referrer" placeholder="Phone of your referrer friend">
+                        </div>
+                        <div class="form-group">
+                            <label for="displayName">Display Name</label>
+                            <input type="text" required id="displayName" name="displayName" class="form-control"
+                                   data-ng-model="credentials.displayName" placeholder="Display Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Phone</label>
+                            <input type="text" id="username" name="username" class="form-control"
+                                   data-ng-model="credentials.username" placeholder="Phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control"
+                                   data-ng-model="credentials.password" placeholder="Password">
+                        </div>
+                        <div class="text-center form-group">
+                            <button type="submit" class="btn btn-large btn-primary">Sign up</button>
+                            &nbsp; or&nbsp;
+                            <a href="/#!/signin" class="show-signup">Sign in</a>
+                        </div>
+                        <div data-ng-show="error" class="text-center text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </ion-content>
+</ion-view>

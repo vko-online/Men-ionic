@@ -1,0 +1,30 @@
+<ion-view data-ng-controller="ShareController" title="Поделиться">
+    <ion-nav-buttons side="secondary">
+        <button class="button" data-ng-click="send()">
+            <i class="ion ion-android-send"></i> Send
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true">
+        <span>
+            Это ваш уникальный идентификатор, для того что бы вы получали бонусы, нужно поделиться приложением отправив его по СМС или по почте
+        </span>
+        <h1 class="text-center">{{authentication.user.uid}}</h1>
+        Есть несколько способов поделиться приложением
+        <div class="list">
+            <div class="item">
+                <i class="icon ion-android-phone-portrait"></i>
+                Введите номер телефона
+                            <span class="item-note">
+                              <input type="tel" id="phone_number"/>
+                            </span>
+            </div>
+            <div class="item">
+                <i class="icon ion-ios-email"></i>
+                Введите почтовый адрес
+                            <span class="item-note">
+                              <input type="email" id="email"/>
+                            </span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

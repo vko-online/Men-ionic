@@ -14,6 +14,26 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         $scope.car_brands = CarBrands.query();
         $scope.car_models = CarModels.query();
         $scope.car_colors = CarColors.query();
+        $scope.active = 'list-view';
+        $scope.setActive = function(type){
+            $scope.active = type;
+        };
+        $scope.isActive = function(type){
+            return type === $scope.active;
+        };
+        $scope.get_driver_request = function(trip){
+          if(trip){
+              return trip.requests.filter(function(o){
+                  return o.driver_profile === $scope.authentication.user._id;
+              })[0];
+          } else {
+              if($scope.trip && $scope.trip.requests){
+                  return $scope.trip.requests.filter(function(o){
+                      return o.driver_profile === $scope.authentication.user._id;
+                  })[0];
+              }
+          }
+        };
         $scope.defaults = {
             time: 1,
             tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
@@ -29,11 +49,11 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         }).then(function(popover){
             $scope.popover = popover;
         });
-        if(!$scope.server_date_time){
+        if(!$scope.server_time){
             Misc.server_time(function(time){
-                $scope.server_date_time = new Date(time.date_time);
+                $scope.server_time = new Date(time.date_time);
                 $interval(function(){
-                    $scope.server_date_time.setSeconds($scope.server_date_time.getSeconds() + 1);
+                    $scope.server_time.setSeconds($scope.server_time.getSeconds() + 1);
                 }, 1000);
             });
         }
@@ -42,7 +62,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.request_pickup();
             $scope.popover.hide();
         };
-
+        var interval;
         $scope.get = {
             brand: function(id){
                 return $scope.car_brands.filter(function(i){
@@ -58,28 +78,6 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 return $scope.car_models.filter(function(i){
                     return i._id === id;
                 })[0];
-            },
-            timer_class: function(time){
-                switch(time){
-                    case(5):
-                        return 'five';
-                    case(10):
-                        return 'ten';
-                    case(15):
-                        return 'fifteen';
-                    case(20):
-                        return 'twenty';
-                    case(25):
-                        return 'twenty_five';
-                    case(30):
-                        return 'thirty';
-                    case(45):
-                        return 'forty_five';
-                    case(60):
-                        return 'sixty';
-                    default:
-                        return 'ten';
-                }
             }
         };
         $scope.findOne = function(callback){
@@ -87,17 +85,19 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 tripId: $stateParams.tripId
             }, function(successResponse){
                 if(successResponse.meet_location && successResponse.meet_location.lat && successResponse.meet_location.lng){
-                    $scope.trip_markers = {
-                        marker: {
-                            lat: successResponse.loc[1],
-                            lng: successResponse.loc[0],
-                            focus: true,
-                            draggable: false,
-                            message: 'Meet location'
-                        }
-                    };
-                    $scope.defaults.center.lat = successResponse.loc[1];
-                    $scope.defaults.center.lng = successResponse.loc[0];
+                    if(successResponse.loc && successResponse.loc.length){
+                        $scope.trip_markers = {
+                            marker: {
+                                lat: successResponse.loc[1],
+                                lng: successResponse.loc[0],
+                                focus: true,
+                                draggable: false,
+                                message: 'Meet location'
+                            }
+                        };
+                        $scope.defaults.center.lat = successResponse.loc[1];
+                        $scope.defaults.center.lng = successResponse.loc[0];
+                    }
                 }
                 if(callback){
                     callback();
@@ -105,31 +105,6 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }, errorHandler);
         };
         $scope.findRequest = function(){
-            //$scope.trip = Trips.get({
-            //    tripId: $stateParams.tripId
-            //}, function(successResponse){
-            //    if(successResponse.meet_location && successResponse.meet_location.lat && successResponse.meet_location.lng){
-            //        $scope.markers = {
-            //            marker: {
-            //                lat: successResponse.meet_location.lat,
-            //                lng: successResponse.meet_location.lng,
-            //                message: 'Meet location',
-            //                focus: true,
-            //                draggable: false
-            //            }
-            //        };
-            //        $scope.center = {
-            //            lat: successResponse.meet_location.lat,
-            //            lng: successResponse.meet_location.lng,
-            //            zoom: CORE_CONST.MAP_ZOOM
-            //        };
-            //    }
-            //    $scope.request = DriverRequests.get({
-            //        driverRequestId: $stateParams.driverRequestId
-            //    }, function(successResponse){
-            //        console.log(successResponse);
-            //    }, errorHandler);
-            //}, errorHandler);
             $scope.request = DriverRequests.get({
                 driverRequestId: $stateParams.driverRequestId
             }, function(successResponse){
@@ -154,59 +129,22 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 });
             });
         };
-
-        $scope.sync_driver_location = function(){
-            if($scope.trip && $scope.trip.$resolved){
-                console.log('watch');
-                GeoLocation.watch(function(obj){
-                    $scope.trip.$driver_location({lat: obj.coords.latitude, lng: obj.coords.longitude});
-                }, function(e){
-                    console.log(e);
-                });
-            } else{
-                console.log('no trip');
-            }
-        };
-        //function sync_driver_location(){
-        //    return GeoLocation.watch(function(obj){
-        //        console.log(obj);
-        //        $scope.trip.$driver_location({lat: 1, lng: 2});
-        //    }, function(e){
-        //        console.log(e);
-        //    });
-        //}
-        ////todo: what is this
-        //$scope.register_timeout = function(time){
-        //    var location_watch_id = sync_driver_location();
-        //    $timeout(function(){
-        //        GeoLocation.clear_watch(location_watch_id);
-        //    }, (time*60*1000));
-        //};
-        $scope.active = 'list-view';
-        $scope.setActive = function(type){
-            $scope.active = type;
-        };
-        $scope.isActive = function(type){
-            return type === $scope.active;
-        };
         $scope.minutes_ago = function(time){
-            if($scope.server_date_time){
-                var r = Math.floor((+$scope.server_date_time - (+new Date(time)))/60000);
-                return r + ' min' + ((r===1) ? '' : 's') + ' ago';
+            if($scope.server_time){
+                var r = Math.floor((+$scope.server_time - (+new Date(time)))/60000);
+                return r + ' min' + ((r === 1) ? '' : 's') + ' ago';
             }
         };
         $scope.is_current_driver_request = function(trip){
             if(trip){
-                $scope.driver_request = trip.requests.filter(function(i){
+                return trip.requests.filter(function(i){
                     return i.driver_profile === $scope.authentication.user._id;
                 })[0];
-                return $scope.driver_request;
             } else {
                 if($scope.trip && $scope.trip.requests){
-                    $scope.driver_request = $scope.trip.requests.filter(function(i){
+                    return $scope.trip.requests.filter(function(i){
                         return i.driver_profile === $scope.authentication.user._id;
                     })[0];
-                    return $scope.driver_request;
                 }
             }
         };
@@ -221,41 +159,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 return exist.length > 0;
             }
         };
-        $scope.get_my_request = function(requests){
-            //single obj as requests cannot have dups
-            if(!requests || !requests.length){
-                return false;
-            } else {
-                $scope.driver_request = requests.filter(function(i){
-                    return i.driver_profile._id === $scope.authentication.user._id;
-                })[0];
-                return $scope.driver_request;
-            }
-        };
-        $scope.countdown_handler = function(request_end_date, callback_key){
-            if(request_end_date){
-                var date = new Date(request_end_date);
-                if($scope.server_date_time){
-                    var time = (window.moment(date).unix() - window.moment($scope.server_date_time).unix());
-                    //todo:this is stupid hack, related to countdown timer, get rid off asap
-                    if(time < 0){
-                        if(callback_key && callback_key === 'list')
-                            $scope.cb_list();
-                        else
-                            $scope.cb_get();
-                    }
-                    return time;
-                }
-                return 0;
-            }
-            return 0;
-        };
-        // Find existing Trip
-        $scope.prepare = function(){
-            Trips.prepare_trip($scope.preparation, function(successResponse){
-                $location.path('/trips/' + successResponse._id);
-            }, angular.noop, errorHandler);
-        };
+        //(window.moment(request_end_date).unix() - window.moment($scope.server_time).unix());
         $scope.cancel_trip = function(){
             //todo: prompt
             $scope.trip.$cancel_trip(function(successResponse){
@@ -286,6 +190,9 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         $scope.met_trip = function(){
             $scope.trip.$met_trip(angular.noop, errorHandler);
         };
+        $scope.end_trip = function(){
+            $scope.trip.$end_trip(angular.noop, errorHandler);
+        };
         $scope.request_pickup = function(_optional_trip){
             $scope.error = undefined;
             if(_optional_trip){
@@ -300,8 +207,12 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }
         };
         $scope.accept_pickup = function(id){
-            console.log(id);
             $scope.trip.$accept_pickup({
+                driverRequestId: id
+            }, angular.noop, errorHandler);
+        };
+        $scope.remove_pickup_request = function(id){
+            $scope.trip.$remove_pickup_request({
                 driverRequestId: id
             }, angular.noop, errorHandler);
         };
@@ -311,14 +222,6 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }, function(successResponse){
                 $scope.statistic = successResponse;
             }, errorHandler);
-        };
-        //todo: try to remove trip's driver_request if countdown passes
-        $scope.cb_list = function(){
-            $scope.find();
-        };
-        $scope.cb_get = function(){
-            //todo: this should only return current trip requests, don't reload trip
-            $scope.findOne();
         };
         Socket.on('accept_pickup', function(obj){
             if($scope.trip){
@@ -365,23 +268,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 });
             }
         });
-        var marker;
-        Socket.on('driver:location', function(data){
-            leafletData.getMap().then(function(map){
-                var lat = parseFloat(data.lat),
-                    lng = parseFloat(data.lng);
-                if(marker){
-                    marker.setLatLng({lat: lat, lng: lng});
-                    marker.update();
-                } else {
-                    marker = L.marker({lat: lat, lng: lng});
-                    marker.addTo(map);
-                }
-                map.panTo({lat: lat, lng: lng});
-                console.log('panned map', lat, lng);
-            });
-        });
-        if($scope.authentication && $scope.authentication.user && $scope.authentication.user.is_driver){
+        if($scope.authentication.user.is_driver && $scope.trips){
             Socket.on('new_trip', function(obj){
                 $scope.trips.push(obj);
             });

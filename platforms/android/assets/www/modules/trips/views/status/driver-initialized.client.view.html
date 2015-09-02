@@ -1,0 +1,187 @@
+<ion-content padding="true">
+    <div class="list card">
+        <div class="item item-avatar">
+            <img ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}">
+            <h2>{{trip.client.displayName}}</h2>
+            <p>{{minutes_ago(trip.created_date)}}</p>
+        </div>
+        <div class="item item-body">
+            <leaflet data-tap-disabled="true" defaults="defaults" markers="trip_markers" center="defaults.center" height="200"></leaflet>
+            <div class="list">
+                <div class="item">
+                    <i class="icon ion-ios-location"></i>
+                    Откуда
+                            <span class="item-note">
+                              {{trip.start_address}}
+                            </span>
+                </div>
+                <div class="item">
+                    <i class="icon ion-ios-location"></i>
+                    Куда
+                            <span class="item-note">
+                              {{trip.end_address}}
+                            </span>
+                </div>
+                <div class="item" data-ng-if="trip.immediate">
+                    <i class="icon ion-toggle"></i>
+                    Срочно
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.immediate" disabled>
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                </div>
+                <div class="item">
+                    <i class="icon ion-pricetag"></i>
+                    Использовать бонус
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.use_bonus" disabled>
+
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                </div>
+                <div class="item" data-ng-init="dropdowned = false">
+                    <i class="icon ion-ios-information"></i>
+                    Допольнительно
+                            <span class="item-note">
+                              <button class="button button-clear" data-ng-click="dropdowned = !dropdowned"><i
+                                      data-ng-class="{'ion-chevron-up': dropdowned, 'ion-chevron-down': !dropdowned }"></i>
+                              </button>
+                            </span>
+                    <div data-ng-show="dropdowned" style="margin-top: 30px;">
+                        <div class="item" data-ng-if="trip.misc_entrace">
+                            <i class="icon ion-ios-information"></i>
+                            С заездом
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.misc_entrace" disabled>
+
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_multi_pickup">
+                            <i class="icon ion-ios-information"></i>
+                            С подсадкой
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.misc_multi_pickup" disabled>
+
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_on_road">
+                            <i class="icon ion-ios-information"></i>
+                            Стою на дороге
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.misc_on_road" disabled>
+
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_single">
+                            <i class="icon ion-ios-information"></i>
+                            Один пассажир
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.misc_single" disabled>
+
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_double">
+                            <i class="icon ion-ios-information"></i>
+                            Два пассажира
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.misc_double" disabled>
+
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                        </div>
+                        <div class="item" data-ng-if="trip.misc_triple">
+                            <i class="icon ion-ios-information"></i>
+                            Три пассажира
+                            <span class="item-note">
+                              <label class="toggle">
+                                  <input type="checkbox" data-ng-model="trip.misc_triple" disabled>
+
+                                  <div class="track">
+                                      <div class="handle"></div>
+                                  </div>
+                              </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                <a href="#" class="subdued">124 Поездок</a>
+            </p>
+        </div>
+        <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+                <i class="icon ion-thumbsup"></i>
+                Request pickup
+            </a>
+        </div>
+    </div>
+
+
+
+    <!--<div class="list">-->
+        <!--<div class="item item-divider">-->
+            <!--Предложить поездку-->
+        <!--</div>-->
+        <!--<div data-ng-show="!is_current_driver_request()">-->
+            <!--<div class="item item-input item-select">-->
+                <!--<div class="input-label">-->
+                    <!--Буду через-->
+                <!--</div>-->
+                <!--<select data-ng-options="number as (number + ' мин') for number in [1,3,5,10,15,20,25,30,45,60]"-->
+                        <!--data-ng-model="defaults.time"></select>-->
+            <!--</div>-->
+            <!--<button class="button button-full button-energized" data-ng-click="request_pickup()">-->
+                <!--Request pickup-->
+            <!--</button>-->
+        <!--</div>-->
+        <!--<div data-ng-show="is_current_driver_request()">-->
+            <!--<div class="item">-->
+                <!--<i class="icon ion-ios-time"></i>-->
+                <!--Request pending-->
+                <!--&lt;!&ndash;todo:bug here, time is not shown&ndash;&gt;-->
+                <!--<span class="item-note">-->
+                        <!--<timer interval="1000" finish-callback="cb_get()"-->
+                               <!--countdown="countdown_handler(is_current_driver_request().date_end)">-->
+                            <!--{{countdown}}-->
+                        <!--</timer>-->
+                    <!--</span>-->
+            <!--</div>-->
+            <!--<button class="button button-full button-assertive" data-ng-click="cancel_request_pickup()">-->
+                <!--Cancel request-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+</ion-content>

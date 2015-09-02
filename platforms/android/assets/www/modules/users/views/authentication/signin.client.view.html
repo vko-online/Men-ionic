@@ -1,0 +1,33 @@
+<ion-modal-view>
+    <section data-ng-controller="AuthenticationController">
+        <ion-header-bar>
+            <h1 class="title">Login</h1>
+
+            <div class="buttons">
+                <button class="button button-clear" ng-click="close_signin_modal()">Close</button>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+
+            <form data-ng-submit="signin()" autocomplete="off">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Phone</span>
+                        <input type="text" data-ng-model="credentials.username">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" data-ng-model="credentials.password">
+                    </label>
+                    <label class="item">
+                        <button class="button button-block button-positive" type="submit">Sign in</button>
+                    </label>
+                    <div data-ng-show="error">
+                        <strong data-ng-bind="error"></strong>
+                    </div>
+                </div>
+            </form>
+            <a class="button button-default" data-ng-click="close_signin_modal()" href="#!/signup_client">Sign up</a>
+        </ion-content>
+    </section>
+</ion-modal-view>

@@ -1,0 +1,85 @@
+<ion-view>
+    <ion-content>
+        <section data-ng-controller="DriverController" data-ng-init="findOne()">
+            <div class="page-header">
+                <h1>Driver benefits</h1>
+            </div>
+            <div data-ng-if="!authentication.user.is_driver">
+                <div class="lead">
+                    <p>Nullam sagittis. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Sed a
+                        libero. Praesent
+                        adipiscing.
+
+                        Phasellus viverra nulla ut metus varius laoreet. Aliquam eu nunc. Fusce neque. Integer
+                        tincidunt.
+
+                        Aenean massa. Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada
+                        velit leo
+                        quis pede. Nam eget dui. Curabitur a felis in nunc fringilla tristique.</p>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary" data-ng-click="create_driver()">Become driver</button>
+                </div>
+            </div>
+            <div data-ng-if="authentication.user.is_driver">
+                <form name="create_driver_form" class="form-horizontal" data-ng-submit="update_car()" novalidate>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label" for="car_brand">Brand</label>
+
+                            <div class="controls">
+                                <select name="car_brand" id="car_brand" data-ng-model="driver.car_brand"
+                                        class="form-control"
+                                        data-ng-options="car_brand._id as car_brand.name for car_brand in car_brands"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="car_model">Model</label>
+
+                            <div class="controls">
+                                <select name="car_model" id="car_model" data-ng-model="driver.car_model"
+                                        class="form-control"
+                                        data-ng-options="car_model._id as car_model.name for car_model in car_models"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="car_color">Color</label>
+
+                            <div class="controls">
+                                <select name="car_color" id="car_color" data-ng-model="driver.car_color"
+                                        class="form-control"
+                                        data-ng-options="car_color._id as car_color.name for car_color in car_colors"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="year">Year</label>
+
+                            <div class="controls">
+                                <input type="text" name="year" data-ng-model="driver.year" id="year"
+                                       class="form-control" placeholder="year">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="gos_number">GOS Number</label>
+
+                            <div class="controls">
+                                <input type="text" name="gos_number" data-ng-model="driver.gos_number"
+                                       style="text-transform:uppercase" id="gos_number" class="form-control"
+                                       placeholder="gos_number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default" value="Update">
+                        </div>
+                        <div data-ng-show="error" class="text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-12 text-center">
+                {{error}}
+            </div>
+        </section>
+    </ion-content>
+</ion-view>

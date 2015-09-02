@@ -1,0 +1,22 @@
+<ion-content padding="true">
+    You may have penalties for cancellation
+    <hr/>
+    <p>Дата: {{trip.created_date | date: 'mediumDate'}}</p>
+
+    <p>Клиент: {{trip.client.displayName}}</p>
+
+    <p>Адрес начало: {{trip.start_address}}</p>
+
+    <p>Адрес конца: {{trip.end_address}}</p>
+
+
+    <p>Цена: {{trip.price}}</p>
+
+    <p>Срочно: {{trip.immediate}}</p>
+
+    <p>Использовать бонус: {{trip.use_bonus}}</p>
+
+    <p>Водитель: {{trip.accepted_request.driver_profile.displayName}}</p>
+
+    <p>Машина: {{trip.accepted_request.driver_car.gos_number}}</p>
+</ion-content>

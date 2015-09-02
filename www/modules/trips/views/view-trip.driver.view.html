@@ -1,28 +1,17 @@
 <ion-view data-ng-controller="TripsController" data-ng-init="findOne()">
     <ion-nav-buttons side="secondary">
-        <div data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
-            <button data-ng-show="!is_current_driver_request()" class="button" ng-click="popover.show($event)">
+        <div data-ng-show="trip.status_code === TRIP_STATUS.INITIALIZED">
+            <button data-ng-show="!get_driver_request()" class="button" ng-click="popover.show($event)">
                 <i class="ion ion-android-done"></i> Request pickup
             </button>
-            <button data-ng-show="is_current_driver_request()" class="button button-assertive"
+            <button data-ng-show="get_driver_request()" class="button button-assertive"
                     ng-click="cancel_request_pickup()">
-                {{countdown_handler(driver_request.date_end)}}
                 <i class="ion ion-android-cancel"></i>
                 Cancel request
             </button>
         </div>
-        <div data-ng-if="trip && TRIP_STATUS && authentication && authentication.user && (authentication.user._id === trip.accepted_request.driver_profile._id)">
-            <button data-ng-if="trip.status_code === TRIP_STATUS.ACTIVATED" class="button"
-                    data-ng-click="arrived_trip()">
-                <i class="ion ion-android-done"></i> Arrived
-            </button>
-            <button data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED" class="button" data-ng-click="met_trip()">
-                <i class="ion ion-android-done"></i> Client arrived
-            </button>
-            <a data-ng-if="trip.status_code === TRIP_STATUS.MET" class="button" href="/#!/trips">
-                <i class="ion ion-android-done"></i> List other trips
-            </a>
-            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" href="/#!/trips">
+        <div data-ng-if="trip && TRIP_STATUS && (authentication.user._id === trip.accepted_request.driver_profile._id)">
+            <a data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED" class="button" href="/#!/trips">
                 <i class="ion ion-android-add"></i> List other trips
             </a>
             <a data-ng-if="trip.status_code === TRIP_STATUS.CANCELED" class="button" href="/#!/trips">
@@ -39,12 +28,6 @@
         </div>
         <div aria-label="ARRIVED" data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED">
             <div data-ng-include="'modules/trips/views/status/driver-arrived.client.view.html'"></div>
-        </div>
-        <div aria-label="MET" data-ng-if="trip.status_code === TRIP_STATUS.MET">
-            <div data-ng-include="'modules/trips/views/status/driver-met.client.view.html'"></div>
-        </div>
-        <div aria-label="COMPLETED" data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED">
-            <div data-ng-include="'modules/trips/views/status/driver-completed.client.view.html'"></div>
         </div>
         <div aria-label="CANCELED" data-ng-if="trip.status_code === TRIP_STATUS.CANCELED">
             <div data-ng-include="'modules/trips/views/status/driver-canceled.client.view.html'"></div>

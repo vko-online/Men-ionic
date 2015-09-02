@@ -56,6 +56,9 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
                 $scope.authentication = Authentication;
             });
         });
-
+        $scope.exit_app = function(){
+            if(navigator.app)
+                navigator.app.exitApp();
+        }
     }
 ]);

@@ -1,4 +1,7 @@
 <ion-content padding="true">
+<div data-ng-if="(error)" class="assertive text-center">
+                {{error}}
+            </div>
     <leaflet data-tap-disabled="true" defaults="defaults" markers="trip_markers" center="defaults.center" height="200"></leaflet>
     <div class="list">
         <div class="item">
@@ -139,15 +142,10 @@
                 {{get.brand(requester.driver_car.car_brand).name}} | {{get.model(requester.driver_car.car_model).name}} | {{get.color(requester.driver_car.car_color).name}}
             </span>
             <strong>{{requester.time}} мин</strong>
-                    <span class="item-note">
-                        <timer interval="1000" finish-callback="cb_get()"
-                               countdown="countdown_handler(requester.date_end)">
-                            {{countdown}}
-                        </timer>
-                    </span>
-            <ion-option-button class="assertive" data-ng-click="accept_pickup(requester._id)">
-                Accept
+            <ion-option-button class="button button-positive" data-ng-click="accept_pickup(requester._id)">
+                Принять
             </ion-option-button>
+            <ion-option-button class="button button-assertive" ng-click="remove_pickup_request(requester._id)">Не показывать</ion-option-button>
         </ion-item>
     </ion-list>
 </ion-content>

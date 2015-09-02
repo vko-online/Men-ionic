@@ -1,0 +1,18 @@
+<ion-view data-ng-controller="RatingController" title="Рейтинг">
+    <ion-nav-buttons side="secondary">
+        <button class="button" data-ng-click="send()">
+            <i class="ion ion-android-send"></i> Send
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true">
+        <div data-ng-if="(error)" class="assertive text-center">
+            {{error}}
+        </div>
+        Your rating is {{authentication.user.rating}}
+        <hr/>
+        <p>
+            To increase press this button, 1 star costs 1000 bonus points
+        </p>
+        <button data-ng-click="increase()" class="button button-positive">Increase</button>
+    </ion-content>
+</ion-view>

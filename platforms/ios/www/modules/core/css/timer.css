@@ -1,0 +1,41 @@
+.timer-semi-container, .timer-semi-circle {
+    position: absolute;
+    overflow: hidden;
+    width: 40px;
+    height: 80px;
+}
+
+.timer-container {
+    width: 80px;
+    height: 80px;
+}
+
+.timer-semi-container.right {
+    left: 40px;
+}
+.timer-semi-container.left .timer-semi-circle {
+    left: 40px;
+}
+
+.timer-semi-circle {
+    -webkit-transform-origin: 0;
+}
+.timer-semi-circle::after {
+    content: "";
+    position: absolute;
+    left: -40px;
+    width: 80px;
+    height: 80px;
+    border: 5px solid #07213d;
+    border-radius: 50%;
+    -webkit-transition: border-color .2s linear;
+}
+.timer-semi-circle.highlighted::after {
+    border-color: #ff003d;
+}
+.timer-semi-circle.highlighted.alert::after {
+    border-color: #FFB800;
+}
+.timer-semi-circle.mirrored {
+    -webkit-transform: rotate(180deg);
+}

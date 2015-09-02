@@ -1,4 +1,7 @@
 <ion-content padding="true">
+    <div data-ng-if="(error)" class="assertive text-center">
+                {{error}}
+            </div>
     <div class="list card">
         <div class="item item-avatar">
             <img ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}">
@@ -138,14 +141,8 @@
                 </div>
             </div>
             <p>
-                <a href="#" class="subdued">124 Поездок</a>
+                <a class="subdued">124 Поездок</a>
             </p>
-        </div>
-        <div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#">
-                <i class="icon ion-thumbsup"></i>
-                Request pickup
-            </a>
         </div>
     </div>
 

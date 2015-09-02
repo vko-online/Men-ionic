@@ -1,0 +1,12 @@
+<ion-view>
+    <ion-content>
+        <section data-ng-controller="TripHistoryController" data-ng-init="find()">
+            <ion-list>
+                <ion-item data-ng-repeat="trip in trips track by $index" data-ng-href="#!/trips_history/{{trip._id}}">
+                    До:{{trip.end_address}} | Цена:{{trip.price}}
+                    <span data-ng-if="trip.immediate" class="badge">срочно</span>
+                </ion-item>
+            </ion-list>
+        </section>
+    </ion-content>
+</ion-view>
