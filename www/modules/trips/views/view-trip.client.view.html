@@ -1,4 +1,4 @@
-<ion-view data-ng-controller="TripsController" data-ng-init="findOne()">
+<ion-view data-ng-controller="TripsController" data-ng-init="findOne()"><!--hide-back-button="true"-->
     <ion-nav-buttons side="secondary">
         <div data-ng-if="(authentication.user._id === trip.client._id) && trip && TRIP_STATUS">
             <button data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED" class="button" data-ng-click="delete_trip()">
@@ -28,7 +28,10 @@
         <div aria-label="ARRIVED" data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED">
             <div data-ng-include="'modules/trips/views/status/client-arrived.client.view.html'"></div>
         </div>
-        <div aria-label="ARRIVED" data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED">
+        <div aria-label="MET" data-ng-if="trip.status_code === TRIP_STATUS.MET">
+            <div data-ng-include="'modules/trips/views/status/client-met.client.view.html'"></div>
+        </div>
+        <div aria-label="COMPLETED" data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED">
             <div data-ng-include="'modules/trips/views/status/client-completed.client.view.html'"></div>
         </div>
         <div aria-label="CANCELED" data-ng-if="trip.status_code === TRIP_STATUS.CANCELED">

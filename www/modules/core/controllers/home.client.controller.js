@@ -16,5 +16,10 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 				});
 			});
 		};
+		$ionicHistory.nextViewOptions({
+			disableBack: true
+		});
+
+		//$state.go('app.home');
 	}
 ]);

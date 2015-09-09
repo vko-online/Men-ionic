@@ -35,7 +35,7 @@ var ApplicationConfiguration = (function(){
         $injected_http.defaults.headers.common.Authentication = auth_token;
     $injected_http({
         method: 'GET',
-        url: 'http://localhost:3000/users/me', //'http://localhost:3000/users/me', //http://ttaxi.herokuapp.com/users/me
+        url: 'http://ttaxi.herokuapp.com/users/me', //'http://localhost:3000/users/me', //http://ttaxi.herokuapp.com/users/me
         headers: {
             Authentication: auth_token
         }

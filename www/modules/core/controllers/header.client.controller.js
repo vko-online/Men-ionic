@@ -51,10 +51,15 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 
         $scope.CORE_CONST = CORE_CONST;
         Socket.on('user:changed', function(payload){
+            console.log(payload.keys, payload.source);
             payload.keys.forEach(function(key){
                 Authentication.set_prop(key, payload.source[key]);
                 $scope.authentication = Authentication;
             });
+        });
+        Socket.on('trip_notify', function(trip){
+            alert('Водитель приехал');
+            $state.go('viewTrip', {tripId: trip._id});
         });
         $scope.exit_app = function(){
             if(navigator.app)

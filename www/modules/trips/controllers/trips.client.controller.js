@@ -6,8 +6,12 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         //it increases scope digest cycle count
         //use single object instances, as they are already in digest
         function errorHandler(errorResponse){
-            $scope.error = errorResponse.data.message;
+            if(errorResponse.status === 500)
+                $scope.error = errorResponse.statusText;
+            else
+                $scope.error = errorResponse.data.message;
         }
+
         $scope.CORE_CONST = CORE_CONST;
         $scope.authentication = Authentication;
         $scope.TRIP_STATUS = TripStatuses.query();
@@ -22,17 +26,17 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             return type === $scope.active;
         };
         $scope.get_driver_request = function(trip){
-          if(trip){
-              return trip.requests.filter(function(o){
-                  return o.driver_profile === $scope.authentication.user._id;
-              })[0];
-          } else {
-              if($scope.trip && $scope.trip.requests){
-                  return $scope.trip.requests.filter(function(o){
-                      return o.driver_profile === $scope.authentication.user._id;
-                  })[0];
-              }
-          }
+            if(trip){
+                return trip.requests.filter(function(o){
+                    return o.driver_profile === $scope.authentication.user._id;
+                })[0];
+            } else {
+                if($scope.trip && $scope.trip.requests){
+                    return $scope.trip.requests.filter(function(o){
+                        return o.driver_profile === $scope.authentication.user._id;
+                    })[0];
+                }
+            }
         };
         $scope.defaults = {
             time: 1,
@@ -223,6 +227,11 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 $scope.statistic = successResponse;
             }, errorHandler);
         };
+        $scope.notify_client = function(){
+            $scope.trip.$notify_client(function(){
+                $scope.message = 'Уведомление отправлено';
+            }, errorHandler);
+        };
         Socket.on('accept_pickup', function(obj){
             if($scope.trip){
                 $scope.trip.status_code = obj.status_code;
@@ -257,8 +266,8 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 $scope.trip.requests = obj.requests;
         });
         Socket.on('trip_canceled', function(obj){
-            alert('client canceled trip');
-            $scope.trip.status_code = obj.status_code;
+            if($scope.trip)
+                $scope.trip.status_code = obj.status_code;
         });
         Socket.on('pickup_request_canceled_by_id', function(id){
             console.log('pickup_request_canceled_by_id', id);
