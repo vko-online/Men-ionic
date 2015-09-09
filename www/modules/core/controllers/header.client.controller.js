@@ -57,6 +57,10 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
                 $scope.authentication = Authentication;
             });
         });
+        Socket.on('trip_call_me', function(trip){
+            alert('Клиент не видит вас, позвоните ему');
+            $state.go('viewTrip', {tripId: trip._id});
+        });
         Socket.on('trip_notify', function(trip){
             alert('Водитель приехал');
             $state.go('viewTrip', {tripId: trip._id});

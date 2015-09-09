@@ -171,6 +171,11 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 $scope.authentication.user.trip = null;
             }, errorHandler);
         };
+        $scope.call_me = function(){
+            $scope.trip.$call_me(function(){
+                alert('Уведомление отправлено');
+            }, errorHandler);
+        };
         $scope.delete_trip = function(){
             $scope.trip.$remove(function(successResponse){
                 $location.path('/');

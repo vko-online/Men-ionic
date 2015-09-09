@@ -69,6 +69,10 @@ angular.module('trips').factory('Trips', ['$resource', 'CORE_CONST',
 			notify_client: {
 				method: 'POST',
 				url: CORE_CONST.REST_URL + 'trips/:tripId/notify_client'
+			},
+			call_me: {
+				method: 'POST',
+				url: CORE_CONST.REST_URL + 'trips/:tripId/call_me'
 			}
 		});
 	}

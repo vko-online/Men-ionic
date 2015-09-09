@@ -2,31 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a227f26a-cacf-4563-b90a-95cf7fbdafcb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/mobile.iml" afterPath="$PROJECT_DIR$/.idea/mobile.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/application.js" afterPath="$PROJECT_DIR$/www/js/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js" afterPath="$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/controllers/home.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/core/controllers/home.client.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/views/home.client.view.html" afterPath="$PROJECT_DIR$/www/modules/core/views/home.client.view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js" afterPath="$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/list-trips.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/list-trips.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-activated.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/client-activated.client.view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-completed.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/client-completed.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-met.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/client-met.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-activated.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/driver-activated.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-arrived.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/driver-arrived.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-completed.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/status/driver-completed.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/view-trip.client.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/view-trip.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/trips/views/view-trip.driver.view.html" afterPath="$PROJECT_DIR$/www/modules/trips/views/view-trip.driver.view.html" />
     </list>
     <ignored path="mobile.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,44 +33,34 @@
         <entry file="file://$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
+              <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trips.client.routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/trips/config/trips.client.routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="driver-arrived.client.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/trips/views/status/driver-arrived.client.view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.28">
-              <caret line="2" column="70" selection-start-line="2" selection-start-column="70" selection-end-line="2" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trips.client.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="trips.client.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.5981873">
+              <caret line="256" column="0" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
               <folding>
-                <element signature="e#7507#7783#0" expanded="false" />
-                <element signature="e#7838#8078#0" expanded="false" />
-                <element signature="e#8120#8164#0" expanded="false" />
-                <element signature="e#8206#8284#0" expanded="false" />
-                <element signature="e#8322#8396#0" expanded="false" />
+                <element signature="e#7679#7955#0" expanded="false" />
+                <element signature="e#8010#8250#0" expanded="false" />
+                <element signature="e#8292#8336#0" expanded="false" />
+                <element signature="e#8378#8456#0" expanded="false" />
+                <element signature="e#8494#8568#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="trips.client.service.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.592592">
+              <caret line="74" column="66" selection-start-line="74" selection-start-column="66" selection-end-line="74" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41993958">
-              <caret line="95" column="27" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -136,6 +108,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="home.client.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/modules/core/views/home.client.view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.8">
+              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="core.client.constants.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -146,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trips.client.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js">
+      <file leaf-file-name="client-arrived.client.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.0">
-              <caret line="69" column="31" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
+            <state vertical-scroll-proportion="-2.56">
+              <caret line="4" column="90" selection-start-line="4" selection-start-column="90" selection-end-line="4" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -208,22 +190,22 @@
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/client-activated.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/driver-activated.client.view.html" />
-        <option value="$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/client-met.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/driver-completed.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/client-completed.client.view.html" />
-        <option value="$PROJECT_DIR$/www/modules/core/views/home.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/view-trip.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/view-trip.driver.view.html" />
         <option value="$PROJECT_DIR$/www/modules/core/controllers/home.client.controller.js" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/list-trips.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/driver-arrived.client.view.html" />
-        <option value="$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js" />
-        <option value="$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js" />
-        <option value="$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js" />
-        <option value="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/www/js/application.js" />
+        <option value="$PROJECT_DIR$/www/modules/core/views/home.client.view.html" />
+        <option value="$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js" />
+        <option value="$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html" />
+        <option value="$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js" />
+        <option value="$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js" />
+        <option value="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" />
       </list>
     </option>
   </component>
@@ -717,6 +699,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mobile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mobile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1332,13 +1340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.56">
-          <caret line="4" column="116" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/modules/trips/views/status/client-met.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1387,14 +1388,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/modules/core/views/home.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="69" selection-start-line="0" selection-start-column="69" selection-end-line="0" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/modules/trips/views/list-trips.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.92">
@@ -1427,26 +1420,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.0">
-          <caret line="69" column="31" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/modules/trips/config/trips.client.routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1456,28 +1433,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-          <folding>
-            <element signature="e#7507#7783#0" expanded="false" />
-            <element signature="e#7838#8078#0" expanded="false" />
-            <element signature="e#8120#8164#0" expanded="false" />
-            <element signature="e#8206#8284#0" expanded="false" />
-            <element signature="e#8322#8396#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1502,9 +1457,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41993958">
-          <caret line="95" column="27" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/core/views/home.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.8">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.56">
+          <caret line="4" column="90" selection-start-line="4" selection-start-column="90" selection-end-line="4" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.592592">
+          <caret line="74" column="66" selection-start-line="74" selection-start-column="66" selection-end-line="74" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/core/controllers/header.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5981873">
+          <caret line="256" column="0" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
+          <folding>
+            <element signature="e#7679#7955#0" expanded="false" />
+            <element signature="e#8010#8250#0" expanded="false" />
+            <element signature="e#8292#8336#0" expanded="false" />
+            <element signature="e#8378#8456#0" expanded="false" />
+            <element signature="e#8494#8568#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
