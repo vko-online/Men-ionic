@@ -2,20 +2,69 @@
 
 // by bwin on 6/25/15.
 'use strict';
-angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope',
-    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope){
+angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory', 'leafletData',
+    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory, leafletData){
+
+        //var MyControl = L.control();
+        //MyControl.setPosition('bottomleft');
+        //MyControl.onAdd = function () {
+        //    var className = 'leaflet-control-my-location';
+        //    return L.DomUtil.create('div', className + ' leaflet-bar');
+        //};
+        //$scope.controls = {
+        //    custom: {
+        //        MyControl: MyControl
+        //    }
+        //};
+
+        //L.Control.Command = L.Control.extend({
+        //    options: {
+        //        position: 'topleft'
+        //    },
+        //    onAdd: function (map) {
+        //        var controlDiv = L.DomUtil.create('div', 'leaflet-control-command');
+        //        L.DomEvent
+        //            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
+        //            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
+        //            .addListener(controlDiv, 'click', function () { MapShowCommand(); });
+        //
+        //        var controlUI = L.DomUtil.create('div', 'leaflet-control-command-interior', controlDiv);
+        //        controlUI.title = 'Map Commands';
+        //        return controlDiv;
+        //    }
+        //});
+        //
+        //L.control.command = function (options) {
+        //    return new L.Control.Command(options);
+        //};
+        //leafletData.getMap(function(map){
+        //    map.addControl(new MyControl());
+        //});
+
         $scope.TRIP_STATUS = TripStatuses.query();
         $scope.authentication = Authentication;
+        if($scope.authentication && $scope.authentication.user && $scope.authentication.user.trip){
+            $location.path('trips/' + ($scope.authentication.user.trip._id || $scope.authentication.user.trip));
+        }
         $scope.preparation = {};
         $scope.defaults = {
             tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
             attributionControl: false,
             scrollWheelZoom: false,
             location_success: false,
+            fullscreenControl: true,
             center: {
                 lat: CORE_CONST.MAP_LAT,
                 lng: CORE_CONST.MAP_LNG,
                 zoom: 15
+            },
+            controls: {
+                fullscreen: {
+                    position: 'bottomright'
+                },
+                minimap: {
+                    position: 'bottomright'
+                }
             }
         };
         GeoLocation.current()
@@ -56,6 +105,7 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             Trips.prepare_trip({
                 tripId: $stateParams.tripId
             }, $scope.preparation, function(successResponse){
+                $ionicHistory.clearHistory();
                 $location.path('trips/' + successResponse._id);
             }, function(errorResponse){
                 $scope.error = errorResponse.data.message;

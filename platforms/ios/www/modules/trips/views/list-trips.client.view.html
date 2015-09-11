@@ -1,4 +1,4 @@
-<ion-view data-ng-controller="TripsController" data-ng-init="find()">
+<ion-view data-ng-controller="TripsController" data-ng-init="find()" cache-view="false">
     <ion-nav-buttons side="secondary">
         <button class="button">
             <i class="ion ion-ios-grid-view-outline"></i> Filter
@@ -35,7 +35,7 @@
             <div class="list">
                 <a class="item text-left item-avatar-right"
                    data-ng-class="{'active': is_current_driver_request(trip), 'immediate': trip.immediate}"
-                   data-ng-repeat="trip in trips track by $index"
+                   data-ng-repeat="trip in trips track by $index | orderBy: 'created_date':true"
                    data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}" \
                    style="padding-top: 10px;padding-bottom:10px;">
                     <img ng-if="trip.client.photo_src"

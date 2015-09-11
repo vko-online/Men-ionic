@@ -13,13 +13,6 @@ angular.module('users').config(['$httpProvider',
         $httpProvider.interceptors.push(['$q', '$location', '$rootScope',
             function($q, $location, $rootScope){
                 return {
-                    //request: function(config){
-                    //    var auth = localStorage.getItem('a');
-                    //    if(auth){
-                    //        config.headers.Authentication = auth;
-                    //    }
-                    //    return config;
-                    //},
                     responseError: function(rejection){
                         switch(rejection.status) {
                             case 401:

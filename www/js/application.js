@@ -31,11 +31,11 @@ var ApplicationConfiguration = (function(){
 
     //set token header
     var auth_token = localStorage.getItem('auth_token');
-    if(auth_token)
-        $injected_http.defaults.headers.common.Authentication = auth_token;
+    //if(auth_token)
+    //    $injected_http.defaults.headers.common.Authentication = auth_token;
     $injected_http({
         method: 'GET',
-        url: 'http://ttaxi.herokuapp.com/users/me', //'http://localhost:3000/users/me', //http://ttaxi.herokuapp.com/users/me
+        url: 'http://localhost:3000/users/me', //'http://localhost:3000/users/me', //http://ttaxi.herokuapp.com/users/me
         headers: {
             Authentication: auth_token
         }

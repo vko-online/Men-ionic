@@ -27,16 +27,18 @@
     <script src="lib/angular-socket-io/socket.js"></script>
     <script src="lib/humanize-duration/humanize-duration.js"></script>
     <script src="lib/momentjs/min/moment.min.js"></script>
-    <script src="lib/leaflet/dist/leaflet.js"></script>
+    <script src="lib/leaflet/dist/leaflet-src.js"></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/Leaflet.fullscreen.min.js'></script>
+    <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/leaflet.fullscreen.css' rel='stylesheet' />
     <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
-    <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+    <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
     <script src="lib/es5-shim/es5-shim.js"></script>
     <script src="lib/angular-file-upload/angular-file-upload.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/config.js"></script>
     <script src="js/application.js"></script>
 
     <!-- inject:js -->
@@ -59,8 +61,6 @@
     
     <script src="modules/articles/config/articles.client.routes.js"></script>
     
-    <script src="modules/articles/controllers/articles.client.controller.js"></script>
-    
     <script src="modules/articles/services/articles.client.service.js"></script>
     
     <script src="modules/car-brands/config/car-brands.client.config.js"></script>
@@ -68,6 +68,8 @@
     <script src="modules/car-brands/config/car-brands.client.routes.js"></script>
     
     <script src="modules/car-brands/controllers/car-brands.client.controller.js"></script>
+    
+    <script src="modules/articles/controllers/articles.client.controller.js"></script>
     
     <script src="modules/car-brands/services/car-brands.client.service.js"></script>
     
@@ -130,6 +132,8 @@
     <script src="modules/trips/directives/point-preview.client.directive.js"></script>
     
     <script src="modules/trips/directives/point-view.client.directive.js"></script>
+    
+    <script src="modules/trips/directives/timer-action.client.directive.js"></script>
     
     <script src="modules/trips/directives/trip-status.client.directive.js"></script>
     

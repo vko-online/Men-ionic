@@ -11,64 +11,29 @@
             <div class="text-center">
                 <ion-spinner icon="ios" data-ng-hide="defaults.location_success"></ion-spinner>
             </div>
-            <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
-                <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="defaults.center" height="150"></leaflet>
-                <div class="list">
-                    <div class="item">
+            <div data-ng-if="authentication.user.is_client && !authentication.user.trip" data-ng-init="map_expanded = false">
+                <leaflet controls="defaults.controls" data-tap-disabled="true" defaults="defaults" markers="markers" center="defaults.center" height="{{map_expanded ? 300 : 150}}"></leaflet>
+                <div class="text-center">
+                    <button class="button button-small" data-ng-click="map_expanded=!map_expanded"><i class="ion {{map_expanded ? 'ion-arrow-up-a': 'ion-arrow-down-a'}}"></i></button>
+                </div>
+                <div class="list list-inset">
+                    <label class="item item-input">
                         <i class="icon ion-ios-location"></i>
-                        Откуда
-                            <span class="item-note">
-                              <input type="text" data-ng-model="preparation.start_address"placeholder="start_address">
-                            </span>
-                    </div>
-                    <div class="item">
+                        <input type="text" placeholder="Откуда" data-ng-model="preparation.start_address">
+                    </label>
+                    <label class="item item-input">
                         <i class="icon ion-ios-location"></i>
-                        Куда
-                            <span class="item-note">
-                              <input type="text" data-ng-model="preparation.end_address"placeholder="end_address">
-                            </span>
-                    </div>
-                    <div class="item">
+                        <input type="text" placeholder="Куда" data-ng-model="preparation.end_address">
+                    </label>
+                    <label class="item item-input">
                         <i class="icon ion-cash"></i>
-                        Цена
+                        <input type="number" placeholder="Цена" data-ng-model="preparation.price">
+                    </label>
+                    <div class="item" data-ng-click="init_modal()">
+                        <i class="icon ion-ios-gear-outline"></i>
+                        Параметры
                             <span class="item-note">
-                              <input type="number" data-ng-model="preparation.price">
-                            </span>
-                    </div>
-                    <div class="item">
-                        <i class="icon ion-pricetag"></i>
-                        Bonus
-                            <span class="item-note">
-                                <label class="toggle">
-                                    <input type="checkbox" data-ng-model="preparation.use_bonus">
-                                    <div class="track">
-                                        <div class="handle"></div>
-                                    </div>
-                                </label>
-                            </span>
-                    </div>
-                    <div class="item">
-                        <i class="icon ion-cash"></i>
-                        Срочно
-                            <span class="item-note">
-                                <label class="toggle">
-                                    <input type="checkbox" data-ng-model="preparation.immediate">
-                                    <div class="track">
-                                        <div class="handle"></div>
-                                    </div>
-                                </label>
-                            </span>
-                    </div>
-                    <div class="item">
-                        <i class="icon ion-android-hand"></i>
-                        Note
-                            <textarea data-ng-model="preparation.note" placeholder="note"></textarea>
-                    </div>
-                    <div class="item">
-                        <i class="icon ion-information"></i>
-                        Additional
-                            <span class="item-note">
-                              <button class="button button-assertive" data-ng-click="init_modal()">add data</button>
+                              <i class="ion ion-ios-arrow-right"></i>
                             </span>
                     </div>
                 </div>

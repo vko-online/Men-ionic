@@ -1,12 +1,56 @@
-<ion-view>
-    <ion-content style="background: #262626" padding="true">
-        <section data-ng-controller="HomeController">
+<ion-view data-ng-controller="HomeController" hide-back-button="true">
+    <ion-content class="full-height">
+        <div data-ng-if="authentication.user">
             <img src="img/381_a.jpg" alt="logo" width="150" class="logo"/>
-            <a data-ng-if="!authentication.user.trip" href="#!/trips/create" class="button taxi-btn button-positive">Вызвать такси</a>
-            <a data-ng-if="authentication.user.trip" data-ng-href="#!/trips/{{authentication.user.trip}}" class="button taxi-btn button-positive">Вызвать такси</a>
-            <a data-ng-if="authentication.user.is_driver" data-ng-href="#!/{{(authentication.user.trip) ? ('trips_driver/' + authentication.user.trip) : 'trips'}}" class="button taxi-btn button-positive">Водитель</a>
+            <a data-ng-if="!authentication.user.trip" href="#!/trips/create" class="button taxi-btn button-positive">Вызвать
+                такси</a>
+            <a data-ng-if="authentication.user.trip" data-ng-href="#!/trips/{{authentication.user.trip}}"
+               class="button taxi-btn button-positive">Вызвать такси</a>
+            <a data-ng-if="authentication.user.is_driver"
+               data-ng-href="#!/{{((authentication.user.trip) ? ('trips_driver/' + authentication.user.trip) : 'trips')}}"
+               class="button taxi-btn button-positive">Водитель</a>
             <a class="button taxi-btn button-positive">Вызвать трезвого водителя</a>
             <a href="#!/share" class="button taxi-btn button-positive">Поделиться</a>
-        </section>
+        </div>
+        <div data-ng-if="!authentication.user" style="height: 100%;">
+            <ion-slide-box>
+                <ion-slide>
+                    <div class="intro-card bg-orange">
+                        почему я крут
+                        <div class="button-bar">
+                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
+                        </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="intro-card  bg-blue">
+                        почему я крут
+                        <div class="button-bar">
+                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
+                        </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="intro-card  bg-green">
+                        почему я крут
+                        <div class="button-bar">
+                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
+                        </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="intro-card  bg-grey">
+                        почему я крут
+                        <div class="button-bar">
+                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
     </ion-content>
 </ion-view>

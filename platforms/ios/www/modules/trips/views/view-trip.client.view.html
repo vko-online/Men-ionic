@@ -1,24 +1,24 @@
-<ion-view data-ng-controller="TripsController" data-ng-init="findOne()">
+<ion-view data-ng-controller="TripsController" data-ng-init="findOne()"><!--hide-back-button="true"-->
     <ion-nav-buttons side="secondary">
-        <div data-ng-if="authentication && authentication.user && (authentication.user._id === trip.client._id) && trip && TRIP_STATUS">
+        <div data-ng-if="(authentication.user._id === trip.client._id) && trip && TRIP_STATUS">
             <button data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED" class="button" data-ng-click="delete_trip()">
                 <i class="ion ion-android-delete"></i> Delete
             </button>
             <button data-ng-if="trip.status_code === TRIP_STATUS.ACTIVATED" class="button" data-ng-click="cancel_trip()">
                 <i class="ion ion-android-cancel"></i> Cancel
             </button>
-            <button data-ng-if="trip.status_code === TRIP_STATUS.MET" class="button" data-ng-click="end_trip()">
-                <i class="ion ion-android-done"></i> End trip
+            <button data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED" class="button" data-ng-click="met_trip()">
+                <i class="ion ion-android-done"></i> Я сел
             </button>
-            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" href="/#!/">
-                <i class="ion ion-android-add"></i> Главная
+            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" href="#!/trips/create">
+                <i class="ion ion-android-add"></i> New trip
             </a>
-            <a data-ng-if="trip.status_code === TRIP_STATUS.CANCELED" class="button" href="/#!/user_trips/prepare-trip">
+            <a data-ng-if="trip.status_code === TRIP_STATUS.CANCELED" class="button" href="#!/trips/create">
                 <i class="ion ion-android-add"></i> New trip
             </a>
         </div>
     </ion-nav-buttons>
-    <div data-ng-if="trip && TRIP_STATUS">
+    <div data-ng-if="(trip.$resolved && trip) && (TRIP_STATUS && TRIP_STATUS.$resolved)">
         <div aria-label="INITIALIZED" data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
             <div data-ng-include="'modules/trips/views/status/client-initialized.client.view.html'"></div>
         </div>

@@ -8,16 +8,9 @@ angular.module('users').controller('DriverController', ['$scope', '$location', '
         $scope.authentication = Authentication;
         //todo: refactor this hell
         $scope.findOne = function(){
-            if($scope.authentication && $scope.authentication.user && $scope.authentication.user.driver_profile){
+            if($scope.authentication.user.driver_profile){
                 $scope.driver = Drivers.get({
                     driverId: $scope.authentication.user.driver_profile
-                });
-            } else {
-                Authentication.get_user().then(function(){
-                    $scope.authentication = Authentication;
-                    $scope.driver = Drivers.get({
-                        driverId: $scope.authentication.user.driver_profile
-                    });
                 });
             }
         };
@@ -31,7 +24,7 @@ angular.module('users').controller('DriverController', ['$scope', '$location', '
         // If user is not signed in then redirect back home
         $scope.create_driver = function(){
             Drivers.create_driver(function(successResponse){
-                $location.path('/profiles/' + $scope.authentication.user._id + '/create_driver');
+                $location.path('/driver_edit');
             }, function(errorResponse){
                 $scope.error = errorResponse.message;
             });
@@ -39,7 +32,7 @@ angular.module('users').controller('DriverController', ['$scope', '$location', '
         $scope.update_car = function(){
             var driver = $scope.driver;
             driver.$update(function() {
-                console.log('updated');
+                alert('updated');
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
