@@ -22,9 +22,9 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
                 $scope.signin_modal.remove();
             });
         });
-        $scope.$on('event:auth-login_required', function(e, rejection) {
-            console.log('event:auth-login_required');
-        });
+        //$scope.$on('event:auth-login_required', function(e, rejection) {
+        //    console.log('event:auth-login_required');
+        //});
         $scope.signout = function(){
             Users.sign_out(function(successResponse){
                 Authentication.user = null;

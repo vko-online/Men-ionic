@@ -9,7 +9,7 @@
             <p>{{minutes_ago(trip.created_date)}}</p>
         </div>
         <div class="item item-body">
-            <leaflet data-tap-disabled="true" defaults="defaults" markers="trip_markers" center="defaults.center" height="200"></leaflet>
+            <map single-marker-model="true" single-marker-model-fixed="true" model="trip.meet_location" locate-control="true" fullscreen-control="true" edge-marker="false"></map>
             <div class="list">
                 <div class="item">
                     <i class="icon ion-ios-location"></i>

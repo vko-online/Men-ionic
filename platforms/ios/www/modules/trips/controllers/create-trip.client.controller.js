@@ -16,7 +16,6 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
         //        MyControl: MyControl
         //    }
         //};
-
         //L.Control.Command = L.Control.extend({
         //    options: {
         //        position: 'topleft'
@@ -59,35 +58,30 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
                 zoom: 15
             },
             controls: {
-                fullscreen: {
-                    position: 'bottomright'
-                },
-                minimap: {
-                    position: 'bottomright'
-                }
+
             }
         };
-        GeoLocation.current()
-            .then(function(successResponse){
-                $scope.markers = {
-                    marker: {
-                        lat: successResponse.coords.latitude,
-                        lng: successResponse.coords.longitude,
-                        message: 'I\'m here',
-                        focus: true,
-                        draggable: true
-                    }
-                };
-                $scope.defaults.center.lat = successResponse.coords.latitude;
-                $scope.defaults.center.lng = successResponse.coords.longitude;
-                $scope.defaults.location_success = true;
-            }, function(errorResponse){
-                console.log(errorResponse);
-                $scope.error = 'Не удалось получить ваше местоположение';
-                //todo: we need pattern for load indicators
-                //maybe angular-loading module is enough
-                $scope.defaults.location_success = true;
-            });
+        //GeoLocation.current()
+        //    .then(function(successResponse){
+        //        $scope.markers = {
+        //            marker: {
+        //                lat: successResponse.coords.latitude,
+        //                lng: successResponse.coords.longitude,
+        //                message: 'I\'m here',
+        //                focus: true,
+        //                draggable: true
+        //            }
+        //        };
+        //        $scope.defaults.center.lat = successResponse.coords.latitude;
+        //        $scope.defaults.center.lng = successResponse.coords.longitude;
+        //        $scope.defaults.location_success = true;
+        //    }, function(errorResponse){
+        //        console.log(errorResponse);
+        //        $scope.error = 'Не удалось получить ваше местоположение';
+        //        //todo: we need pattern for load indicators
+        //        //maybe angular-loading module is enough
+        //        $scope.defaults.location_success = true;
+        //    });
         $scope.$on('leafletDirectiveMarker.dragend', function (e, args) {
             $scope.markers.marker.lng = args.model.lng;
             $scope.markers.marker.lat = args.model.lat;

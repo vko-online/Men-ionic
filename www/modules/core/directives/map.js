@@ -10,31 +10,53 @@
  *                                                  
  */
 'use strict';
-angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation', function(CORE_CONST, $compile, GeoLocation){
+angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation', 'Socket', '$rootScope', function(CORE_CONST, $compile, GeoLocation, Socket, $rootScope){
     return {
         restrict: 'E',
         transclude: true,
-        template: '<div id="map" data-tap-disabled="true"></div>',
-        //template: '<leaflet data-tap-disabled="true" height="_height" center="_center" defaults="_defaults" controls="_controls" markers="_markers" ng-transclude=""></leaflet>',
+        priority: 1,
+        //template: '<div id="map" data-tap-disabled="true"></div><div ng-transclude></div>',
         scope: {
             model: '=?',
             center: '=?',
-            markers: '=?',
             fullscreenControl: '=?',
             locateControl: '=?',
-            edgeMarker: '=?'
+            edgeMarker: '=?',
+            markersFunction: '=?',
+            models: '=?',
+            listenEvents: '=?',
+            singleMarkerModel: '=?',
+            singleMarkerModelFixed: '=?',
+            height: '@'
         },
         compile: function(tElem, tAttr, tTransclude){
             return function link(scope, elem, attr, ctrl){
                 var defaults = {
-                    height: 300,
+                    height: scope.height || 300,
                     attributionControl: false,
                     scrollWheelZoom: false,
                     maxZoom: 18,
                     layer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-                    zoom: 13
+                    zoom: 13,
+                    internal: {
+                        markers: [],
+                        addEvent: 'add_trip',
+                        removeEvent: 'remove_trip',
+                        model: false,
+                        modelOptions: {
+                            draggable: true,
+                            message: 'I\'m here',
+                            focus: true
+                        },
+                        dom_html: ''
+                    }
                 };
+                //fix elem height
                 elem.height(defaults.height);
+//--------------------------------------------------------------------
+//map
+//--------------------------------------------------------------------
+                elem.html('<div id="map" data-tap-disabled="true"></div><div ng-transclude></div>');
                 var map = L.map('map', {
                     attributionControl: defaults.attributionControl
                 }).setView([CORE_CONST.MAP_LAT, CORE_CONST.MAP_LNG], defaults.zoom);
@@ -42,69 +64,151 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                     scrollWheelZoom: defaults.scrollWheelZoom,
                     maxZoom: defaults.maxZoom
                 }).addTo(map);
-
+                //center map
                 if(scope.center){
                     map.panTo(scope.center.lat, scope.center.lng);
                 }
-
+                //enable fullscreen control
                 if(scope.fullscreenControl){
                     L.control.fullscreen().addTo(map);
                 }
+                //enable location control
                 if(scope.locateControl){
                     L.control.locate({
                         icon: 'ion ion-ios-location-outline',
                         iconLoading: 'ion ion-load-d spin',
-                        drawCircle: false,
                         displayWithZoomControl: true
                     }).addTo(map);
                 }
+//--------------------------------------------------------------------
+//Marker binders
+//--------------------------------------------------------------------
+                function click_handler(event){
+                    scope.active_marker = event.target;
+                    scope.active_object = event.target.options.object;
+                    if(defaults.internal.dom_html){
+                        $compile(defaults.internal.dom_html)(scope)
+                    } else {
+                        var dom = document.createElement('point-preview');
+                        dom.setAttribute('ng-show', 'active_object');
+                        dom.setAttribute('current-trip', 'active_object');
+                        defaults.internal.dom_html = $compile(dom)(scope);
+                        elem.append(defaults.internal.dom_html);
+                    }
+                    defaults.internal.markers.forEach(function(i_marker){
+                        if(i_marker.options.object._id === event.target.options.object._id)
+                            angular.element(i_marker._icon).addClass('active visited');
+                        else {
+                            angular.element(i_marker._icon).removeClass('active');
+                        }
+                    });
+                }
+
+                //marker binders
+                function unbind_marker(obj){
+                    //todo: we should use l.Marker api here
+                    defaults.internal.markers = defaults.internal.markers.filter(function(marker){
+                        return marker.options.object._id != obj._id;
+                    });
+                }
+
+                function bind_marker(latLng, obj, map){
+                    if(latLng && latLng.lat && latLng.lng){
+                        var redIcon = L.divIcon({html: '<span>' + obj.price + '</span>', className: 'red-div-icon'});
+                        var marker = L.marker(latLng, {icon: redIcon, object: obj}).on('click', function(e){
+                            map.panTo(latLng);
+                            return click_handler(e);
+                        });
+                        marker.addTo(map);
+                        defaults.internal.markers.push(marker);
+                    }
+                }
+
+                //use markerFn, instead of scope.models
+                if(scope.markersFunction){
+                    scope.markersFunction().then(function(successResponse){
+                        angular.forEach(successResponse, function(obj){
+                        });
+                    }, function(errorResponse){
+                    });
+                }
+                if(scope.models){
+                    angular.forEach(scope.models, function(obj){
+                        bind_marker(obj.meet_location, obj, map);
+                    });
+                }
+                //todo: should we use `obj.loc[0]` or `obj.loc.lat` or `obj.lat` here?
+                if(scope.singleMarkerModel){
+                    if(scope.singleMarkerModelFixed){
+                        if(defaults.internal.model){
+                            defaults.internal.model.setLatLng(scope.model);
+                            map.panTo(scope.model);
+                        } else {
+                            if(scope.model && scope.model.lat && scope.model.lng){
+                                defaults.internal.model = L.marker(scope.model);
+                                defaults.internal.model.bindPopup('Meet location').openPopup().addTo(map);
+                                map.panTo(scope.model);
+                            }
+                        }
+                    } else {
+                        map.on('click', function(event){
+                            if(!scope.model)
+                                scope.model = {};
+                            scope.model.lat = event.latlng.lat;
+                            scope.model.lng = event.latlng.lng;
+                            if(defaults.internal.model){
+                                defaults.internal.model.setLatLng(scope.model);
+                            } else {
+                                defaults.internal.model = L.marker(scope.model, defaults.internal.modelOptions);
+                                defaults.internal.model.bindPopup('I\'m here').openPopup().addTo(map);
+                            }
+                        });
+                    }
+                }
+//--------------------------------------------------------------------
+//Socket event listeners
+//--------------------------------------------------------------------
+                //socket event handlers
+                function addEventFn(trip){
+                }
+
+                function removeEventFn(trip){
+                }
+
+                //use event handlers
+                if(scope.listenEvents){
+                    Socket.on(defaults.internal.addEvent, addEventFn);
+                    Socket.on(defaults.internal.removeEvent, removeEventFn);
+                }
+//--------------------------------------------------------------------
+//Enable edge markers
+//--------------------------------------------------------------------
                 if(scope.edgeMarker){
-                    L.circle([51.96309632078721, 7.622795104980469], 5000).addTo(map);
-                    L.circle([51.650378463223326, 9.440699815750122], 200).addTo(map);
-                    L.circleMarker([52.3688917060255, 9.722900390625]).addTo(map);
-                    L.circleMarker([51.508742458803326, 9.942626953125]).addTo(map);
-                    L.marker([48.85,2.35]).addTo(map);
-                    L.marker([52.52,13.40]).addTo(map);
-                    L.marker([40.18,44.51]).addTo(map);
-                    L.marker([48.21,16.37]).addTo(map);
-                    L.marker([53.9,27.57]).addTo(map);
-                    L.marker([50.85,4.35]).addTo(map);
-                    L.marker([43.85,18.38]).addTo(map);
-                    L.marker([42.7,23.32]).addTo(map);
-                    L.marker([50.09,14.42]).addTo(map);
-                    L.marker([55.68,12.57]).addTo(map);
-                    L.marker([59.44,24.75]).addTo(map);
-                    L.marker([60.18,24.93]).addTo(map);
-                    L.marker([37.98,23.73]).addTo(map);
-                    L.marker([64.17,-51.74]).addTo(map);
-                    L.marker([47.5,19.08]).addTo(map);
-                    L.marker([64.15,-21.95]).addTo(map);
-                    L.marker([41.9,12.48]).addTo(map);
-                    L.marker([56.95,24.1]).addTo(map);
-                    L.marker([47.14,9.52]).addTo(map);
-                    L.marker([54.68,25.32]).addTo(map);
-                    L.marker([49.61,6.13]).addTo(map);
-                    L.marker([42,21.43]).addTo(map);
-                    L.marker([35.9,14.51]).addTo(map);
-                    L.marker([52.37,4.9]).addTo(map);
-                    L.marker([59.91,10.74]).addTo(map);
-                    L.marker([52.25,21]).addTo(map);
-                    L.marker([38.72,-9.13]).addTo(map);
-                    L.marker([40.42,-3.7]).addTo(map);
-                    L.marker([59.33,18.06]).addTo(map);
-                    L.marker([46.95,7.45]).addTo(map);
-                    L.marker([50.43,30.52]).addTo(map);
                     L.edgeMarker({
                         icon: L.icon({ // style markers
-                            iconUrl : 'lib/Leaflet.EdgeMarker/images/edge-arrow-marker.png',
+                            iconUrl: 'lib/Leaflet.EdgeMarker/images/edge-arrow-marker.png',
                             clickable: true,
-                            iconSize: [48,48],
+                            iconSize: [48, 48],
                             iconAnchor: [24, 24]
                         }),
                         distanceOpacity: true,
                         distanceOpacityFactor: 10
                     }).addTo(map);
                 }
+//--------------------------------------------------------------------
+//clean up
+//--------------------------------------------------------------------
+                $rootScope.$on('$stateChangeStart', function(){
+                    console.log('$stateChangeStart');
+                    elem.html('<div id="map" data-tap-disabled="true"></div><div ng-transclude></div>');
+                    elem.remove();
+                });
+                //scope.$on('$destroy', function(){
+                //    console.log('$destroy');
+                //    if(map)
+                //        map.remove();
+                //    elem.remove();
+                //});
             }
         }
     }
