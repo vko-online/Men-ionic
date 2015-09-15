@@ -43,6 +43,7 @@
                             <hr/>
                             <a menu-close class="button button-small button-positive" data-ng-click="dropdowned = false;" href="#!/settings/profile">Мой профиль</a>
                             <a menu-close class="button button-small button-positive pull-right" data-ng-click="dropdowned = false;signout()">Выйти</a>
+                            <a menu-close class="button button-small button-positive pull-right" data-ng-click="exit_app()">Выйти с приложения</a>
                         </div>
                     </div>
                 </ion-item>
@@ -55,7 +56,7 @@
                 <ion-item menu-close class="item-positive" href="#!/share">
                     Поделиться
                 </ion-item>
-                <ion-item data-ng-if="authentication.user && authentication.user.driver_profile" menu-close class="item-positive" data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}">
+                <ion-item menu-close class="item-positive" data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}">
                     Профиль водителя
                 </ion-item>
             </ion-list>

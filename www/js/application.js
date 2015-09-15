@@ -10,7 +10,7 @@ var ApplicationConfiguration = (function(){
         'ngResource',
         'btford.socket-io',
         'timer',
-        'leaflet-directive',
+        //'leaflet-directive',
         'ion-affix',
         'angularFileUpload'
     ];

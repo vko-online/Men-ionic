@@ -9,7 +9,7 @@
                 {{error}}
             </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
-                <map single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location" locate-control="true" fullscreen-control="true" edge-marker="false"></map>
+                <map street-api="true" street-model="preparation.start_address" single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location" locate-control="true" fullscreen-control="true" edge-marker="false"></map>
                 <!--<leaflet controls="defaults.controls" data-tap-disabled="true" defaults="defaults" markers="markers" center="defaults.center" height="{{map_expanded ? 300 : 150}}"></leaflet>-->
                 <div class="list list-inset">
                     <label class="item item-input">

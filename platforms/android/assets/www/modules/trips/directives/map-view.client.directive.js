@@ -77,18 +77,18 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
                         leafletData.getMap().then(function(map){
                             var timeout = undefined;
                             map.on('dragend zoomend', function(event){
-                                $scope.indexer_callback = function(index){
-                                    $scope.current_trip = $scope.existing_markers[index];
-                                    $scope.current_trip_index = index;
-                                    internal_markers.forEach(function(i_marker){
-                                        if(i_marker.options.trip._id === $scope.current_trip._id) {
-                                            angular.element(i_marker._icon).addClass('active visited');
-                                            map.panTo(i_marker.getLatLng());
-                                        } else {
-                                            angular.element(i_marker._icon).removeClass('active');
-                                        }
-                                    });
-                                };
+                                //$scope.indexer_callback = function(index){
+                                //    $scope.current_trip = $scope.existing_markers[index];
+                                //    $scope.current_trip_index = index;
+                                //    internal_markers.forEach(function(i_marker){
+                                //        if(i_marker.options.trip._id === $scope.current_trip._id) {
+                                //            angular.element(i_marker._icon).addClass('active visited');
+                                //            map.panTo(i_marker.getLatLng());
+                                //        } else {
+                                //            angular.element(i_marker._icon).removeClass('active');
+                                //        }
+                                //    });
+                                //};
                                 if(event.distance > 30){
                                     var bounds = event.target.getBounds();
                                     $scope.trips = Trips.by_location({

@@ -1,4 +1,4 @@
-<ion-content padding="true">
+<ion-content padding="true" data-ng-init="map_show = false">
     <div data-ng-if="(error)" class="assertive text-center">
                 {{error}}
             </div>
@@ -9,7 +9,8 @@
             <p>{{minutes_ago(trip.created_date)}}</p>
         </div>
         <div class="item item-body">
-            <map single-marker-model="true" single-marker-model-fixed="true" model="trip.meet_location" locate-control="true" fullscreen-control="true" edge-marker="false"></map>
+            <button class="button button-small" data-ng-click="map_show = !map_show">{{map_show ? 'Скрыть': 'Показать карту'}}</button>
+            <map data-ng-if="map_show"  single-marker-model="true" single-marker-model-fixed="true" model="trip.meet_location" locate-control="true" fullscreen-control="true" edge-marker="false"></map>
             <div class="list">
                 <div class="item">
                     <i class="icon ion-ios-location"></i>

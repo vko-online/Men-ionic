@@ -4,7 +4,7 @@
             <div class="page-header">
                 <h1>Driver benefits</h1>
             </div>
-            <div data-ng-if="!authentication.user.is_driver">
+            <div data-ng-if="!authentication.user.driver_profile">
                 <div class="lead">
                     <p>Nullam sagittis. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Sed a
                         libero. Praesent
@@ -21,7 +21,7 @@
                     <button class="btn btn-primary" data-ng-click="create_driver()">Become driver</button>
                 </div>
             </div>
-            <div data-ng-if="authentication.user.is_driver">
+            <div data-ng-if="authentication.user.driver_profile">
                 <form name="create_driver_form" class="form-horizontal" data-ng-submit="update_car()" novalidate>
                     <fieldset>
                         <div class="form-group">

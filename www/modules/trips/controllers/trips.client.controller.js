@@ -1,7 +1,7 @@
 'use strict';
 // Trips controller
-angular.module('trips').controller('TripsController', ['$scope', '$stateParams', '$location', '$interval', 'Authentication', 'Trips', 'CarColors', 'CarBrands', 'CarModels', 'Socket', 'TripStatuses', 'DriverRequests', 'Misc', 'CORE_CONST', 'GeoLocation', '$ionicPopover', '$timeout', 'leafletData',
-    function($scope, $stateParams, $location, $interval, Authentication, Trips, CarColors, CarBrands, CarModels, Socket, TripStatuses, DriverRequests, Misc, CORE_CONST, GeoLocation, $ionicPopover, $timeout, leafletData){
+angular.module('trips').controller('TripsController', ['$scope', '$stateParams', '$location', '$interval', 'Authentication', 'Trips', 'CarColors', 'CarBrands', 'CarModels', 'Socket', 'TripStatuses', 'DriverRequests', 'Misc', 'CORE_CONST', 'GeoLocation', '$ionicPopover',
+    function($scope, $stateParams, $location, $interval, Authentication, Trips, CarColors, CarBrands, CarModels, Socket, TripStatuses, DriverRequests, Misc, CORE_CONST, GeoLocation, $ionicPopover){
         //todo: GET RID OF FUNCTION CALLS, AND REFACTOR, USE GROUPED ACTIONS
         //it increases scope digest cycle count
         //use single object instances, as they are already in digest
@@ -51,6 +51,9 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 }, 1000);
             });
         }
+        $scope.defaults = {
+            time: 10
+        };
         $scope.set_request_minute = function(minute){
             $scope.defaults.time = minute;
             $scope.request_pickup();

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="lib/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="lib/leaflet.fullscreen/Control.FullScreen.css">
     <link rel="stylesheet" href="lib/leaflet.locatecontrol/dist/L.Control.Locate.min.css">
+    <link rel="stylesheet" href="lib/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+    <link rel="stylesheet" href="lib/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
     <!-- inject:css -->
     <link rel="stylesheet" href="modules/core/css/core.css">
     <link rel="stylesheet" href="modules/core/css/star-rating.css">
@@ -32,9 +34,11 @@
     <script src="lib/leaflet.fullscreen/Control.FullScreen.js"></script>
     <script src="lib/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
     <script src="lib/Leaflet.EdgeMarker/Leaflet.EdgeMarker.js"></script>
+    <script src="lib/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="lib/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
 
     <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
-    <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+    <!--<script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>-->
     <script src="lib/es5-shim/es5-shim.js"></script>
     <script src="lib/angular-file-upload/angular-file-upload.js"></script>
 
@@ -70,11 +74,13 @@
     
     <script src="modules/car-brands/config/car-brands.client.routes.js"></script>
     
-    <script src="modules/articles/services/articles.client.service.js"></script>
-    
     <script src="modules/car-brands/controllers/car-brands.client.controller.js"></script>
     
     <script src="modules/car-brands/services/car-brands.client.service.js"></script>
+    
+    <script src="modules/car-colors/config/car-colors.client.config.js"></script>
+    
+    <script src="modules/car-colors/config/car-colors.client.routes.js"></script>
     
     <script src="modules/car-colors/controllers/car-colors.client.controller.js"></script>
     
@@ -83,10 +89,6 @@
     <script src="modules/car-models/config/car-models.client.config.js"></script>
     
     <script src="modules/car-models/config/car-models.client.routes.js"></script>
-    
-    <script src="modules/car-colors/config/car-colors.client.config.js"></script>
-    
-    <script src="modules/car-colors/config/car-colors.client.routes.js"></script>
     
     <script src="modules/car-models/controllers/car-models.client.controller.js"></script>
     
@@ -98,39 +100,9 @@
     
     <script src="modules/core/constants/core.client.constants.js"></script>
     
-    <script src="modules/core/filters/html_to_plain.client.filter.js"></script>
-    
-    <script src="modules/core/services/geo_location.client.service.js"></script>
-    
-    <script src="modules/core/services/menus.client.service.js"></script>
-    
-    <script src="modules/core/services/misc.client.service.js"></script>
-    
-    <script src="modules/core/services/socket.client.service.js"></script>
-    
     <script src="modules/core/controllers/header.client.controller.js"></script>
     
     <script src="modules/core/controllers/home.client.controller.js"></script>
-    
-    <script src="modules/trips/controllers/create-trip.client.controller.js"></script>
-    
-    <script src="modules/trips/controllers/history-trips.client.controller.js"></script>
-    
-    <script src="modules/trips/controllers/trips.client.controller.js"></script>
-    
-    <script src="modules/trips/config/trips.client.config.js"></script>
-    
-    <script src="modules/trips/config/trips.client.routes.js"></script>
-    
-    <script src="modules/trips/services/driver_requests.client.service.js"></script>
-    
-    <script src="modules/trips/services/template_resolve.client.service.js"></script>
-    
-    <script src="modules/trips/services/trip_statuses.client.service.js"></script>
-    
-    <script src="modules/trips/services/trip_viewer.client.service.js"></script>
-    
-    <script src="modules/trips/services/trips.client.service.js"></script>
     
     <script src="modules/core/directives/load-widget.client.directive.js"></script>
     
@@ -142,6 +114,26 @@
     
     <script src="modules/core/directives/toggle.client.directive.js"></script>
     
+    <script src="modules/core/filters/html_to_plain.client.filter.js"></script>
+    
+    <script src="modules/core/services/geo_location.client.service.js"></script>
+    
+    <script src="modules/core/services/menus.client.service.js"></script>
+    
+    <script src="modules/core/services/misc.client.service.js"></script>
+    
+    <script src="modules/core/services/socket.client.service.js"></script>
+    
+    <script src="modules/trips/config/trips.client.config.js"></script>
+    
+    <script src="modules/trips/config/trips.client.routes.js"></script>
+    
+    <script src="modules/trips/controllers/create-trip.client.controller.js"></script>
+    
+    <script src="modules/trips/controllers/history-trips.client.controller.js"></script>
+    
+    <script src="modules/trips/controllers/trips.client.controller.js"></script>
+    
     <script src="modules/trips/directives/map-view.client.directive.js"></script>
     
     <script src="modules/trips/directives/point-preview.client.directive.js"></script>
@@ -151,6 +143,16 @@
     <script src="modules/trips/directives/timer-action.client.directive.js"></script>
     
     <script src="modules/trips/directives/trip-status.client.directive.js"></script>
+    
+    <script src="modules/trips/services/driver_requests.client.service.js"></script>
+    
+    <script src="modules/trips/services/template_resolve.client.service.js"></script>
+    
+    <script src="modules/trips/services/trip_statuses.client.service.js"></script>
+    
+    <script src="modules/trips/services/trip_viewer.client.service.js"></script>
+    
+    <script src="modules/trips/services/trips.client.service.js"></script>
     
     <script src="modules/users/config/users.client.config.js"></script>
     
@@ -175,6 +177,8 @@
     <script src="modules/users/services/driver.client.service.js"></script>
     
     <script src="modules/users/services/users.client.service.js"></script>
+    
+    <script src="modules/articles/services/articles.client.service.js"></script>
     
     <!-- endinject -->
 </head>

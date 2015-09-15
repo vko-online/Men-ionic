@@ -1,4 +1,4 @@
-<ion-view data-ng-controller="TripsController" data-ng-init="find()">
+<ion-view data-ng-controller="TripsController" data-ng-init="find()" cache-view="false">
     <ion-nav-buttons side="secondary">
         <button class="button">
             <i class="ion ion-ios-grid-view-outline"></i> Filter
@@ -35,7 +35,7 @@
             <div class="list">
                 <a class="item text-left item-avatar-right"
                    data-ng-class="{'active': is_current_driver_request(trip), 'immediate': trip.immediate}"
-                   data-ng-repeat="trip in trips track by $index"
+                   data-ng-repeat="trip in trips track by $index | orderBy: 'created_date':true"
                    data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}" \
                    style="padding-top: 10px;padding-bottom:10px;">
                     <img ng-if="trip.client.photo_src"
@@ -72,16 +72,11 @@
                             </span>
                         </div>
                     </div>
-                    <!--<span class="badge">{{getDistanceFromLatLonInKm(trip.meet_location.lat, trip.meet_location.lng)}}</span>-->
-                    <!--<ion-option-button data-ng-show="!is_current_driver_request(trip)" class="button-positive" data-ng-click="request_pickup(trip)">-->
-                    <!--Request pickup (10 min)-->
-                    <!--</ion-option-button>-->
-                    <!--<ion-option-button data-ng-show="is_current_driver_request(trip)" class="button-assertive" data-ng-click="cancel_request_pickup(trip)">-->
-                    <!--{{countdown_handler(is_current_driver_request(trip).date_end, 'list')}}<span> <i class="ion ion-android-cancel"></i> </span>Cancel-->
-                    <!--</ion-option-button>-->
                 </a>
             </div>
         </div>
-        <map-view data-ng-show="isActive('map-view')" data-tap-disabled="true"></map-view>
+        <map locate-control="true" ng-if="isActive('map-view')" fullscreen-control="true" edge-marker="true" models="trips" height="100%">
+            <point-preview ng-show="active_object" current-trip="active_object"></point-preview>
+        </map>
     </ion-content>
 </ion-view>

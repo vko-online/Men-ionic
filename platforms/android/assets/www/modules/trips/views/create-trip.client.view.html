@@ -1,4 +1,4 @@
-<ion-view  data-ng-controller="CreateTripController" view-title="Новый заказ">
+<ion-view  data-ng-controller="CreateTripController" view-title="Новый заказ" cache-view="false">
     <ion-nav-buttons side="secondary">
         <button class="button" data-ng-click="prepare()">
             <i class="ion ion-android-add"></i> Create
@@ -8,11 +8,9 @@
             <div data-ng-if="(error)" class="assertive text-center">
                 {{error}}
             </div>
-            <div class="text-center">
-                <ion-spinner icon="ios" data-ng-hide="defaults.location_success"></ion-spinner>
-            </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
-                <leaflet data-tap-disabled="true" defaults="defaults" markers="markers" center="defaults.center" height="150"></leaflet>
+                <map single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location" locate-control="true" fullscreen-control="true" edge-marker="false"></map>
+                <!--<leaflet controls="defaults.controls" data-tap-disabled="true" defaults="defaults" markers="markers" center="defaults.center" height="{{map_expanded ? 300 : 150}}"></leaflet>-->
                 <div class="list list-inset">
                     <label class="item item-input">
                         <i class="icon ion-ios-location"></i>

@@ -2,10 +2,13 @@
   <dictionary name="bwin">
     <words>
       <w>clickable</w>
+      <w>dragend</w>
       <w>fullscreen</w>
       <w>playlists</w>
       <w>serv</w>
       <w>signin</w>
+      <w>threshhold</w>
+      <w>waypoints</w>
     </words>
   </dictionary>
 </component>

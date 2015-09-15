@@ -61,6 +61,18 @@ angular.module('trips').factory('Trips', ['$resource', 'CORE_CONST',
 			driver_location: {
 				method: 'POST',
 				url: CORE_CONST.REST_URL + 'trips/:tripId/driver_location'
+			},
+			remove_pickup_request: {
+				method: 'POST',
+				url: CORE_CONST.REST_URL + 'trips/:tripId/remove_pickup_request'
+			},
+			notify_client: {
+				method: 'POST',
+				url: CORE_CONST.REST_URL + 'trips/:tripId/notify_client'
+			},
+			call_me: {
+				method: 'POST',
+				url: CORE_CONST.REST_URL + 'trips/:tripId/call_me'
 			}
 		});
 	}

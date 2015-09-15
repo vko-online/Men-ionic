@@ -5,9 +5,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <!--<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="lib/leaflet/dist/leaflet.css">
-
+    <link rel="stylesheet" href="lib/leaflet.fullscreen/Control.FullScreen.css">
+    <link rel="stylesheet" href="lib/leaflet.locatecontrol/dist/L.Control.Locate.min.css">
     <!-- inject:css -->
     <link rel="stylesheet" href="modules/core/css/core.css">
     <link rel="stylesheet" href="modules/core/css/star-rating.css">
@@ -27,16 +27,21 @@
     <script src="lib/angular-socket-io/socket.js"></script>
     <script src="lib/humanize-duration/humanize-duration.js"></script>
     <script src="lib/momentjs/min/moment.min.js"></script>
-    <script src="lib/leaflet/dist/leaflet.js"></script>
+
+    <script src="lib/leaflet/dist/leaflet-src.js"></script>
+    <script src="lib/leaflet.fullscreen/Control.FullScreen.js"></script>
+    <script src="lib/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+    <script src="lib/Leaflet.EdgeMarker/Leaflet.EdgeMarker.js"></script>
+
     <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
-    <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+    <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
     <script src="lib/es5-shim/es5-shim.js"></script>
     <script src="lib/angular-file-upload/angular-file-upload.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/config.js"></script>
     <script src="js/application.js"></script>
 
     <!-- inject:js -->
@@ -87,17 +92,19 @@
     
     <script src="modules/car-models/services/car-models.client.service.js"></script>
     
+    <script src="modules/core/constants/core.client.constants.js"></script>
+    
     <script src="modules/core/config/core.client.config.js"></script>
     
     <script src="modules/core/config/core.client.routes.js"></script>
-    
-    <script src="modules/core/constants/core.client.constants.js"></script>
     
     <script src="modules/core/controllers/header.client.controller.js"></script>
     
     <script src="modules/core/controllers/home.client.controller.js"></script>
     
     <script src="modules/core/directives/load-widget.client.directive.js"></script>
+    
+    <script src="modules/core/directives/map.js"></script>
     
     <script src="modules/core/directives/star-rating.client.directive.js"></script>
     
@@ -130,6 +137,8 @@
     <script src="modules/trips/directives/point-preview.client.directive.js"></script>
     
     <script src="modules/trips/directives/point-view.client.directive.js"></script>
+    
+    <script src="modules/trips/directives/timer-action.client.directive.js"></script>
     
     <script src="modules/trips/directives/trip-status.client.directive.js"></script>
     

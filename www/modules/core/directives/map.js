@@ -10,11 +10,10 @@
  *                                                  
  */
 'use strict';
-angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation', 'Socket', '$rootScope', function(CORE_CONST, $compile, GeoLocation, Socket, $rootScope){
+angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation', 'Socket', '$rootScope', '$timeout', function(CORE_CONST, $compile, GeoLocation, Socket, $rootScope, $timeout){
     return {
         restrict: 'E',
         transclude: true,
-        priority: 1,
         //template: '<div id="map" data-tap-disabled="true"></div><div ng-transclude></div>',
         scope: {
             model: '=?',
@@ -27,7 +26,10 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
             listenEvents: '=?',
             singleMarkerModel: '=?',
             singleMarkerModelFixed: '=?',
-            height: '@'
+            height: '@',
+            streetApi: '=?',
+            streetModel: '=?',
+            routeModel: '=?'
         },
         compile: function(tElem, tAttr, tTransclude){
             return function link(scope, elem, attr, ctrl){
@@ -44,11 +46,17 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                         removeEvent: 'remove_trip',
                         model: false,
                         modelOptions: {
-                            draggable: true,
+                            draggable: false,
                             message: 'I\'m here',
                             focus: true
                         },
-                        dom_html: ''
+                        dom_html: '',
+                        threshhold: {
+                            last: false,
+                            now: false,
+                            promise: false,
+                            threshhold: 1000
+                        }
                     }
                 };
                 //fix elem height
@@ -56,6 +64,11 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
 //--------------------------------------------------------------------
 //map
 //--------------------------------------------------------------------
+//                var mapContainerParent = oldMapContainer.parentNode;
+//                mapContainerParent.removeChild(oldMapContainer);
+//
+//                var newMapContainer = document.createElement('div');
+//                mapContainerParent.appendChild(newMapContainer);
                 elem.html('<div id="map" data-tap-disabled="true"></div><div ng-transclude></div>');
                 var map = L.map('map', {
                     attributionControl: defaults.attributionControl
@@ -138,6 +151,9 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                     });
                 }
                 //todo: should we use `obj.loc[0]` or `obj.loc.lat` or `obj.lat` here?
+//--------------------------------------------------------------------
+//Marker model
+//--------------------------------------------------------------------
                 if(scope.singleMarkerModel){
                     if(scope.singleMarkerModelFixed){
                         if(defaults.internal.model){
@@ -151,19 +167,122 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                             }
                         }
                     } else {
-                        map.on('click', function(event){
+                        defaults.internal.model = L.marker({
+                            lat: CORE_CONST.MAP_LAT,
+                            lng: CORE_CONST.MAP_LNG
+                        }, defaults.internal.modelOptions);
+                        defaults.internal.model.bindPopup('I\'m here').openPopup().addTo(map);
+                        map.on('move', function(event){
+                            var map_center = event.target.getCenter();
                             if(!scope.model)
                                 scope.model = {};
-                            scope.model.lat = event.latlng.lat;
-                            scope.model.lng = event.latlng.lng;
+                            scope.model.lat = map_center.lat;
+                            scope.model.lng = map_center.lng;
                             if(defaults.internal.model){
                                 defaults.internal.model.setLatLng(scope.model);
                             } else {
                                 defaults.internal.model = L.marker(scope.model, defaults.internal.modelOptions);
                                 defaults.internal.model.bindPopup('I\'m here').openPopup().addTo(map);
                             }
+                            map.on('dragend', function(drag_event){
+                                var map_dragend = drag_event.target.getCenter();
+                                if(scope.streetApi){
+                                    var response_handler = function(response){
+                                        if(response.data && response.data.address)
+                                            scope.streetModel = response.data.address.road;// + ' ' + (response.data.address.house_number || '');
+                                    };
+                                    defaults.internal.threshhold.now = Date.now();
+                                    if(defaults.internal.threshhold.last && defaults.internal.threshhold.now < defaults.internal.threshhold.last + defaults.internal.threshhold.threshhold){
+                                        $timeout.cancel(defaults.internal.threshhold.promise);
+                                        defaults.internal.threshhold.promise = $timeout(function(){
+                                            defaults.internal.threshhold.last = defaults.internal.threshhold.now;
+                                            GeoLocation.street(map_dragend.lat, map_dragend.lng).then(response_handler, angular.noop);
+                                        }, defaults.internal.threshhold.threshhold);
+                                    } else {
+                                        defaults.internal.threshhold.last = defaults.internal.threshhold.now;
+                                        GeoLocation.street(map_dragend.lat, map_dragend.lng).then(response_handler, angular.noop);
+                                    }
+                                }
+                            });
                         });
                     }
+                }
+//--------------------------------------------------------------------
+//Route path
+//--------------------------------------------------------------------
+                if(scope.routeModel){
+                    L.Routing.Localization.ru = {
+                        directions: {
+                            N: 'север',
+                            NE: 'северовосток',
+                            E: 'восток',
+                            SE: 'юговосток',
+                            S: 'юг',
+                            SW: 'югозапад',
+                            W: 'запад',
+                            NW: 'северозапад'
+                        },
+                        instructions: {
+                            // instruction, postfix if the road is named
+                            'Head': ['Прямо {dir}', ' на {road}'],
+                            'Continue': ['Продолжить {dir}', ' на {road}'],
+                            'SlightRight': ['Плавный поворот направо', ' на {road}'],
+                            'Right': ['Направо', ' на {road}'],
+                            'SharpRight': ['Резкий поворот направо', ' на {road}'],
+                            'TurnAround': ['Обернись'],
+                            'SharpLeft': ['Резкий поворот налево', ' на {road}'],
+                            'Left': ['Налево', ' на {road}'],
+                            'SlightLeft': ['Плавный поворот налево', ' на {road}'],
+                            'WaypointReached': ['Точку достигнута'],
+                            'Roundabout': ['Take the {exitStr} exit in the roundabout', ' onto {road}'],
+                            'DestinationReached': ['Цель достигнута']
+                        },
+                        formatOrder: function(n){
+                            return n;
+                        },
+                        ui: {
+                            startPlaceholder: 'Начало',
+                            viaPlaceholder: 'С {viaNumber}',
+                            endPlaceholder: 'Конец'
+                        }
+                    };
+                    GeoLocation.current().then(function(response){
+                        L.Routing.control({
+                            draggableWaypoints: false,
+                            addWaypoints: false,
+                            fitSelectedRoutes: true,
+                            waypoints: [
+                                L.latLng(response.coords.latitude, response.coords.longitude), //from
+                                L.latLng(scope.routeModel.lat, scope.routeModel.lng) //to
+                            ],
+                            createMarker: function(index, point, count){
+                                if(index === 0){
+                                    var taxi_icon = L.AwesomeMarkers.icon({
+                                        icon: 'model-s',
+                                        prefix: 'ion',
+                                        markerColor: 'red',
+                                        spinClass: 'spin'
+                                    });
+                                    var taxi_marker = L.marker(point.latLng, {icon: taxi_icon});
+                                    taxi_marker.bindPopup('From').openPopup();
+                                    return taxi_marker;
+                                }
+                                if(index === 1){
+                                    var client_icon = L.AwesomeMarkers.icon({
+                                        icon: 'ios-body',
+                                        prefix: 'ion',
+                                        markerColor: 'blue',
+                                        spinClass: 'spin'
+                                    });
+                                    var client_marker = L.marker(point.latLng, {icon: client_icon});
+                                    client_marker.bindPopup('To').openPopup();
+                                    return client_marker;
+                                }
+                            },
+                            show: false,
+                            language: 'ru'
+                        }).addTo(map);
+                    });
                 }
 //--------------------------------------------------------------------
 //Socket event listeners

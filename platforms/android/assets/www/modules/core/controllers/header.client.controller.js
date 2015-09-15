@@ -22,9 +22,9 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
                 $scope.signin_modal.remove();
             });
         });
-        $scope.$on('event:auth-login_required', function(e, rejection) {
-            console.log('event:auth-login_required');
-        });
+        //$scope.$on('event:auth-login_required', function(e, rejection) {
+        //    console.log('event:auth-login_required');
+        //});
         $scope.signout = function(){
             Users.sign_out(function(successResponse){
                 Authentication.user = null;
@@ -51,11 +51,23 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 
         $scope.CORE_CONST = CORE_CONST;
         Socket.on('user:changed', function(payload){
+            console.log(payload.keys, payload.source);
             payload.keys.forEach(function(key){
                 Authentication.set_prop(key, payload.source[key]);
                 $scope.authentication = Authentication;
             });
         });
-
+        Socket.on('trip_call_me', function(trip){
+            alert('Клиент не видит вас, позвоните ему');
+            $state.go('viewTrip', {tripId: trip._id});
+        });
+        Socket.on('trip_notify', function(trip){
+            alert('Водитель приехал');
+            $state.go('viewTrip', {tripId: trip._id});
+        });
+        $scope.exit_app = function(){
+            if(navigator.app)
+                navigator.app.exitApp();
+        }
     }
 ]);
