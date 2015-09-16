@@ -2,13 +2,21 @@
 
 // by bwin on 6/25/15.
 'use strict';
-angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory',
-    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory){
+angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory', '$ionicSlideBoxDelegate',
+    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory, $ionicSlideBoxDelegate){
         $scope.TRIP_STATUS = TripStatuses.query();
         $scope.authentication = Authentication;
         if($scope.authentication && $scope.authentication.user && $scope.authentication.user.trip){
             $location.path('trips/' + ($scope.authentication.user.trip._id || $scope.authentication.user.trip));
         }
+        $scope.current_index = 0;
+        $scope.next = function(index){
+            if(index === 1)
+                $ionicSlideBoxDelegate.previous();
+            else
+                $ionicSlideBoxDelegate.next();
+            $scope.current_index = $ionicSlideBoxDelegate.currentIndex();
+        };
         $scope.preparation = {};
         $scope.prepare = function(){
             $scope.preparation.loc = [$scope.preparation.meet_location.lng, $scope.preparation.meet_location.lat];

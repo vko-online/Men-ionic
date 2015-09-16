@@ -13,12 +13,13 @@
 angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation', 'Socket', '$rootScope', '$timeout', function(CORE_CONST, $compile, GeoLocation, Socket, $rootScope, $timeout){
     return {
         restrict: 'E',
-        transclude: true,
+        //transclude: true,
         //template: '<div id="map" data-tap-disabled="true"></div><div ng-transclude></div>',
         scope: {
             model: '=?',
             center: '=?',
             fullscreenControl: '=?',
+            zoomControl: '=?',
             locateControl: '=?',
             edgeMarker: '=?',
             markersFunction: '=?',
@@ -29,11 +30,14 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
             height: '@',
             streetApi: '=?',
             streetModel: '=?',
-            routeModel: '=?'
+            resizeControl: '=?',
+            routeModel: '=?',
+            popupHandler: '=?'
         },
         compile: function(tElem, tAttr, tTransclude){
             return function link(scope, elem, attr, ctrl){
                 var defaults = {
+                    zoomControl: angular.isDefined(scope.zoomControl) ? scope.zoomControl : true,
                     height: scope.height || 300,
                     attributionControl: false,
                     scrollWheelZoom: false,
@@ -48,7 +52,7 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                         modelOptions: {
                             draggable: false,
                             message: 'I\'m here',
-                            focus: true
+                            clickable: false
                         },
                         dom_html: '',
                         threshhold: {
@@ -69,13 +73,17 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
 //
 //                var newMapContainer = document.createElement('div');
 //                mapContainerParent.appendChild(newMapContainer);
-                elem.html('<div id="map" data-tap-disabled="true"></div><div ng-transclude></div>');
+                var html_string = '<div id="map" data-tap-disabled="true"></div>';
+                elem.html(html_string);
+
                 var map = L.map('map', {
-                    attributionControl: defaults.attributionControl
+                    attributionControl: defaults.attributionControl,
+                    zoomControl: defaults.zoomControl
                 }).setView([CORE_CONST.MAP_LAT, CORE_CONST.MAP_LNG], defaults.zoom);
                 L.tileLayer(defaults.layer, {
                     scrollWheelZoom: defaults.scrollWheelZoom,
-                    maxZoom: defaults.maxZoom
+                    maxZoom: defaults.maxZoom,
+                    closePopupOnClick: false
                 }).addTo(map);
                 //center map
                 if(scope.center){
@@ -93,6 +101,45 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                         displayWithZoomControl: true
                     }).addTo(map);
                 }
+                if(scope.resizeControl){
+                    var mouse_state = {
+                        startY: 0,
+                        startHeight: 0,
+                        is_down: false,
+                        clicked: false
+                    };
+                    scope.mouse_down = function(e){
+                        e.preventDefault();
+                        mouse_state.startY = e.clientY;
+                        mouse_state.startHeight = elem.height();
+                        mouse_state.is_down = true;
+                    };
+                    scope.mouse_move = function(e){
+                        if(mouse_state.is_down){
+                            var _height = (mouse_state.startHeight + e.clientY - mouse_state.startY);
+                            elem.height(_height < defaults.height ? defaults.height : _height);
+                        }
+                    };
+                    scope.mouse_up = function(e){
+                        mouse_state.is_down = false;
+                        map.invalidateSize(true);
+                    };
+                    scope.mouse_click = function(e){
+                       if(mouse_state.clicked){
+                           elem.height(defaults.height);
+                           mouse_state.clicked = false;
+                       } else {
+                           elem.height(500);
+                           mouse_state.clicked = true;
+                       }
+                        map.invalidateSize(true);
+                    };
+                    var resize_html = '<div ng-click="mouse_click($event)" ng-mousedown="mouse_down($event)" ng-mousemove="mouse_move($event)" ng-mouseup="mouse_up($event)" class="map_handle"><i class="ion ion-ios-drag"></i></div>';
+                    elem.append(resize_html);
+                    $compile(elem.contents())(scope);
+                }
+                //add transclude
+                //elem.append('<div ng-transclude></div>');
 //--------------------------------------------------------------------
 //Marker binders
 //--------------------------------------------------------------------
@@ -167,11 +214,24 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                             }
                         }
                     } else {
+                        var popup = L.popup({
+                            closeButton: false,
+                            closeOnClick: false,
+                            className: 'pickup-location-popup'
+                        });
+                        scope.test = function(){
+                            alert('asd');
+                        };
+                        var popup_html = '<button ng-click="test()">Set pickup location <i class="ion ion-ios-arrow-right"></i></button>';
+                        popup.setContent(popup_html);
+                        if(scope.popupHandler){
+                            $compile(popup_html)(scope);
+                        }
                         defaults.internal.model = L.marker({
                             lat: CORE_CONST.MAP_LAT,
                             lng: CORE_CONST.MAP_LNG
                         }, defaults.internal.modelOptions);
-                        defaults.internal.model.bindPopup('I\'m here').openPopup().addTo(map);
+                        defaults.internal.model.bindPopup(popup).addTo(map).openPopup();
                         map.on('move', function(event){
                             var map_center = event.target.getCenter();
                             if(!scope.model)
@@ -182,7 +242,7 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                                 defaults.internal.model.setLatLng(scope.model);
                             } else {
                                 defaults.internal.model = L.marker(scope.model, defaults.internal.modelOptions);
-                                defaults.internal.model.bindPopup('I\'m here').openPopup().addTo(map);
+                                defaults.internal.model.bindPopup(popup).addTo(map).openPopup();
                             }
                             map.on('dragend', function(drag_event){
                                 var map_dragend = drag_event.target.getCenter();

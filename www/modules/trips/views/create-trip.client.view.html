@@ -1,7 +1,8 @@
 <ion-view  data-ng-controller="CreateTripController" view-title="Новый заказ" cache-view="false">
     <ion-nav-buttons side="secondary">
-        <button class="button" data-ng-click="prepare()">
-            <i class="ion ion-android-add"></i> Create
+        <button class="button" data-ng-click="next(current_index)">
+            <i ng-show="current_index === 0" class="ion ion-ios-arrow-right"></i>
+            <i ng-show="current_index !== 0" class="ion ion-ios-arrow-left"></i>
         </button>
     </ion-nav-buttons>
     <ion-content>
@@ -9,29 +10,37 @@
                 {{error}}
             </div>
             <div data-ng-if="authentication.user.is_client && !authentication.user.trip">
-                <map street-api="true" street-model="preparation.start_address" single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location" locate-control="true" fullscreen-control="true" edge-marker="false"></map>
-                <!--<leaflet controls="defaults.controls" data-tap-disabled="true" defaults="defaults" markers="markers" center="defaults.center" height="{{map_expanded ? 300 : 150}}"></leaflet>-->
-                <div class="list list-inset">
-                    <label class="item item-input">
-                        <i class="icon ion-ios-location"></i>
-                        <input type="text" placeholder="Откуда" data-ng-model="preparation.start_address">
-                    </label>
-                    <label class="item item-input">
-                        <i class="icon ion-ios-location"></i>
-                        <input type="text" placeholder="Куда" data-ng-model="preparation.end_address">
-                    </label>
-                    <label class="item item-input">
-                        <i class="icon ion-cash"></i>
-                        <input type="number" placeholder="Цена" data-ng-model="preparation.price">
-                    </label>
-                    <div class="item" data-ng-click="init_modal()">
-                        <i class="icon ion-ios-gear-outline"></i>
-                        Параметры
+                <ion-slide-box show-pager="false">
+                    <ion-slide>
+                        <map popup-handler="next" height="500" street-api="true" street-model="preparation.start_address" single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location" locate-control="true" fullscreen-control="false" edge-marker="false"></map>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="list list-inset">
+                            <label class="item item-input">
+                                <i class="icon ion-ios-location"></i>
+                                <input type="text" placeholder="Откуда" data-ng-model="preparation.start_address">
+                            </label>
+                            <label class="item item-input">
+                                <i class="icon ion-ios-location"></i>
+                                <input type="text" placeholder="Куда" data-ng-model="preparation.end_address">
+                            </label>
+                            <label class="item item-input">
+                                <i class="icon ion-cash"></i>
+                                <input type="number" placeholder="Цена" data-ng-model="preparation.price">
+                            </label>
+                            <div class="item" data-ng-click="init_modal()">
+                                <i class="icon ion-ios-gear-outline"></i>
+                                Параметры
                             <span class="item-note">
                               <i class="ion ion-ios-arrow-right"></i>
                             </span>
-                    </div>
-                </div>
+                            </div>
+                        </div>
+                        <button class="button" data-ng-click="prepare()">
+                            <i class="ion ion-android-add"></i> Create
+                        </button>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
     </ion-content>
 </ion-view>
