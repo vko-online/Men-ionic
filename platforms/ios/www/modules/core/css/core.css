@@ -255,6 +255,9 @@ ion-item.immediate:after{
 .price-label{
 	font-size: .8em;
 }
+.full-height {
+	height: 100%;
+}
 .full-height > .scroll{
 	height: 100%;
 }
@@ -280,8 +283,32 @@ ion-item.immediate:after{
 map{
 	width: 100%;
 	display: block;
+	position: relative;
 }
+.map_handle{
+	position: absolute;
+	margin-top: -20px;
+	width: 100%;
+	z-index: 9999;
+	background-color: rgba(50, 50, 50, .3);
+	text-align: center;
+}
+.pickup-location-popup{
 
+}
+.pickup-location-popup .leaflet-popup-content-wrapper{
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.pickup-location-popup .leaflet-popup-content-wrapper .leaflet-popup-content{
+	margin-top:0;
+	margin-bottom:0;
+}
+.pickup-location-popup .leaflet-popup-content-wrapper .leaflet-popup-content button{
+	background: none;
+	border: none;
+}
 #map{
 	height: 100%;
 	width: 100%;

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="lib/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="lib/leaflet.fullscreen/Control.FullScreen.css">
     <link rel="stylesheet" href="lib/leaflet.locatecontrol/dist/L.Control.Locate.min.css">
+    <link rel="stylesheet" href="lib/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+    <link rel="stylesheet" href="lib/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
     <!-- inject:css -->
     <link rel="stylesheet" href="modules/core/css/core.css">
     <link rel="stylesheet" href="modules/core/css/star-rating.css">
@@ -32,9 +34,11 @@
     <script src="lib/leaflet.fullscreen/Control.FullScreen.js"></script>
     <script src="lib/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
     <script src="lib/Leaflet.EdgeMarker/Leaflet.EdgeMarker.js"></script>
+    <script src="lib/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="lib/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
 
     <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
-    <script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+    <!--<script src="lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>-->
     <script src="lib/es5-shim/es5-shim.js"></script>
     <script src="lib/angular-file-upload/angular-file-upload.js"></script>
 
@@ -60,10 +64,6 @@
     
     <script src="modules/users/users.client.module.js"></script>
     
-    <script src="modules/articles/config/articles.client.config.js"></script>
-    
-    <script src="modules/articles/config/articles.client.routes.js"></script>
-    
     <script src="modules/articles/controllers/articles.client.controller.js"></script>
     
     <script src="modules/articles/services/articles.client.service.js"></script>
@@ -72,7 +72,9 @@
     
     <script src="modules/car-brands/config/car-brands.client.routes.js"></script>
     
-    <script src="modules/car-brands/controllers/car-brands.client.controller.js"></script>
+    <script src="modules/articles/config/articles.client.config.js"></script>
+    
+    <script src="modules/articles/config/articles.client.routes.js"></script>
     
     <script src="modules/car-brands/services/car-brands.client.service.js"></script>
     
@@ -88,13 +90,15 @@
     
     <script src="modules/car-models/config/car-models.client.routes.js"></script>
     
-    <script src="modules/car-models/controllers/car-models.client.controller.js"></script>
+    <script src="modules/car-brands/controllers/car-brands.client.controller.js"></script>
     
     <script src="modules/car-models/services/car-models.client.service.js"></script>
     
     <script src="modules/core/config/core.client.config.js"></script>
     
     <script src="modules/core/config/core.client.routes.js"></script>
+    
+    <script src="modules/car-models/controllers/car-models.client.controller.js"></script>
     
     <script src="modules/core/constants/core.client.constants.js"></script>
     
@@ -132,16 +136,6 @@
     
     <script src="modules/trips/controllers/trips.client.controller.js"></script>
     
-    <script src="modules/trips/directives/map-view.client.directive.js"></script>
-    
-    <script src="modules/trips/directives/point-preview.client.directive.js"></script>
-    
-    <script src="modules/trips/directives/point-view.client.directive.js"></script>
-    
-    <script src="modules/trips/directives/timer-action.client.directive.js"></script>
-    
-    <script src="modules/trips/directives/trip-status.client.directive.js"></script>
-    
     <script src="modules/trips/services/driver_requests.client.service.js"></script>
     
     <script src="modules/trips/services/template_resolve.client.service.js"></script>
@@ -169,6 +163,16 @@
     <script src="modules/users/controllers/settings.client.controller.js"></script>
     
     <script src="modules/users/controllers/share.client.controller.js"></script>
+    
+    <script src="modules/trips/directives/map-view.client.directive.js"></script>
+    
+    <script src="modules/trips/directives/point-preview.client.directive.js"></script>
+    
+    <script src="modules/trips/directives/point-view.client.directive.js"></script>
+    
+    <script src="modules/trips/directives/timer-action.client.directive.js"></script>
+    
+    <script src="modules/trips/directives/trip-status.client.directive.js"></script>
     
     <script src="modules/users/services/authentication.client.service.js"></script>
     

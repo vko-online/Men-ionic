@@ -2,100 +2,37 @@
 
 // by bwin on 6/25/15.
 'use strict';
-angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory', 'leafletData',
-    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory, leafletData){
-
-        //var MyControl = L.control();
-        //MyControl.setPosition('bottomleft');
-        //MyControl.onAdd = function () {
-        //    var className = 'leaflet-control-my-location';
-        //    return L.DomUtil.create('div', className + ' leaflet-bar');
-        //};
-        //$scope.controls = {
-        //    custom: {
-        //        MyControl: MyControl
-        //    }
-        //};
-        //L.Control.Command = L.Control.extend({
-        //    options: {
-        //        position: 'topleft'
-        //    },
-        //    onAdd: function (map) {
-        //        var controlDiv = L.DomUtil.create('div', 'leaflet-control-command');
-        //        L.DomEvent
-        //            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
-        //            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
-        //            .addListener(controlDiv, 'click', function () { MapShowCommand(); });
-        //
-        //        var controlUI = L.DomUtil.create('div', 'leaflet-control-command-interior', controlDiv);
-        //        controlUI.title = 'Map Commands';
-        //        return controlDiv;
-        //    }
-        //});
-        //
-        //L.control.command = function (options) {
-        //    return new L.Control.Command(options);
-        //};
-        //leafletData.getMap(function(map){
-        //    map.addControl(new MyControl());
-        //});
-
+angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory', '$ionicSlideBoxDelegate', '$q',
+    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory, $ionicSlideBoxDelegate, $q){
         $scope.TRIP_STATUS = TripStatuses.query();
         $scope.authentication = Authentication;
         if($scope.authentication && $scope.authentication.user && $scope.authentication.user.trip){
             $location.path('trips/' + ($scope.authentication.user.trip._id || $scope.authentication.user.trip));
         }
-        $scope.preparation = {};
-        $scope.defaults = {
-            tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-            attributionControl: false,
-            scrollWheelZoom: false,
-            location_success: false,
-            fullscreenControl: true,
-            center: {
-                lat: CORE_CONST.MAP_LAT,
-                lng: CORE_CONST.MAP_LNG,
-                zoom: 15
-            },
-            controls: {
-
-            }
+        $scope.current_index = 0;
+        $scope.next = function(index){
+            if(index === 1)
+                $ionicSlideBoxDelegate.previous();
+            else
+                $ionicSlideBoxDelegate.next();
+            $scope.current_index = $ionicSlideBoxDelegate.currentIndex();
         };
-        //GeoLocation.current()
-        //    .then(function(successResponse){
-        //        $scope.markers = {
-        //            marker: {
-        //                lat: successResponse.coords.latitude,
-        //                lng: successResponse.coords.longitude,
-        //                message: 'I\'m here',
-        //                focus: true,
-        //                draggable: true
-        //            }
-        //        };
-        //        $scope.defaults.center.lat = successResponse.coords.latitude;
-        //        $scope.defaults.center.lng = successResponse.coords.longitude;
-        //        $scope.defaults.location_success = true;
-        //    }, function(errorResponse){
-        //        console.log(errorResponse);
-        //        $scope.error = 'Не удалось получить ваше местоположение';
-        //        //todo: we need pattern for load indicators
-        //        //maybe angular-loading module is enough
-        //        $scope.defaults.location_success = true;
-        //    });
-        $scope.$on('leafletDirectiveMarker.dragend', function (e, args) {
-            $scope.markers.marker.lng = args.model.lng;
-            $scope.markers.marker.lat = args.model.lat;
-        });
-
+        $scope.car_type = 'any';
+        $scope.setCarType = function(type){
+            $scope.car_type = type;
+        };
+        $scope.street_handler = function(location){
+            var defer = $q.defer();
+            Trips.region_by_location(location, function(successResponse){
+                defer.resolve(successResponse);
+            }, function(errorResponse){
+                defer.reject(errorResponse);
+            });
+            return defer.promise;
+        };
+        $scope.preparation = {};
         $scope.prepare = function(){
-            if($scope.markers && $scope.markers.marker && $scope.markers.marker.lat && $scope.markers.marker.lng)
-                angular.extend($scope.preparation, {
-                    meet_location: {
-                        lat: $scope.markers.marker.lat,
-                        lng: $scope.markers.marker.lng
-                    },
-                    loc: [$scope.markers.marker.lng, $scope.markers.marker.lat]
-                });
+            $scope.preparation.loc = [$scope.preparation.meet_location.lng, $scope.preparation.meet_location.lat];
             Trips.prepare_trip({
                 tripId: $stateParams.tripId
             }, $scope.preparation, function(successResponse){
@@ -115,16 +52,9 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
                 $scope.misc_modal.show();
                 $scope.misc = modal.custom;
                 $scope.close_misc_modal = function(){
-                    $rootScope.$broadcast('event:create-misc', $scope.misc);
                     $scope.misc_modal.hide();
                 };
             });
         };
-        $scope.$on('event:create-misc', function(){
-            console.log($scope.misc);
-            //if(Object.keys($scope.misc).length){
-            //    angular.extend($scope.preparation, $scope.misc);
-            //}
-        });
     }
 ]);

@@ -2,8 +2,8 @@
 
 // by bwin on 6/25/15.
 'use strict';
-angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory', '$ionicSlideBoxDelegate',
-    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory, $ionicSlideBoxDelegate){
+angular.module('users').controller('CreateTripController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', 'TripStatuses', '$ionicModal', '$rootScope', '$ionicHistory', '$ionicSlideBoxDelegate', '$q',
+    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, TripStatuses, $ionicModal, $rootScope, $ionicHistory, $ionicSlideBoxDelegate, $q){
         $scope.TRIP_STATUS = TripStatuses.query();
         $scope.authentication = Authentication;
         if($scope.authentication && $scope.authentication.user && $scope.authentication.user.trip){
@@ -16,6 +16,19 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
             else
                 $ionicSlideBoxDelegate.next();
             $scope.current_index = $ionicSlideBoxDelegate.currentIndex();
+        };
+        $scope.car_type = 'any';
+        $scope.setCarType = function(type){
+            $scope.car_type = type;
+        };
+        $scope.street_handler = function(location){
+            var defer = $q.defer();
+            Trips.region_by_location(location, function(successResponse){
+                defer.resolve(successResponse);
+            }, function(errorResponse){
+                defer.reject(errorResponse);
+            });
+            return defer.promise;
         };
         $scope.preparation = {};
         $scope.prepare = function(){

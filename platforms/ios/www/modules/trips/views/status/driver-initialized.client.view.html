@@ -1,15 +1,16 @@
-<ion-content padding="true">
+<ion-content padding="false">
     <div data-ng-if="(error)" class="assertive text-center">
-                {{error}}
-            </div>
+           {{error}}
+    </div>
+    <map height="120" single-marker-model="true" single-marker-model-fixed="true" model="trip.meet_location" resize-control="true" locate-control="false" zoom-control="false" fullscreen-control="false" edge-marker="false"></map>
+
     <div class="list card">
         <div class="item item-avatar">
-            <img ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}">
+            <img ng-if="trip.client.photo_src" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}">
             <h2>{{trip.client.displayName}}</h2>
             <p>{{minutes_ago(trip.created_date)}}</p>
         </div>
         <div class="item item-body">
-            <leaflet data-tap-disabled="true" defaults="defaults" markers="trip_markers" center="defaults.center" height="200"></leaflet>
             <div class="list">
                 <div class="item">
                     <i class="icon ion-ios-location"></i>

@@ -1,7 +1,7 @@
 'use strict';
 // Trips controller
-angular.module('trips').controller('TripsController', ['$scope', '$stateParams', '$location', '$interval', 'Authentication', 'Trips', 'CarColors', 'CarBrands', 'CarModels', 'Socket', 'TripStatuses', 'DriverRequests', 'Misc', 'CORE_CONST', 'GeoLocation', '$ionicPopover', '$timeout', 'leafletData',
-    function($scope, $stateParams, $location, $interval, Authentication, Trips, CarColors, CarBrands, CarModels, Socket, TripStatuses, DriverRequests, Misc, CORE_CONST, GeoLocation, $ionicPopover, $timeout, leafletData){
+angular.module('trips').controller('TripsController', ['$scope', '$stateParams', '$location', '$interval', 'Authentication', 'Trips', 'CarColors', 'CarBrands', 'CarModels', 'Socket', 'TripStatuses', 'DriverRequests', 'Misc', 'CORE_CONST', 'GeoLocation', '$ionicPopover',
+    function($scope, $stateParams, $location, $interval, Authentication, Trips, CarColors, CarBrands, CarModels, Socket, TripStatuses, DriverRequests, Misc, CORE_CONST, GeoLocation, $ionicPopover){
         //todo: GET RID OF FUNCTION CALLS, AND REFACTOR, USE GROUPED ACTIONS
         //it increases scope digest cycle count
         //use single object instances, as they are already in digest
@@ -38,16 +38,6 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 }
             }
         };
-        $scope.defaults = {
-            time: 1,
-            tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-            attributionControl: false,
-            center: {
-                lat: CORE_CONST.MAP_LAT,
-                lng: CORE_CONST.MAP_LNG,
-                zoom: CORE_CONST.MAP_ZOOM
-            }
-        };
         $ionicPopover.fromTemplateUrl('modules/trips/views/templates/trip-request-popover.client.view.html', {
             scope: $scope
         }).then(function(popover){
@@ -61,6 +51,9 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 }, 1000);
             });
         }
+        $scope.defaults = {
+            time: 10
+        };
         $scope.set_request_minute = function(minute){
             $scope.defaults.time = minute;
             $scope.request_pickup();
@@ -88,51 +81,35 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.trip = Trips.get({
                 tripId: $stateParams.tripId
             }, function(successResponse){
-                if(successResponse.meet_location && successResponse.meet_location.lat && successResponse.meet_location.lng){
-                    if(successResponse.loc && successResponse.loc.length){
-                        $scope.trip_markers = {
-                            marker: {
-                                lat: successResponse.loc[1],
-                                lng: successResponse.loc[0],
-                                focus: true,
-                                draggable: false,
-                                message: 'Meet location'
-                            }
-                        };
-                        $scope.defaults.center.lat = successResponse.loc[1];
-                        $scope.defaults.center.lng = successResponse.loc[0];
-                    }
-                }
                 if(callback){
-                    callback();
+                    callback(successResponse);
                 }
             }, errorHandler);
         };
         $scope.findRequest = function(){
             $scope.request = DriverRequests.get({
                 driverRequestId: $stateParams.driverRequestId
-            }, function(successResponse){
-                console.log(successResponse);
-            }, errorHandler);
+            }, angular.noop, errorHandler);
         };
         $scope.find = function(){
             $scope.trips = Trips.query(function(successResponse){
                 $scope.$broadcast('scroll.refreshComplete');
-                GeoLocation.current().then(function(response){
-                    $scope.driver_marker = {
-                        marker: {
-                            lat: response.coords.latitude,
-                            lng: response.coords.longitude
-                        }
-                    };
-                    var lat2 = response.coords.latitude,
-                        lon2 = response.coords.longitude;
-                    $scope.getDistanceFromLatLonInKm = function(lat1, lon1){
-                        return GeoLocation.distance(lat1, lon1, lat2, lon2).toFixed(3) + 'км';
-                    };
-                });
             });
         };
+        $scope.findByLocation = Trips.by_location;
+        //GeoLocation.current().then(function(response){
+        //    $scope.driver_marker = {
+        //        marker: {
+        //            lat: response.coords.latitude,
+        //            lng: response.coords.longitude
+        //        }
+        //    };
+        //    var lat2 = response.coords.latitude,
+        //        lon2 = response.coords.longitude;
+        //    //$scope.getDistanceFromLatLonInKm = function(lat1, lon1){
+        //    //    return GeoLocation.distance(lat1, lon1, lat2, lon2).toFixed(3) + 'км';
+        //    //};
+        //});
         $scope.minutes_ago = function(time){
             if($scope.server_time){
                 var r = Math.floor((+$scope.server_time - (+new Date(time)))/60000);
@@ -283,8 +260,13 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }
         });
         if($scope.authentication.user.is_driver && $scope.trips){
-            Socket.on('new_trip', function(obj){
+            Socket.on('add_trip', function(obj){
                 $scope.trips.push(obj);
+            });
+            Socket.on('remove_trip', function(obj){
+                $scope.trips = $scope.trips.filter(function(i){
+                    return i._id !== obj._id;
+                });
             });
         }
     }

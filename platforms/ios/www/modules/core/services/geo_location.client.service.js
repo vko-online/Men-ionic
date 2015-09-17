@@ -1,6 +1,6 @@
 // by bwin on 7/15/15.
 'use strict';
-angular.module('core').factory('GeoLocation', ['$q', function($q){
+angular.module('core').factory('GeoLocation', ['$q', '$http',  function($q, $http){
     function current(){
         var defer = $q.defer();
         if(navigator && navigator.geolocation){
@@ -80,11 +80,18 @@ angular.module('core').factory('GeoLocation', ['$q', function($q){
     function deg2rad(deg){
         return deg*(Math.PI/180);
     }
+    function street(lat, lng){
+        var url = 'http://open.mapquestapi.com/nominatim/v1/reverse?format=json&limit=1&key=Iw3xshzMdH2k8aEmJozfsDECKdTd7Aon&';
+        var lat_url = '&lat=' + lat;
+        var lng_url = '&lon=' + lng;
+        return $http.get(url + lat_url + lng_url);
+    }
 
     return {
         current: current,
         distance: getDistanceFromLatLonInKm,
         watch: watch,
-        clear_watch: clear_watch
+        clear_watch: clear_watch,
+        street: street
     };
 }]);

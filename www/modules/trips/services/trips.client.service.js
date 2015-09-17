@@ -73,6 +73,11 @@ angular.module('trips').factory('Trips', ['$resource', 'CORE_CONST',
 			call_me: {
 				method: 'POST',
 				url: CORE_CONST.REST_URL + 'trips/:tripId/call_me'
+			},
+			region_by_location: {
+				method: 'GET',
+				url: CORE_CONST.REST_URL + 'trips/region_by_location',
+				isArray: true
 			}
 		});
 	}

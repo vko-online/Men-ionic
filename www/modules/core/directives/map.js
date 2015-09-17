@@ -30,6 +30,7 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
             height: '@',
             streetApi: '=?',
             streetModel: '=?',
+            streetHandler: '=?',
             resizeControl: '=?',
             routeModel: '=?',
             popupHandler: '=?'
@@ -247,20 +248,33 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                             map.on('dragend', function(drag_event){
                                 var map_dragend = drag_event.target.getCenter();
                                 if(scope.streetApi){
-                                    var response_handler = function(response){
+                                    var external_response_handler = function(response){
                                         if(response.data && response.data.address)
                                             scope.streetModel = response.data.address.road;// + ' ' + (response.data.address.house_number || '');
+                                    };
+                                    var private_response_handler = function(response){
+                                        console.log(response);
+                                        if(response.length)
+                                            scope.streetModel = response;// + ' ' + (response.data.address.house_number || '');
                                     };
                                     defaults.internal.threshhold.now = Date.now();
                                     if(defaults.internal.threshhold.last && defaults.internal.threshhold.now < defaults.internal.threshhold.last + defaults.internal.threshhold.threshhold){
                                         $timeout.cancel(defaults.internal.threshhold.promise);
                                         defaults.internal.threshhold.promise = $timeout(function(){
                                             defaults.internal.threshhold.last = defaults.internal.threshhold.now;
-                                            GeoLocation.street(map_dragend.lat, map_dragend.lng).then(response_handler, angular.noop);
+                                            if(scope.streetHandler){
+                                                scope.streetHandler({lat: map_dragend.lat, lng: map_dragend.lng}).then(private_response_handler, angular.noop);
+                                            } else {
+                                                 GeoLocation.street(map_dragend.lat, map_dragend.lng).then(external_response_handler, angular.noop);
+                                            }
                                         }, defaults.internal.threshhold.threshhold);
                                     } else {
                                         defaults.internal.threshhold.last = defaults.internal.threshhold.now;
-                                        GeoLocation.street(map_dragend.lat, map_dragend.lng).then(response_handler, angular.noop);
+                                        if(scope.streetHandler){
+                                            scope.streetHandler({lat: map_dragend.lat, lng: map_dragend.lng}).then(private_response_handler, angular.noop);
+                                        } else {
+                                            GeoLocation.street(map_dragend.lat, map_dragend.lng).then(external_response_handler, angular.noop);
+                                        }
                                     }
                                 }
                             });

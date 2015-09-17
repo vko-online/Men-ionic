@@ -125,8 +125,6 @@ angular.module('trips').directive('mapView', ['$compile', 'GeoLocation', 'CORE_C
             },
             controllerAs: 'mapViewCtrl',
             bindToController: true,
-            scope: {},
-            link: function(scope, elem, attr){
-            }
+            scope: {}
         }
     }]);

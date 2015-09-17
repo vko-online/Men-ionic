@@ -1,37 +1,55 @@
-<ion-view  data-ng-controller="CreateTripController" view-title="Новый заказ">
+<ion-view data-ng-controller="CreateTripController" view-title="Новый заказ" cache-view="false">
     <ion-nav-buttons side="secondary">
-        <button class="button" data-ng-click="prepare()">
-            <i class="ion ion-android-add"></i> Create
+        <button class="button" data-ng-click="next(current_index)">
+            <i ng-show="current_index === 0" class="ion ion-ios-arrow-right"></i>
+            <i ng-show="current_index !== 0" class="ion ion-ios-arrow-left"></i>
         </button>
     </ion-nav-buttons>
-    <ion-content>
-            <div data-ng-if="(error)" class="assertive text-center">
-                {{error}}
-            </div>
-            <div data-ng-if="authentication.user.is_client && !authentication.user.trip" data-ng-init="map_expanded = false">
-                <map locate-control="true" fullscreen-control="true" edge-marker="true"></map>
-                <!--<leaflet controls="defaults.controls" data-tap-disabled="true" defaults="defaults" markers="markers" center="defaults.center" height="{{map_expanded ? 300 : 150}}"></leaflet>-->
-                <div class="list list-inset">
-                    <label class="item item-input">
-                        <i class="icon ion-ios-location"></i>
-                        <input type="text" placeholder="Откуда" data-ng-model="preparation.start_address">
-                    </label>
-                    <label class="item item-input">
-                        <i class="icon ion-ios-location"></i>
-                        <input type="text" placeholder="Куда" data-ng-model="preparation.end_address">
-                    </label>
-                    <label class="item item-input">
-                        <i class="icon ion-cash"></i>
-                        <input type="number" placeholder="Цена" data-ng-model="preparation.price">
-                    </label>
-                    <div class="item" data-ng-click="init_modal()">
-                        <i class="icon ion-ios-gear-outline"></i>
-                        Параметры
+    <ion-content class="full-height">
+        <div data-ng-if="(error)" class="assertive text-center">
+            {{error}}
+        </div>
+        <div data-ng-if="authentication.user.is_client && !authentication.user.trip" class="full-height">
+            <ion-slide-box show-pager="false">
+                <ion-slide>
+                    <map popup-handler="next" height="calc(100% - 30px)" street-api="true" street-model="preparation.start_address_regions" street-handler="street_handler"
+                         single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location"
+                         locate-control="true" fullscreen-control="false" edge-marker="false"></map>
+                    <div class="button-bar">
+                        <a class="button button-small" ng-class="{'button-calm': car_type === 'any'}" ng-click="setCarType('any')">Любая</a>
+                        <a class="button button-small" ng-class="{'button-calm': car_type === 'econom'}" ng-click="setCarType('econom')">Эконом</a>
+                        <a class="button button-small" ng-class="{'button-calm': car_type === 'premium'}" ng-click="setCarType('premium')">Премиум</a>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="list list-inset">
+                        <label class="item item-input">
+                            <i class="icon ion-ios-location"></i>
+                            <select ng-options="region.name as region.name for region in preparation.start_address_regions track by region._id" data-ng-model="preparation.start_address"></select>
+                            <input type="text" placeholder="Откуда" data-ng-model="preparation.start_address">
+                        </label>
+                        <label class="item item-input">
+                            <i class="icon ion-ios-location"></i>
+                            <input type="text" placeholder="Куда" data-ng-model="preparation.end_address">
+                        </label>
+                        <label class="item item-input">
+                            <i class="icon ion-cash"></i>
+                            <input type="number" placeholder="Цена" data-ng-model="preparation.price">
+                        </label>
+
+                        <div class="item" data-ng-click="init_modal()">
+                            <i class="icon ion-ios-gear-outline"></i>
+                            Параметры
                             <span class="item-note">
                               <i class="ion ion-ios-arrow-right"></i>
                             </span>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <button class="button" data-ng-click="prepare()">
+                        <i class="ion ion-android-add"></i> Create
+                    </button>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
     </ion-content>
 </ion-view>
