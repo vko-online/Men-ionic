@@ -27,9 +27,10 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
                 Authentication.set_user(response);
                 $http.defaults.headers.common.Authentication = response.loginToken;
                 localStorage.setItem(auth_token_key, response.loginToken);
+                $scope.close_signin_modal();
                 // And redirect to the index page
                 $state.go('home', {}, {reload: true});
-                $scope.close_signin_modal();
+
             }).error(function(response) {
                 $scope.error = response.message;
             });

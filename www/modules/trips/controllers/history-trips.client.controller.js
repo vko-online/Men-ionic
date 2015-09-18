@@ -1,8 +1,8 @@
 // by bwin on 7/24/15.
 // by bwin on 6/25/15.
 'use strict';
-angular.module('users').controller('TripHistoryController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', '$ionicModal', '$rootScope',
-    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, $ionicModal, $rootScope){
+angular.module('users').controller('TripHistoryController', ['$scope', '$location', 'Trips', 'Authentication', '$stateParams', 'GeoLocation', 'CORE_CONST', '$ionicModal', '$rootScope', 'CarBrands', 'CarModels', 'CarColors',
+    function($scope, $location, Trips, Authentication, $stateParams, GeoLocation, CORE_CONST, $ionicModal, $rootScope, CarBrands, CarModels, CarColors){
         $scope.authentication = Authentication;
         $scope.find = function(){
             $scope.trips = Trips.history();
@@ -12,13 +12,28 @@ angular.module('users').controller('TripHistoryController', ['$scope', '$locatio
                 tripId: $stateParams.tripId
             });
         };
-        $scope.center = {
-            lat: CORE_CONST.MAP_LAT,
-            lng: CORE_CONST.MAP_LNG,
-            zoom: CORE_CONST.MAP_ZOOM
-        };
         $scope.flat_text = '';
-
+        //todo: get rid of same calls. populate state data on load
+        $scope.car_brands = CarBrands.query();
+        $scope.car_models = CarModels.query();
+        $scope.car_colors = CarColors.query();
+        $scope.get = {
+            brand: function(id){
+                return $scope.car_brands.filter(function(i){
+                    return i._id === id;
+                })[0];
+            },
+            color: function(id){
+                return $scope.car_colors.filter(function(i){
+                    return i._id === id;
+                })[0];
+            },
+            model: function(id){
+                return $scope.car_models.filter(function(i){
+                    return i._id === id;
+                })[0];
+            }
+        };
         $scope.init_flag_modal = function(){
             $ionicModal.fromTemplateUrl('modules/trips/views/flag-modal.client.view.html', {
                 scope: $scope,

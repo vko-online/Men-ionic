@@ -12,7 +12,7 @@
         <div data-ng-if="authentication.user.is_client && !authentication.user.trip" class="full-height">
             <ion-slide-box show-pager="false">
                 <ion-slide>
-                    <map popup-handler="next" height="calc(100% - 30px)" street-api="true" street-model="preparation.start_address_regions" street-handler="street_handler"
+                    <map data-ng-if="current_index === 0" popup-handler="next" height="calc(100% - 30px)" street-api="true" street-model="preparation.start_address_regions" street-handler="street_handler"
                          single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location"
                          locate-control="true" fullscreen-control="false" edge-marker="false"></map>
                     <div class="button-bar">
@@ -22,15 +22,19 @@
                     </div>
                 </ion-slide>
                 <ion-slide>
+
                     <div class="list list-inset">
                         <label class="item item-input">
                             <i class="icon ion-ios-location"></i>
-                            <select ng-options="region.name as region.name for region in preparation.start_address_regions track by region._id" data-ng-model="preparation.start_address"></select>
                             <input type="text" placeholder="Откуда" data-ng-model="preparation.start_address">
+                            <br>
+                            <select ng-show="preparation.start_address_regions && preparation.start_address_regions.length" ng-options="region.name as region.name for region in preparation.start_address_regions track by region._id" data-ng-model="preparation.start_address"></select>
                         </label>
                         <label class="item item-input">
                             <i class="icon ion-ios-location"></i>
-                            <input type="text" placeholder="Куда" data-ng-model="preparation.end_address">
+                            <input type="text" placeholder="Куда" data-ng-model="preparation.end_address" ng-model-options="{debounce: 1000}">
+                            <br>
+                            <select ng-show="preparation.end_address_region_names && preparation.end_address_region_names.length" ng-options="region.name as region.name for region in preparation.end_address_region_names track by region._id" data-ng-model="preparation.end_address"></select>
                         </label>
                         <label class="item item-input">
                             <i class="icon ion-cash"></i>

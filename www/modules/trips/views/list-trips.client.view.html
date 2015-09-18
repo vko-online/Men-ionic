@@ -1,8 +1,8 @@
 <ion-view data-ng-controller="TripsController" data-ng-init="find()" cache-view="false">
     <ion-nav-buttons side="secondary">
-        <button class="button">
-            <i class="ion ion-ios-grid-view-outline"></i> Filter
-        </button>
+        <!--<button class="button">-->
+            <!--<i class="ion ion-ios-grid-view-outline"></i> Filter-->
+        <!--</button>-->
     </ion-nav-buttons>
     <ion-content padding="true" class="fill-scroll">
         <div class="button-bar button-bar-small">
@@ -36,10 +36,10 @@
                 <a class="item text-left item-avatar-right"
                    data-ng-class="{'active': is_current_driver_request(trip), 'immediate': trip.immediate}"
                    data-ng-repeat="trip in trips track by $index | orderBy: 'created_date':true"
-                   data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}" \
+                   data-ng-href="#!/{{(authentication.user.is_driver ? 'trips_driver/' : 'trips/') + trip._id}}"
                    style="padding-top: 10px;padding-bottom:10px;">
                     <img ng-if="trip.client.photo_src"
-                         ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}" alt=""/>
+                         ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}" err-src="img/user_photo.jpg"/>
                     <i ng-if="!trip.client.photo_src" class="ion ion-person"></i>
 
                     <div class="trip-item">

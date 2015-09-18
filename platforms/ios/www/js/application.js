@@ -29,7 +29,7 @@ var ApplicationConfiguration = (function(){
 
     var $injected_http = angular.injector(['ng']).get('$http');
 
-    var SERVER_URL = 'http://78.40.108.32:3000/'; //'http://localhost:3000/', //http://ttaxi.herokuapp.com/, //http://78.40.108.32:3000/
+    var SERVER_URL = 'http://localhost:3000/'; //'http://localhost:3000/', //http://ttaxi.herokuapp.com/, //http://78.40.108.32:3000/
 
     //set token header
     var auth_token = localStorage.getItem('auth_token');

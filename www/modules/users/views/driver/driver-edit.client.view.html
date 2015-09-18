@@ -13,7 +13,6 @@
             <div class="item item-avatar-left">
                 <img data-ng-if="driver.photo_src" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + driver.photo_src}}" alt=""/>
                 <input type="file" nv-file-select uploader="uploader"/><br/>
-                <button data-ng-show="uploader.queue[0]" data-ng-click="uploader.queue[0].upload()">upload</button>
             </div>
             <div class="item">
                 <i class="icon ion-pricetags"></i>

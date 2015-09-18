@@ -1,7 +1,7 @@
 'use strict';
 // Trips controller
-angular.module('trips').controller('TripsController', ['$scope', '$stateParams', '$location', '$interval', 'Authentication', 'Trips', 'CarColors', 'CarBrands', 'CarModels', 'Socket', 'TripStatuses', 'DriverRequests', 'Misc', 'CORE_CONST', 'GeoLocation', '$ionicPopover',
-    function($scope, $stateParams, $location, $interval, Authentication, Trips, CarColors, CarBrands, CarModels, Socket, TripStatuses, DriverRequests, Misc, CORE_CONST, GeoLocation, $ionicPopover){
+angular.module('trips').controller('TripsController', ['$scope', '$state', '$stateParams', '$location', '$interval', 'Authentication', 'Trips', 'CarColors', 'CarBrands', 'CarModels', 'Socket', 'TripStatuses', 'DriverRequests', 'Misc', 'CORE_CONST', 'GeoLocation', '$ionicPopover', '$ionicHistory',
+    function($scope, $state, $stateParams, $location, $interval, Authentication, Trips, CarColors, CarBrands, CarModels, Socket, TripStatuses, DriverRequests, Misc, CORE_CONST, GeoLocation, $ionicPopover, $ionicHistory){
         //todo: GET RID OF FUNCTION CALLS, AND REFACTOR, USE GROUPED ACTIONS
         //it increases scope digest cycle count
         //use single object instances, as they are already in digest
@@ -12,12 +12,41 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 $scope.error = errorResponse.data.message;
         }
 
+        $scope.go_main = function(){
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go('home');
+        };
+        $scope.go_list = function(){
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
+            $state.go('listTrips');
+        };
         $scope.CORE_CONST = CORE_CONST;
         $scope.authentication = Authentication;
         $scope.TRIP_STATUS = TripStatuses.query();
         $scope.car_brands = CarBrands.query();
         $scope.car_models = CarModels.query();
         $scope.car_colors = CarColors.query();
+        $scope.get = {
+            brand: function(id){
+                return $scope.car_brands.filter(function(i){
+                    return i._id === id;
+                })[0];
+            },
+            color: function(id){
+                return $scope.car_colors.filter(function(i){
+                    return i._id === id;
+                })[0];
+            },
+            model: function(id){
+                return $scope.car_models.filter(function(i){
+                    return i._id === id;
+                })[0];
+            }
+        };
         $scope.active = 'list-view';
         $scope.setActive = function(type){
             $scope.active = type;
@@ -60,23 +89,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             $scope.popover.hide();
         };
         var interval;
-        $scope.get = {
-            brand: function(id){
-                return $scope.car_brands.filter(function(i){
-                    return i._id === id;
-                })[0];
-            },
-            color: function(id){
-                return $scope.car_colors.filter(function(i){
-                    return i._id === id;
-                })[0];
-            },
-            model: function(id){
-                return $scope.car_models.filter(function(i){
-                    return i._id === id;
-                })[0];
-            }
-        };
+
         $scope.findOne = function(callback){
             $scope.trip = Trips.get({
                 tripId: $stateParams.tripId
@@ -154,11 +167,12 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
             }, errorHandler);
         };
         $scope.delete_trip = function(){
-            $scope.trip.$remove(function(successResponse){
-                $location.path('/');
-                $scope.authentication.user.trip = null;
-                Authentication.set_user($scope.authentication.user);
-            }, angular.noop, errorHandler);
+            $scope.trip.$remove(function(){
+                $ionicHistory.nextViewOptions({
+                    disableBack: true
+                });
+                $state.go('home');
+            }, errorHandler);
         };
         $scope.cancel_request_pickup = function(trip){
             $scope.error = undefined;
@@ -195,7 +209,9 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         $scope.accept_pickup = function(id){
             $scope.trip.$accept_pickup({
                 driverRequestId: id
-            }, angular.noop, errorHandler);
+            }, function(){
+                $state.go('viewTrip', {tripId: $scope.trip._id});
+            }, errorHandler);
         };
         $scope.remove_pickup_request = function(id){
             $scope.trip.$remove_pickup_request({
@@ -221,6 +237,12 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 $scope.trip.accepted_request = obj.accepted_request;
                 $scope.trip.driver_profile = obj.driver_profile;
                 $scope.trip.driver_car = obj.driver_car;
+            } else {
+                $ionicHistory.nextViewOptions({
+                    disableBack: true
+                });
+                $ionicHistory.clearHistory();
+                $state.go('viewTripDriver', {tripId: obj._id});
             }
         });
         Socket.on('request_pickup', function(obj){
@@ -230,6 +252,7 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
         });
         Socket.on('arrived_trip', function(obj){
             $scope.trip.status_code = obj.status_code;
+            $ionicHistory.clearHistory();
         });
         Socket.on('met_trip', function(obj){
             if($scope.trip){
@@ -259,15 +282,20 @@ angular.module('trips').controller('TripsController', ['$scope', '$stateParams',
                 });
             }
         });
-        if($scope.authentication.user.is_driver && $scope.trips){
-            Socket.on('add_trip', function(obj){
-                $scope.trips.push(obj);
-            });
-            Socket.on('remove_trip', function(obj){
-                $scope.trips = $scope.trips.filter(function(i){
-                    return i._id !== obj._id;
-                });
-            });
-        }
+        Socket.on('new_trip', function(obj){
+            console.log('new_trip');
+            if($scope.trips)
+                $scope.trips.unshift(obj);
+        });
+        Socket.on('remove_trip', function(obj){
+            console.log('remove_trip');
+            if($scope.trips)
+                for(var i = 0; i < $scope.trips.length; i++) {
+                    if($scope.trips[i]._id == obj._id) {
+                        $scope.trips.splice(i, 1);
+                        break;
+                    }
+                }
+        });
     }
 ]);

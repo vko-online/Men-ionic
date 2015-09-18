@@ -12,7 +12,8 @@ var ApplicationConfiguration = (function(){
         'timer',
         //'leaflet-directive',
         'ion-affix',
-        'angularFileUpload'
+        'angularFileUpload',
+        'ionic-toast'
     ];
     var module_defers = [];
     // Add a new vertical module
@@ -26,10 +27,11 @@ var ApplicationConfiguration = (function(){
         //// Add the module to the AngularJS configuration file
         //angular.module(applicationModuleName).requires.push(moduleName);
     };
-
+    //todo: remove later
+    window.SERVER_URL = 'http://localhost:3000/'; //'http://localhost:3000/', //http://ttaxi.herokuapp.com/, //http://78.40.108.32:3000/
     var $injected_http = angular.injector(['ng']).get('$http');
 
-    var SERVER_URL = 'http://78.40.108.32:3000/'; //'http://localhost:3000/', //http://ttaxi.herokuapp.com/, //http://78.40.108.32:3000/
+    var SERVER_URL = window.SERVER_URL;
 
     //set token header
     var auth_token = localStorage.getItem('auth_token');

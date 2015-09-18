@@ -1,15 +1,15 @@
-<ion-view data-ng-controller="TripsController" data-ng-init="findRequest()">
+<ion-view data-ng-controller="TripsController" data-ng-init="findOne();findRequest()">
     <ion-nav-buttons side="secondary">
-        <button class="button">
+        <a class="button" data-ng-click="accept_pickup(request._id)">
             <i class="ion ion-android-done"></i> Accept
-        </button>
+        </a>
     </ion-nav-buttons>
     <ion-content padding="true">
         <span>{{request.time}} мин</span>
-        <timer interval="1000" finish-callback="cb_get()"
-               countdown="countdown_handler(request.date_end)">
-            {{countdown}}
-        </timer>
+        <!--<timer interval="1000" finish-callback="cb_get()"-->
+               <!--countdown="countdown_handler(request.date_end)">-->
+            <!--{{countdown}}-->
+        <!--</timer>-->
         <hr/>
         <img data-ng-if="request.driver_car.photo_src" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + request.driver_car.photo_src}}" width="50%" alt=""/>
         <div class="list">

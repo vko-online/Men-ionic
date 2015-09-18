@@ -4,7 +4,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication, $state, $ionicHistory, $ionicModal) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
-		$ionicHistory.clearHistory();
 		$scope.popup_sign_in = function(){
 			$ionicModal.fromTemplateUrl('modules/users/views/authentication/signin.client.view.html', {
 				scope: $scope,
@@ -16,9 +15,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 				});
 			});
 		};
-		$ionicHistory.nextViewOptions({
-			disableBack: true
-		});
+		//$ionicHistory.nextViewOptions({
+		//	disableBack: true
+		//});
 
 		//$state.go('app.home');
 	}

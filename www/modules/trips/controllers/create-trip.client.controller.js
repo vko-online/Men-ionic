@@ -23,7 +23,7 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
         };
         $scope.street_handler = function(location){
             var defer = $q.defer();
-            Trips.region_by_location(location, function(successResponse){
+            Trips.regions_by_location(location, function(successResponse){
                 defer.resolve(successResponse);
             }, function(errorResponse){
                 defer.reject(errorResponse);
@@ -33,15 +33,23 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
         $scope.preparation = {};
         $scope.prepare = function(){
             $scope.preparation.loc = [$scope.preparation.meet_location.lng, $scope.preparation.meet_location.lat];
+            console.log('###$scope.preparation.loc', $scope.preparation.loc);
             Trips.prepare_trip({
                 tripId: $stateParams.tripId
             }, $scope.preparation, function(successResponse){
-                $ionicHistory.clearHistory();
+                $ionicHistory.nextViewOptions({
+                	disableBack: true
+                });
                 $location.path('trips/' + successResponse._id);
             }, function(errorResponse){
                 $scope.error = errorResponse.data.message;
             });
         };
+        $scope.$watch('preparation.end_address', function(a){
+            Trips.regions_by_name({name: a}, function(successResponse){
+                $scope.preparation.end_address_region_names = successResponse;
+            });
+        });
         $scope.init_modal = function(){
             $ionicModal.fromTemplateUrl('modules/trips/views/create-trip-misc.client.view.html', {
                 scope: $scope,

@@ -74,9 +74,14 @@ angular.module('trips').factory('Trips', ['$resource', 'CORE_CONST',
 				method: 'POST',
 				url: CORE_CONST.REST_URL + 'trips/:tripId/call_me'
 			},
-			region_by_location: {
+			regions_by_location: {
 				method: 'GET',
-				url: CORE_CONST.REST_URL + 'trips/region_by_location',
+				url: CORE_CONST.REST_URL + 'trips/regions_by_location',
+				isArray: true
+			},
+			regions_by_name: {
+				method: 'GET',
+				url: CORE_CONST.REST_URL + 'trips/regions_by_name',
 				isArray: true
 			}
 		});

@@ -235,49 +235,53 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                         defaults.internal.model.bindPopup(popup).addTo(map).openPopup();
                         map.on('move', function(event){
                             var map_center = event.target.getCenter();
-                            if(!scope.model)
-                                scope.model = {};
-                            scope.model.lat = map_center.lat;
-                            scope.model.lng = map_center.lng;
                             if(defaults.internal.model){
-                                defaults.internal.model.setLatLng(scope.model);
+                                defaults.internal.model.setLatLng(map_center);
                             } else {
-                                defaults.internal.model = L.marker(scope.model, defaults.internal.modelOptions);
+                                defaults.internal.model = L.marker(map_center, defaults.internal.modelOptions);
                                 defaults.internal.model.bindPopup(popup).addTo(map).openPopup();
                             }
-                            map.on('dragend', function(drag_event){
-                                var map_dragend = drag_event.target.getCenter();
-                                if(scope.streetApi){
-                                    var external_response_handler = function(response){
-                                        if(response.data && response.data.address)
-                                            scope.streetModel = response.data.address.road;// + ' ' + (response.data.address.house_number || '');
-                                    };
-                                    var private_response_handler = function(response){
-                                        console.log(response);
-                                        if(response.length)
-                                            scope.streetModel = response;// + ' ' + (response.data.address.house_number || '');
-                                    };
-                                    defaults.internal.threshhold.now = Date.now();
-                                    if(defaults.internal.threshhold.last && defaults.internal.threshhold.now < defaults.internal.threshhold.last + defaults.internal.threshhold.threshhold){
-                                        $timeout.cancel(defaults.internal.threshhold.promise);
-                                        defaults.internal.threshhold.promise = $timeout(function(){
-                                            defaults.internal.threshhold.last = defaults.internal.threshhold.now;
-                                            if(scope.streetHandler){
-                                                scope.streetHandler({lat: map_dragend.lat, lng: map_dragend.lng}).then(private_response_handler, angular.noop);
-                                            } else {
-                                                 GeoLocation.street(map_dragend.lat, map_dragend.lng).then(external_response_handler, angular.noop);
-                                            }
-                                        }, defaults.internal.threshhold.threshhold);
-                                    } else {
-                                        defaults.internal.threshhold.last = defaults.internal.threshhold.now;
-                                        if(scope.streetHandler){
-                                            scope.streetHandler({lat: map_dragend.lat, lng: map_dragend.lng}).then(private_response_handler, angular.noop);
-                                        } else {
-                                            GeoLocation.street(map_dragend.lat, map_dragend.lng).then(external_response_handler, angular.noop);
-                                        }
-                                    }
+                        });
+                        map.on('dragend', function(drag_event){
+                            if(!scope.model)
+                                scope.model = {};
+                            var map_dragend = drag_event.target.getCenter();
+                            scope.model.lat = map_dragend.lat;
+                            scope.model.lng = map_dragend.lng;
+                            if(scope.streetApi){
+                                var external_response_handler = function(response){
+                                    if(response.data && response.data.address)
+                                        scope.streetModel = [{name: response.data.address.road}];// + ' ' + (response.data.address.house_number || '');
+                                };
+                                var private_response_handler = function(response){
+                                    if(response.length)
+                                        scope.streetModel = response;// + ' ' + (response.data.address.house_number || '');
+                                };
+                                if(scope.streetHandler){
+                                    scope.streetHandler({lat: map_dragend.lat, lng: map_dragend.lng}).then(private_response_handler, angular.noop);
+                                } else {
+                                    GeoLocation.street(map_dragend.lat, map_dragend.lng).then(external_response_handler, angular.noop);
                                 }
-                            });
+                                //defaults.internal.threshhold.now = Date.now();
+                                //if(defaults.internal.threshhold.last && defaults.internal.threshhold.now < defaults.internal.threshhold.last + defaults.internal.threshhold.threshhold){
+                                //    $timeout.cancel(defaults.internal.threshhold.promise);
+                                //    defaults.internal.threshhold.promise = $timeout(function(){
+                                //        defaults.internal.threshhold.last = defaults.internal.threshhold.now;
+                                //        if(scope.streetHandler){
+                                //            scope.streetHandler({lat: map_dragend.lat, lng: map_dragend.lng}).then(private_response_handler, angular.noop);
+                                //        } else {
+                                //             GeoLocation.street(map_dragend.lat, map_dragend.lng).then(external_response_handler, angular.noop);
+                                //        }
+                                //    }, defaults.internal.threshhold.threshhold);
+                                //} else {
+                                //    defaults.internal.threshhold.last = defaults.internal.threshhold.now;
+                                //    if(scope.streetHandler){
+                                //        scope.streetHandler({lat: map_dragend.lat, lng: map_dragend.lng}).then(private_response_handler, angular.noop);
+                                //    } else {
+                                //        GeoLocation.street(map_dragend.lat, map_dragend.lng).then(external_response_handler, angular.noop);
+                                //    }
+                                //}
+                            }
                         });
                     }
                 }
@@ -379,7 +383,7 @@ angular.module('core').directive('map', ['CORE_CONST', '$compile', 'GeoLocation'
                 if(scope.edgeMarker){
                     L.edgeMarker({
                         icon: L.icon({ // style markers
-                            iconUrl: 'lib/Leaflet.EdgeMarker/images/edge-arrow-marker.png',
+                            iconUrl: 'img/edge-arrow-marker-black.png',
                             clickable: true,
                             iconSize: [48, 48],
                             iconAnchor: [24, 24]

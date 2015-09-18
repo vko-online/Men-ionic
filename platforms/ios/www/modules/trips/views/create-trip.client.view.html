@@ -12,7 +12,7 @@
         <div data-ng-if="authentication.user.is_client && !authentication.user.trip" class="full-height">
             <ion-slide-box show-pager="false">
                 <ion-slide>
-                    <map popup-handler="next" height="calc(100% - 30px)" street-api="true" street-model="preparation.start_address_regions" street-handler="street_handler"
+                    <map data-ng-if="current_index === 0" popup-handler="next" height="calc(100% - 30px)" street-api="true" street-model="preparation.start_address_regions" street-handler="street_handler"
                          single-marker-model="true" single-marker-model-fixed="false" model="preparation.meet_location"
                          locate-control="true" fullscreen-control="false" edge-marker="false"></map>
                     <div class="button-bar">

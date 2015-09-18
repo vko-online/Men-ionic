@@ -2,19 +2,19 @@
 
 'use strict';
 
-angular.module('users').controller('RatingController', ['$scope', '$stateParams', '$http', '$location', 'Authentication', 'CORE_CONST', 'Drivers', 'Socket',
-    function($scope, $stateParams, $http, $location, Authentication, CORE_CONST, Drivers, Socket) {
+angular.module('users').controller('RatingController', ['$scope', '$stateParams', '$http', '$location', 'Authentication', 'CORE_CONST', 'Drivers', 'ionicToast',
+    function($scope, $stateParams, $http, $location, Authentication, CORE_CONST, Drivers, ionicToast) {
         function errorHandler(errorResponse){
             $scope.error = errorResponse.data.message;
         }
         $scope.authentication = Authentication;
-        $scope.authentication.get_user().then(function(account){
-            $scope.driver = Drivers.get({
-                driverId: account.driver_profile
-            });
+        $scope.driver = Drivers.get({
+            driverId: $scope.authentication.user.driver_profile
         });
         $scope.increase = function(){
-            $scope.driver.$increase_rating(angular.noop, errorHandler);
+            $scope.driver.$increase_rating(function(){
+                ionicToast.show('Your rating increased', 'bottom', true, 2500);
+            }, errorHandler);
         };
     }
 ]);

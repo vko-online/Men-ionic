@@ -23,7 +23,7 @@ angular.module('users').controller('CreateTripController', ['$scope', '$location
         };
         $scope.street_handler = function(location){
             var defer = $q.defer();
-            Trips.region_by_location(location, function(successResponse){
+            Trips.regions_by_location(location, function(successResponse){
                 defer.resolve(successResponse);
             }, function(errorResponse){
                 defer.reject(errorResponse);

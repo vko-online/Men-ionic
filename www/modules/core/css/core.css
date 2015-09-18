@@ -313,6 +313,11 @@ map{
 	height: 100%;
 	width: 100%;
 }
+
+/*Toast*/
+.ionic_toast_bottom {
+	bottom: 50px!important;
+}
 .spin {
 	-webkit-animation-name: spin_animation;
 	-webkit-animation-duration: 4000ms;

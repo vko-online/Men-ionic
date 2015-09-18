@@ -2,7 +2,8 @@
     <ion-side-menu-content>
         <ion-nav-bar class="bar-positive">
             <ion-nav-buttons side="primary">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"  data-ng-show="authentication.user">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"
+                        data-ng-show="authentication.user">
                 </button>
             </ion-nav-buttons>
             <ion-nav-back-button>
@@ -24,26 +25,61 @@
             <ion-list>
                 <ion-item data-ng-if="authentication.user" data-ng-init="dropdowned = false" class="item-positive">
                     <div class="item-group">
-                        <img data-ng-if="authentication.user.photo_src" class="item-group-img" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + authentication.user.photo_src}}" alt="profile" height="42" width="42"/>
+                        <img data-ng-if="authentication.user.photo_src" class="item-group-img"
+                             ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + authentication.user.photo_src}}"
+                             alt="profile" height="42" width="42"/>
+
                         <div class="item-group-content">
                             <span class="item-m">{{authentication.user.displayName}}</span>
                             <span class="item-s">{{authentication.user.username}}</span>
                         </div>
                         <div class="item-group-control">
-                            <button class="button button-positive button-small" data-ng-click="dropdowned = !dropdowned">
+                            <button class="button button-positive button-small"
+                                    data-ng-click="dropdowned = !dropdowned">
                                 <i data-ng-class="{'ion-chevron-up': dropdowned, 'ion-chevron-down': !dropdowned }"></i>
                             </button>
                         </div>
                         <div data-ng-show="dropdowned" class="item-group-body">
-                            <p ng-show="authentication.user.is_driver"><i class="ion ion-pricetags"></i> Баланс: {{authentication.user.money_amount}} тг</p>
+                            <p ng-show="authentication.user.is_driver"><i class="ion ion-pricetags"></i> Баланс:
+                                {{authentication.user.money_amount}} тг</p>
+
                             <p><i class="ion ion-pricetag"></i> Бонус: {{authentication.user.bonus_amount}} </p>
-                            <star-rating readonly="true" rating="authentication.user.rating"></star-rating>
-                            <p> <a style="height: 20px;line-height: 16px; min-height: 20px;" ng-show="authentication.user.rating < 5" href="#!/settings/rating" class=" pull-right button button-small button-positive">Купить</a></p>
-                            <p>other data</p>
+                            <star-rating ng-show="authentication.user.is_driver" readonly="true"
+                                         rating="authentication.user.rating"></star-rating>
+                            <p ng-show="authentication.user.is_driver"><a
+                                    style="height: 20px;line-height: 16px; min-height: 20px;"
+                                    ng-show="authentication.user.rating < 5" href="#!/settings/rating"
+                                    class=" pull-right button button-small button-positive">Купить</a></p>
+
+                            <p>
+
+                            <div ng-if="authentication.user.is_driver">
+                                <small>Requested trips {{authentication.user.stats.as_driver.requested_trips}}</small>
+                                <br>
+                                <small>Accepted trips {{authentication.user.stats.as_driver.accepted_trips}}</small>
+                                <br>
+                                <small>Canceled trips {{authentication.user.stats.as_driver.canceled_trips}}</small>
+                                <br>
+                                <small>Completed trips {{authentication.user.stats.as_driver.completed_trips}}</small>
+                            </div>
+                            <div ng-if="authentication.user.is_client">
+                                <small>Created trips {{authentication.user.stats.as_client.created_trips}}</small>
+                                <br>
+                                <small>Deleted trips {{authentication.user.stats.as_client.deleted_trips}}</small>
+                                <br>
+                                <small>Canceled trips {{authentication.user.stats.as_client.canceled_trips}}</small>
+                                <br>
+                                <small>Completed trips {{authentication.user.stats.as_client.completed_trips}}</small>
+                            </div>
+
+                            </p>
                             <hr/>
-                            <a menu-close class="button button-small button-positive" data-ng-click="dropdowned = false;" href="#!/settings/profile">Мой профиль</a>
-                            <a menu-close class="button button-small button-positive pull-right" data-ng-click="dropdowned = false;signout()">Выйти</a>
-                            <a menu-close class="button button-small button-positive pull-right" data-ng-click="exit_app()">Выйти с приложения</a>
+                            <a menu-close class="button button-small button-positive"
+                               data-ng-click="dropdowned = false;" href="#!/settings/profile">Мой профиль</a>
+                            <a menu-close class="button button-small button-positive pull-right"
+                               data-ng-click="dropdowned = false;signout()">Выйти</a>
+                            <a menu-close class="button button-small button-positive pull-right"
+                               data-ng-click="exit_app()">Выйти с приложения</a>
                         </div>
                     </div>
                 </ion-item>
@@ -56,7 +92,8 @@
                 <ion-item menu-close class="item-positive" href="#!/share">
                     Поделиться
                 </ion-item>
-                <ion-item menu-close class="item-positive" data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}">
+                <ion-item menu-close class="item-positive"
+                          data-ng-href="#!/{{authentication.user.driver_profile ? 'driver_edit': 'become_driver'}}">
                     Профиль водителя
                 </ion-item>
             </ion-list>

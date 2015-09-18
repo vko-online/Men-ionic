@@ -1,7 +1,7 @@
 // by bwin on 6/25/15.
 'use strict';
-angular.module('users').controller('DriverController', ['$scope', '$location', 'CORE_CONST', 'Drivers', 'Authentication', '$stateParams', 'CarBrands', 'CarModels', 'CarColors', 'FileUploader',
-    function($scope, $location, CORE_CONST, Drivers, Authentication, $stateParams, CarBrands, CarModels, CarColors, FileUploader){
+angular.module('users').controller('DriverController', ['$scope', '$location', 'CORE_CONST', 'Drivers', 'Authentication', '$stateParams', 'CarBrands', 'CarModels', 'CarColors', 'FileUploader', 'ionicToast',
+    function($scope, $location, CORE_CONST, Drivers, Authentication, $stateParams, CarBrands, CarModels, CarColors, FileUploader, ionicToast){
         $scope.car_brands = CarBrands.query();
         $scope.car_models = CarModels.query();
         $scope.car_colors = CarColors.query();
@@ -32,13 +32,14 @@ angular.module('users').controller('DriverController', ['$scope', '$location', '
         $scope.update_car = function(){
             var driver = $scope.driver;
             driver.$update(function() {
-                alert('updated');
+                ionicToast.show('Updated', 'bottom', true, 2500);
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
         };
         var uploader = $scope.uploader = new FileUploader({
-            url: CORE_CONST.REST_URL + 'upload'
+            url: CORE_CONST.REST_URL + 'upload',
+            autoUpload: true
         });
 
         // FILTERS

@@ -14,12 +14,12 @@
             <a data-ng-if="trip.status_code === TRIP_STATUS.CANCELED" class="button" href="/#!/trips">
                 <i class="ion ion-android-add"></i> List other trips
             </a>
-            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" href="/#!/trips">
+            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" data-ng-click="go_list()">
                 <i class="ion ion-android-add"></i> List other trips
             </a>
         </div>
     </ion-nav-buttons>
-    <div data-ng-if="trip && TRIP_STATUS">
+    <div data-ng-if="(trip.$resolved && trip) && (trip && TRIP_STATUS)">
         <div aria-label="INITIALIZED" data-ng-if="trip.status_code === TRIP_STATUS.INITIALIZED">
             <div data-ng-include="'modules/trips/views/status/driver-initialized.client.view.html'"></div>
         </div>

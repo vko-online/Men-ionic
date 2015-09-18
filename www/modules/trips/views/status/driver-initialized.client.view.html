@@ -1,4 +1,4 @@
-<ion-content padding="false">
+<ion-content padding="false" overflow-scroll="true">
     <div data-ng-if="(error)" class="assertive text-center">
            {{error}}
     </div>
@@ -6,8 +6,9 @@
 
     <div class="list card">
         <div class="item item-avatar">
-            <img ng-if="trip.client.photo_src" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}">
+            <img ng-if="trip.client.photo_src" ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + trip.client.photo_src}}" err-src="img/user_photo.jpg">
             <h2>{{trip.client.displayName}}</h2>
+            <span class="pull-right subdued">{{trip.client_success_rides_count}} Поездок</span>
             <p>{{minutes_ago(trip.created_date)}}</p>
         </div>
         <div class="item item-body">
@@ -141,9 +142,6 @@
                     </div>
                 </div>
             </div>
-            <p>
-                <a class="subdued">124 Поездок</a>
-            </p>
         </div>
     </div>
 

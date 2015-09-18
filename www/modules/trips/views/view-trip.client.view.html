@@ -10,10 +10,10 @@
             <button data-ng-if="trip.status_code === TRIP_STATUS.ARRIVED" class="button" data-ng-click="met_trip()">
                 <i class="ion ion-android-done"></i> Я сел
             </button>
-            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" href="#!/trips/create">
+            <a data-ng-if="trip.status_code === TRIP_STATUS.COMPLETED" class="button" data-ng-click="go_main()">
                 <i class="ion ion-android-add"></i> New trip
             </a>
-            <a data-ng-if="trip.status_code === TRIP_STATUS.CANCELED" class="button" href="#!/trips/create">
+            <a data-ng-if="trip.status_code === TRIP_STATUS.CANCELED" class="button" data-ng-click="go_main()">
                 <i class="ion ion-android-add"></i> New trip
             </a>
         </div>

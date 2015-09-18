@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', 'CORE_CONST', 'FileUploader',
-	function($scope, $http, $location, Users, Authentication, CORE_CONST, FileUploader) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', 'CORE_CONST', 'FileUploader', 'ionicToast',
+	function($scope, $http, $location, Users, Authentication, CORE_CONST, FileUploader, ionicToast) {
 		$scope.user = Authentication.user;
 
 		// If user is not signed in then redirect back home
@@ -46,6 +46,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			user.$update(function(response) {
 				$scope.success = true;
 				Authentication.user = response;
+				ionicToast.show('Updated', 'bottom', true, 2500);
 			}, function(response) {
 				$scope.error = response.data.message;
 			});
@@ -64,7 +65,8 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			});
 		};
 		var uploader = $scope.uploader = new FileUploader({
-			url: CORE_CONST.REST_URL + 'upload'
+			url: CORE_CONST.REST_URL + 'upload',
+			autoUpload: true
 		});
 
 		// FILTERS
