@@ -9,7 +9,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
         var auth_token_key = 'auth_token';
 
         $scope.signup_client = function() {
-            $http.post(CORE_CONST.REST_URL + 'auth/signup_client', $scope.credentials).success(function(response) {
+            $http.post(CORE_CONST.REST_URL + 'auth/signup', $scope.credentials).success(function(response) {
                 // If successful we assign the response to the global user model
                 $scope.authentication.user = response;
                 $http.defaults.headers.common.Authentication = response.loginToken;

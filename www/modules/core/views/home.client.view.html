@@ -1,51 +1,42 @@
-<ion-view data-ng-controller="HomeController" view-title="TaxiMobile" hide-back-button="true">
+<ion-view data-ng-controller="HomeController" view-title="VIR" hide-back-button="true">
     <ion-content class="full-height">
         <div data-ng-if="authentication.user">
-            <img src="img/381_a.jpg" alt="logo" width="150" class="logo"/>
-            <a data-ng-if="!authentication.user.is_driver && !authentication.user.trip" href="#!/trips/create" class="button taxi-btn button-positive">Вызвать
-                такси</a>
-            <a data-ng-if="!authentication.user.is_driver && authentication.user.trip" data-ng-href="#!/trips/{{authentication.user.trip._id || authentication.user.trip}}"
-               class="button taxi-btn button-positive">Вызвать такси</a>
-            <a data-ng-if="authentication.user.is_driver"
-               data-ng-href="#!/{{((authentication.user.trip) ? ('trips_driver/' + authentication.user.trip) : 'trips')}}"
-               class="button taxi-btn button-positive">Водитель</a>
-            <a data-ng-if="!authentication.user.is_driver" class="button taxi-btn button-positive">Вызвать трезвого водителя</a>
-            <a href="#!/share" class="button taxi-btn button-positive">Поделиться</a>
+            routes
         </div>
         <div data-ng-if="!authentication.user" style="height: 100%;">
             <ion-slide-box>
                 <ion-slide>
                     <div class="intro-card bg-orange">
-                        почему я крут
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis facere consequatur quo obcaecati, vitae, tempora et inventore officia cumque nam. Recusandae numquam, culpa architecto perspiciatis, dolore fuga eum eveniet deleniti cupiditate fugiat explicabo tenetur totam nulla. Tenetur, nisi praesentium eaque numquam architecto voluptate labore veritatis, quasi officia a illum iusto quidem totam dignissimos esse, asperiores sint! Voluptas et sequi, labore.
                         <div class="button-bar">
-                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <a class="button button-positive" href="#!/signup">Зарегистрироваться</a>
                             <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
                         </div>
                     </div>
                 </ion-slide>
                 <ion-slide>
                     <div class="intro-card  bg-blue">
-                        почему я крут
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae nobis fugiat repudiandae et deserunt harum omnis corporis, aspernatur quae atque earum culpa inventore quibusdam asperiores, nulla architecto quos repellendus praesentium doloribus laborum nemo repellat doloremque. Cum, dolor maxime minima expedita cumque provident delectus iusto temporibus corporis, corrupti suscipit quia.
                         <div class="button-bar">
-                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <a class="button button-positive" href="#!/signup">Зарегистрироваться</a>
                             <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
                         </div>
                     </div>
                 </ion-slide>
                 <ion-slide>
                     <div class="intro-card  bg-green">
-                        почему я крут
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi earum ad iusto laboriosam accusamus nostrum mollitia, possimus, odit temporibus, eius qui nobis pariatur praesentium impedit, alias dolor in. Distinctio ut illo quam neque animi perspiciatis veritatis, eos reiciendis impedit qui quas molestiae rem? Laudantium, assumenda dolor sit deleniti quasi distinctio enim nam minus eaque, facilis dolorem iure officiis, nobis nulla nesciunt aliquid repudiandae reiciendis suscipit, quidem nostrum illum dicta. Vel.
                         <div class="button-bar">
-                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <a class="button button-positive" href="#!/signup">Зарегистрироваться</a>
                             <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
                         </div>
                     </div>
                 </ion-slide>
                 <ion-slide>
                     <div class="intro-card  bg-grey">
-                        почему я крут
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum impedit, ad eveniet culpa ipsa hic ipsum esse accusantium. Unde animi tenetur, maiores facere reprehenderit velit quisquam quae blanditiis totam cumque.
                         <div class="button-bar">
-                            <a class="button button-positive" href="#!/signup_client">Зарегистрироваться</a>
+                            <a class="button button-positive" href="#!/signup">Зарегистрироваться</a>
                             <button class="button button-stable" data-ng-click="popup_sign_in()">войти в систему</button>
                         </div>
                     </div>

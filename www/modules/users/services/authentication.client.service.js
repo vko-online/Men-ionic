@@ -7,7 +7,6 @@ angular.module('users').service('Authentication', ['$http', '$q', 'CORE_CONST', 
             this.user = user;
             window.user = user;
             //set socket user
-            Socket.emit('join', user._id);
         };
         this.set_prop = function(propname, value){
             this.user[propname] = value;

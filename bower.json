@@ -3,19 +3,10 @@
   "private": "true",
   "dependencies": {
     "angular-file-upload": "~1.1.5",
-    "angular-leaflet-directive": "~0.8.5",
     "angular-resource": "1.3.13",
     "angular-socket-io": "~0.7.0",
-    "angular-timer": "~1.3.3",
-    "ion-affix": "~1.0.1",
     "ionic-toast": "~0.2.0",
     "jquery": "~2.1.4",
-    "leaflet": "~0.7.3",
-    "leaflet-routing-machine": "~2.4.0",
-    "Leaflet.awesome-markers": "~2.0.2",
-    "Leaflet.EdgeMarker": "*",
-    "leaflet.fullscreen": "~1.3.0",
-    "leaflet.locatecontrol": "https://github.com/vko-online/leaflet-locatecontrol.git#fb2354b3828f30fcc237d199f89f37fa091501d1",
     "socket.io-client": "~1.3.5"
   },
   "devDependencies": {

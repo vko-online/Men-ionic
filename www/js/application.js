@@ -9,9 +9,6 @@ var ApplicationConfiguration = (function(){
         'ionic',
         'ngResource',
         'btford.socket-io',
-        'timer',
-        //'leaflet-directive',
-        'ion-affix',
         'angularFileUpload',
         'ionic-toast'
     ];
@@ -28,7 +25,7 @@ var ApplicationConfiguration = (function(){
         //angular.module(applicationModuleName).requires.push(moduleName);
     };
     //todo: remove later
-    window.SERVER_URL = 'http://localhost:3000/'; //'http://localhost:3000/', //http://ttaxi.herokuapp.com/, //http://78.40.108.32:3000/
+    window.SERVER_URL = 'http://localhost:3000/api/';
     var $injected_http = angular.injector(['ng']).get('$http');
 
     var SERVER_URL = window.SERVER_URL;

@@ -1,0 +1,12 @@
+<ion-view data-ng-controller="CarsController" data-ng-init="findOne()">
+    <ion-content>
+        <ion-list>
+            <ion-item>
+                <h4>{{car.model}}</h4>
+            </ion-item>
+            <ion-item data-ng-href="#!/carriers/{{car.carrier._id}}">
+                <h4>Carrier: {{car.carrier.name}}</h4>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
