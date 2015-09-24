@@ -2,476 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a227f26a-cacf-4563-b90a-95cf7fbdafcb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.EdgeMarker/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.EdgeMarker/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.EdgeMarker/Leaflet.EdgeMarker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.EdgeMarker/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.EdgeMarker/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.EdgeMarker/images/edge-arrow-marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/images/markers-matte.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/images/markers-matte@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/images/markers-plain.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/images/markers-shadow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/images/markers-shadow@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/images/markers-soft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/images/markers-soft@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/basic-example.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/css/font-awesome-ie7.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/css/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/font/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/font/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/font/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/font/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/font/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/random-markers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/examples/with-bootstrap.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/screenshots/screenshot-matte.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/Leaflet.awesome-markers/screenshots/screenshot-soft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/core" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/angular-leaflet-directive.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/angular-leaflet-directive_dev_mapped.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/angular-leaflet-directive_dev_mapped.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/dot/all.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/dot/legend.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/dot/modules.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/dot/modules/leaflet-directive.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/png/all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/png/legend.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/png/modules.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/dist/architecture/png/modules/leaflet-directive.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/generate-examples.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/aliases.yaml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/angular_architecture_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/bower.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/bump.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/changelog.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/clean.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/concat.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/concurrent.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/connect.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/coveralls.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/jshint.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/karma.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/ngAnnotate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/open.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/pkg.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/protractor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/shell.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/uglify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/utils/banner.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/utils/getAvailPort.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-leaflet-directive/grunt/watch.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/app/js/_timer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/app/js/i18nService.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/app/js/progressBarService.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/config/karma-e2e.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/config/karma.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/angular-timer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/angular-timer.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/assets/css/angular-timer-bower.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/assets/js/angular-timer-all.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/assets/js/angular-timer-bower.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/angularjs-add-countdown-seconds.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/angularjs-multiple-timers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/angularjs-polling-timer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/angularjs-reset-timer" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/angularjs-single-timer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/jquery-timer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/plain-javascript.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/examples/timer-with-autostart-false-and-starttime.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/dist/navbar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/docs/application.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/docs/css/docs.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/docs/css/prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/docs/docs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/docs/images/forkme.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/docs/prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/angularjs-add-countdown-seconds.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/angularjs-multiple-timers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/angularjs-polling-timer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/angularjs-reset-timer" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/angularjs-single-timer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/jquery-timer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/plain-javascript.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/examples/timer-with-autostart-false-and-starttime.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/index.tpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/navbar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/test/e2e/runner.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/test/e2e/scenarios.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/test/unit/directivesSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/angular-timer/test/unit/timerSetTimeTest.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/css/font-awesome.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/css/font-awesome.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/css/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/fonts/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/animated.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/bordered-pulled.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/core.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/fixed-width.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/font-awesome.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/icons.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/larger.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/list.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/path.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/rotated-flipped.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/stacked.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/less/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_animated.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_bordered-pulled.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_core.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_fixed-width.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_icons.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_larger.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_list.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_path.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_rotated-flipped.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_stacked.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/_variables.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/font-awesome/scss/font-awesome.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/HISTORY.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/humanize-duration.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/humanize-duration/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/brown.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/delorean.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/demo-card.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/demo-click-on-affix.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/demo-group-header.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/demo-performance.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/demo-simple.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/demo/mcfly.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/gulpfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/ion-affix.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/ion-affix/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/dist/leaflet-routing-machine.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/dist/leaflet-routing-machine.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/dist/leaflet-routing-machine.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/dist/leaflet.routing.icons.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/dist/leaflet.routing.icons.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/dist/routing-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/examples/Control.Geocoder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/examples/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/examples/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/examples/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet-routing-machine/scripts/publish.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/Control.FullScreen.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/Control.FullScreen.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/icon-fullscreen-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/icon-fullscreen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.fullscreen/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/demo/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/demo/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/demo/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/demo_mapbox/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/demo_mapbox/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/demo_mapbox/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.ie.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.ie.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.ie.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.mapbox.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.mapbox.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.mapbox.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/dist/L.Control.Locate.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/screenshot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/src/L.Control.Locate.ie.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/src/L.Control.Locate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/src/L.Control.Locate.mapbox.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet.locatecontrol/src/L.Control.Locate.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/Jakefile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/PLUGIN-GUIDE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/component.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/images/layers-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/images/layers.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/images/marker-icon-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/images/marker-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/images/marker-shadow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/leaflet-src.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/leaflet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/dist/leaflet.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/leaflet/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/Moment.js.nuspec" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/benchmarks/clone.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/af.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ar-ma.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ar-sa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ar-tn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/az.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/be.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/bg.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/bn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/bo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/bs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/cs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/cv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/cy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/da.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/de-at.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/de.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/el.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/en-au.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/en-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/en-gb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/eo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/es.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/et.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/eu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/fa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/fi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/fo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/fr-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/fr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/fy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/gl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/he.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/hi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/hr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/hu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/hy-am.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/id.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/is.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/it.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ja.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ka.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/km.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ko.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/lb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/lt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/lv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/mk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/mr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ms-my.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/my.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/nb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ne.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/nl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/nn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/pl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/pt-br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/pt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/sk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/sl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/sq.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/sr-cyrl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/sr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/sv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/ta.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/th.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/tl-ph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/tr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/tzm-latn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/tzm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/uk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/uz.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/vi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/zh-cn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/locale/zh-tw.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/meteor/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/meteor/export.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/meteor/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/min/locales.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/min/locales.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/min/moment-with-locales.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/min/moment-with-locales.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/min/moment.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/moment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/lib/momentjs/scripts/npm_prepublish.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/articles.client.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/config/articles.client.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/config/articles.client.routes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/controllers/articles.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/services/articles.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/tests/articles.client.controller.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/views/create-article.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/views/edit-article.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/views/list-articles.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/articles/views/view-article.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/car-brands.client.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/config/car-brands.client.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/config/car-brands.client.routes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/controllers/car-brands.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/services/car-brands.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/tests/car-brands.client.controller.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/views/create-car-brand.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/views/edit-car-brand.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/views/list-car-brands.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-brands/views/view-car-brand.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/car-colors.client.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/config/car-colors.client.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/config/car-colors.client.routes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/controllers/car-colors.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/services/car-colors.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/tests/car-colors.client.controller.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/views/create-car-color.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/views/edit-car-color.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/views/list-car-colors.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-colors/views/view-car-color.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-models/config/car-models.client.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/car-models/tests/car-models.client.controller.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/config/core.client.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/css/star-rating.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/css/timer.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/directives/load-widget.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/directives/map.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/directives/star-rating.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/directives/templates/timer-widget.client.directive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/directives/timer-widget.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/directives/toggle.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/img/2gis1_0.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/img/brand/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/img/brand/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/img/loaders/loader.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/img/main_page.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/services/geo_location.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/services/menus.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/core/services/misc.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/config/trips.client.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/config/trips.client.routes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/controllers/create-trip.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/controllers/history-trips.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/map-view.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/point-preview.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/point-view.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/templates/map-view.client.directive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/templates/point-preview.client.directive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/templates/point-view.client.directive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/timer-action.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/directives/trip-status.client.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/services/driver_requests.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/services/template_resolve.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/services/trip_statuses.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/services/trip_viewer.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/services/trips.client.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/tests/trips.client.controller.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/trips.client.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/create-trip-misc.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/create-trip.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/flag-modal.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/list-history-trips.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/list-trips.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-activated.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-canceled.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-completed.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-initialized.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/client-met.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-activated.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-arrived.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-canceled.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-completed.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-initialized.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/status/driver-met.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/templates/trip-request-popover.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/view-history-trip.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/view-request-profile.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/view-trip.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/trips/views/view-trip.driver.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/controllers/driver.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/controllers/rating.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/controllers/share.client.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/views/driver/driver-edit.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/views/driver/driver-list.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/views/driver/driver-pre-create.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/views/driver/driver-view.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/views/driver/driver.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/views/rating.client.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/modules/users/views/share.client.view.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/car-models.client.module.js" afterPath="$PROJECT_DIR$/www/modules/cars/cars.client.module.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/config/car-models.client.routes.js" afterPath="$PROJECT_DIR$/www/modules/cars/config/cars.client.routes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/controllers/car-models.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/services/car-models.client.service.js" afterPath="$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/views/create-car-model.client.view.html" afterPath="$PROJECT_DIR$/www/modules/cars/views/create-car-model.client.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/views/edit-car-model.client.view.html" afterPath="$PROJECT_DIR$/www/modules/cars/views/edit-car-model.client.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/views/list-car-models.client.view.html" afterPath="$PROJECT_DIR$/www/modules/cars/views/list-car-models.client.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/modules/car-models/views/view-car-model.client.view.html" afterPath="$PROJECT_DIR$/www/modules/cars/views/view-car-model.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/application.js" afterPath="$PROJECT_DIR$/www/js/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js" afterPath="$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/cars/cars.client.module.js" afterPath="$PROJECT_DIR$/www/modules/cars/cars.client.module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js" afterPath="$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js" afterPath="$PROJECT_DIR$/www/modules/core/constants/core.client.constants.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/css/core.css" afterPath="$PROJECT_DIR$/www/modules/core/css/core.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/views/header.client.view.html" afterPath="$PROJECT_DIR$/www/modules/core/views/header.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/core/views/home.client.view.html" afterPath="$PROJECT_DIR$/www/modules/core/views/home.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/modules/cars/views/view-car.client.view.html" afterPath="$PROJECT_DIR$/www/modules/cars/views/view-car.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mobile.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -491,88 +29,7 @@
     <favorites_list name="mobile" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="authentication.client.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/users/controllers/authentication.client.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.client.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/core/views/header.client.view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.75">
-              <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cars.client.module.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/cars/cars.client.module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cars.client.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cars.client.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bower.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bower.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17612524">
-              <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="authentication.client.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/users/services/authentication.client.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.client.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/modules/users/controllers/settings.client.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -589,7 +46,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/www/modules/trips/views/status/client-completed.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/driver-arrived.client.view.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/www/modules/trips/views/status/client-arrived.client.view.html" />
@@ -636,10 +92,11 @@
         <option value="$PROJECT_DIR$/www/modules/trips/views/view-request-profile.client.view.html" />
         <option value="$PROJECT_DIR$/www/modules/trips/controllers/trips.client.controller.js" />
         <option value="$PROJECT_DIR$/www/modules/core/views/header.client.view.html" />
-        <option value="$PROJECT_DIR$/www/modules/cars/cars.client.module.js" />
-        <option value="$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js" />
-        <option value="$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js" />
         <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/www/modules/cars/cars.client.module.js" />
+        <option value="$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js" />
+        <option value="$PROJECT_DIR$/www/modules/cars/views/view-car.client.view.html" />
+        <option value="$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js" />
       </list>
     </option>
   </component>
@@ -652,11 +109,14 @@
       </GulpfileState>
     </gulpfiles>
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
-    <option name="y" value="23" />
-    <option name="width" value="1676" />
-    <option name="height" value="1027" />
+    <option name="x" value="-1356" />
+    <option name="y" value="-15" />
+    <option name="width" value="1356" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -712,8 +172,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -732,94 +190,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -828,6 +206,7 @@
     <property name="settings.editor.splitter.proportion" value="0.23648648" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="SearchEverywhereHistoryKey" value="map&#9;FILE&#9;file:///Users/bwin/Documents/Dev/work/taxi/mobile/www/modules/core/directives/map.js" />
+    <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -895,7 +274,6 @@
       <envs />
       <ui>bdd</ui>
       <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
       <test-directory />
       <recursive>false</recursive>
       <method />
@@ -915,30 +293,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1676" height="1027" extended-state="6" />
+    <frame x="-1356" y="-15" width="1356" height="745" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23561811" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3782542" sideWeight="0.49510404" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18237454" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23515981" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3647059" sideWeight="0.504896" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294979" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18237454" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3778015" sideWeight="0.49510404" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33333334" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33333334" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -959,6 +337,122 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="10" selection-start-line="69" selection-start-column="8" selection-end-line="74" selection-end-column="5" />
+          <folding>
+            <element signature="e#1366#1463#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/config/cars.client.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/views/list-cars.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/users/services/authentication.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/users/controllers/settings.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/users/controllers/authentication.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/core/views/header.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/cars.client.module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding>
+            <element signature="e#1366#1463#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/users/services/authentication.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/users/controllers/settings.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/modules/users/controllers/authentication.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1079,7 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.32">
           <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,8 +623,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/modules/core/views/header.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.75">
+        <state vertical-scroll-proportion="0.0">
           <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/views/list-cars.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/views/create-car.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.88">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1139,31 +656,81 @@
     <entry file="file://$PROJECT_DIR$/www/modules/cars/cars.client.module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+          <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js">
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/config/cars.client.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41775456">
+          <caret line="18" column="11" selection-start-line="11" selection-start-column="8" selection-end-line="18" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/views/view-carrier.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="71" selection-start-line="0" selection-start-column="71" selection-end-line="0" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/views/list-carriers.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/services/carriers.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37597913">
+          <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/views/edit-car.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09552239">
+          <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/modules/cars/controllers/cars.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.7111111">
+          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+          <folding>
+            <element signature="e#1366#1463#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/views/view-car.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31284916">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
+    <entry file="file://$PROJECT_DIR$/www/modules/users/tests/authentication.client.controller.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17612524">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.5777778">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/modules/cars/services/cars.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35555556">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
           <folding />
         </state>
       </provider>

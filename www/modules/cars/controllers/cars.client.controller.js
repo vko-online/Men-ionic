@@ -22,24 +22,9 @@ angular.module('cars').controller('CarsController', ['$scope', '$stateParams', '
 				$scope.error = errorResponse.data.message;
 			});
 		};
-
-		// Remove existing Car model
-		$scope.remove = function(car) {
-			if ( car ) { 
-				car.$remove();
-
-				for (var i in $scope.cars) {
-					if ($scope.cars [i] === car) {
-						$scope.cars.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.car.$remove(function() {
-					$location.path('cars');
-				});
-			}
+		$scope.callback = function(){
+			$location.path('cars');
 		};
-
 		// Update existing Car model
 		$scope.update = function() {
 			var car = $scope.car;
