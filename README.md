@@ -1,6 +1,1 @@
-##DONE
- - token-auth, basic crud for car module
-
-##TODO
- - remove carrier module to it's own, ask for more information about model props, validation, data flow
-
+Men stack client for [RESTful Men stack endpoint](https://github.com/vko-online/Men)
