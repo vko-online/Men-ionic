@@ -1,15 +1,29 @@
 'use strict';
 // Authentication service for user variables
-angular.module('users').service('Authentication', ['$http', '$q', 'CORE_CONST', 'Socket',
-    function($http, $q, CORE_CONST, Socket){
-        this.user = false;
-        this.set_user = function(user){
-            this.user = user;
-            window.user = user;
-            //set socket user
-        };
+angular.module('users').service('Authentication', ['$http', '$q', 'CORE_CONST', 'Socket', '$rootScope',
+    function($http, $q, CORE_CONST, Socket, $rootScope){
+        var user = false;
+        var token_key = 'auth_token';
+        Object.defineProperty(this, 'user', {
+            get: function(){
+                return user;
+            },
+            set: function(new_user){
+                user = new_user;
+                window.user = new_user;
+                if(new_user && new_user.loginToken){
+                    localStorage.setItem(token_key, new_user.loginToken);
+                    $http.defaults.headers.common.Authentication = new_user.loginToken;
+                    Socket.emit('join', (new_user._id || new_user));
+                } else {
+                    localStorage.removeItem(token_key);
+                    delete $http.defaults.headers.common.Authentication;
+                    $rootScope.$broadcast('event:auth-login_required');
+                }
+            }
+        });
         this.set_prop = function(propname, value){
-            this.user[propname] = value;
+            user[propname] = value;
         };
     }
 ]);

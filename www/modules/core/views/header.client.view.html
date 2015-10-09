@@ -11,9 +11,6 @@
         </ion-nav-bar>
         <ion-view>
             <ion-nav-view></ion-nav-view>
-            <ion-footer-bar align-title="left" class="bar-positive">
-                <h1 class="title" onclick="alert('Not implemented');">Tab</h1>
-            </ion-footer-bar>
         </ion-view>
     </ion-side-menu-content>
 
@@ -28,7 +25,6 @@
                         <img data-ng-if="authentication.user.photo_src" class="item-group-img"
                              ng-src="{{CORE_CONST.REST_URL + 'upload/images/' + authentication.user.photo_src}}"
                              alt="profile" height="42" width="42"/>
-
                         <div class="item-group-content">
                             <span class="item-m">{{authentication.user.displayName}}</span>
                             <span class="item-s">{{authentication.user.username}}</span>
@@ -62,15 +58,6 @@
                                data-ng-click="exit_app()">Exit from app</a>
                         </div>
                     </div>
-                </ion-item>
-                <ion-item menu-close class="item-positive" href="#!/">
-                    VIR
-                </ion-item>
-                <ion-item menu-close class="item-positive" href="#!/cars">
-                    Cars
-                </ion-item>
-                <ion-item menu-close class="item-positive" href="#!/carriers">
-                    Carriers
                 </ion-item>
             </ion-list>
         </ion-content>

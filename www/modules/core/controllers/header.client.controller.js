@@ -1,6 +1,6 @@
 'use strict';
-angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Socket', 'Users', '$location', '$http', '$ionicModal', '$state', 'CORE_CONST',
-    function($scope, Authentication, Socket, Users, $location, $http, $ionicModal, $state, CORE_CONST){
+angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Socket', 'Users', '$location', '$ionicModal', '$state', 'CORE_CONST',
+    function($scope, Authentication, Socket, Users, $location, $ionicModal, $state, CORE_CONST){
         $scope.authentication = Authentication;
         $ionicModal.fromTemplateUrl('modules/users/views/authentication/signin.client.view.html', {
             scope: $scope,
@@ -25,11 +25,8 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
         $scope.signout = function(){
             Users.sign_out(function(successResponse){
                 Authentication.user = null;
-                localStorage.removeItem('a');
-                delete $http.defaults.headers.common.Authentication;
                 // Redirect to signin page
                 $state.go('home', {}, {reload: true, inherit: false});
-                //$location.path('/signin');
             }, function(errorResponse){
                 $scope.error = errorResponse.message;
             });
@@ -43,8 +40,6 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
         $scope.$on('$stateChangeSuccess', function(){
             $scope.isCollapsed = false;
         });
-        //modal
-
         $scope.CORE_CONST = CORE_CONST;
         $scope.exit_app = function(){
             if(navigator.app)

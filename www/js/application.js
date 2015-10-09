@@ -4,7 +4,7 @@
 
 var ApplicationConfiguration = (function(){
     // Init module configuration options
-    var applicationModuleName = 'taxi';
+    var applicationModuleName = 'men_ionic';
     var applicationModuleVendorDependencies = [
         'ionic',
         'ngResource',
@@ -25,16 +25,14 @@ var ApplicationConfiguration = (function(){
         //angular.module(applicationModuleName).requires.push(moduleName);
     };
     //todo: remove later
-    window.SERVER_URL = 'http://localhost:3000/api/';
+    window.SERVER_URL = 'http://localhost:3000/';
     var $injected_http = angular.injector(['ng']).get('$http');
-
-    var SERVER_URL = window.SERVER_URL;
 
     //set token header
     var auth_token = localStorage.getItem('auth_token');
     $injected_http({
         method: 'GET',
-        url: SERVER_URL + 'users/me',
+        url: window.SERVER_URL + 'users/me',
         headers: {
             Authentication: auth_token
         }
@@ -55,9 +53,8 @@ var ApplicationConfiguration = (function(){
                 ]);
                 angular.module(ApplicationConfiguration.applicationModuleName).run(function($ionicPlatform, $ionicConfig, Authentication, $http, Socket){
                     //set auth-token
-                    $http.defaults.headers.common.Authentication = auth_token;
                     //set global user
-                    Authentication.set_user(successResponse);
+                    Authentication.user = successResponse;
 
                     $ionicPlatform.ready(function(){
                         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
